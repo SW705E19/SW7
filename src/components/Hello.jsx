@@ -1,9 +1,10 @@
 import React from "react";
+import Icon from '@material-ui/core/Icon';
 
 class Hello extends React.Component {
     render(){
         return (
-            <h1>Hello</h1>
+            <div><h1>Hello</h1><Icon>star</Icon></div>
         )
     }
 }
