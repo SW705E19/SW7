@@ -2,6 +2,8 @@ import React from 'react';
 import {render, unmountComponentAtNode } from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
+
+
 import Hello from '../components/Hello';
 import { isTSAnyKeyword } from '@babel/types';
 
@@ -23,5 +25,5 @@ it("render hello", () => {
     act(() => {
         render(<Hello />, container);
     });
-    expect(container.textContent).toBe("Hello");
+    expect(container.textContent).toBe("Hellostar");
 });
