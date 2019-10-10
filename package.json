@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.5.0",
     "@babel/types": "^7.6.1",
     "eslint-plugin-jest": "^22.17.0",
     "react": "^16.9.0",
