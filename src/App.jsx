@@ -1,8 +1,14 @@
 import React from 'react';
 
+import Layout from './hoc/Layout/Layout';
+
 function App() {
   return (
-    <div />
+    <div>
+      <Layout>
+        <p>Test</p>
+      </Layout>
+    </div>
   );
 }
 
