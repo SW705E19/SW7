@@ -16,74 +16,74 @@ import { makeStyles } from '@material-ui/core/styles';
     };
 */
 function ShowUser(props) {
-    const useStyles = makeStyles(theme => ({
-        root: {
-            padding: theme.spacing(3, 2),
-        },
-        card: {
-            maxWidth: 345,
-        },
-        media: {
-            height: 140,
-        },
-    }));
+	const useStyles = makeStyles(theme => ({
+		root: {
+			padding: theme.spacing(3, 2),
+		},
+		card: {
+			maxWidth: 345,
+		},
+		media: {
+			height: 140,
+		},
+	}));
 
-    const classes = useStyles();
+	const classes = useStyles();
 
-    return (
-        <>
-            <Card className={classes.card}>
-                <CardActionArea>
-                    <CardMedia
-                        className={classes.media}
-                        image='https://source.unsplash.com/random'
-                        title={props.user.fullName}
-                    />
-                    <CardContent>
-                        <Typography component="h2" variant="h5">
-                            {props.user.fullName}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+	return (
+		<>
+			<Card className={classes.card}>
+				<CardActionArea>
+					<CardMedia
+						className={classes.media}
+						image='https://source.unsplash.com/random'
+						title={props.user.fullName}
+					/>
+					<CardContent>
+						<Typography component="h2" variant="h5">
+							{props.user.fullName}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Email
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.email}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.email}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Date of Birth
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.dateOfBirth}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.dateOfBirth}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Languages
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.languages}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.languages}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Education
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.education}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.education}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Subjects
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.subjects}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textPrimary">
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.subjects}
+						</Typography>
+						<Typography variant="subtitle1" color="textPrimary">
                             Description
-                            </Typography>
-                        <Typography variant="caption" color="textSecondary">
-                            {props.user.description}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </>
-    );
+						</Typography>
+						<Typography variant="caption" color="textSecondary">
+							{props.user.description}
+						</Typography>
+					</CardContent>
+				</CardActionArea>
+			</Card>
+		</>
+	);
 }
 
 export default ShowUser;
