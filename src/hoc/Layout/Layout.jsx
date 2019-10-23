@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Footer from '../../components/Footer/Footer';
 
 function Layout(props) {
 	return (
@@ -10,7 +11,7 @@ function Layout(props) {
 			<main>
 				{props.children}
 			</main>
-			<div>Footer</div>
+			<Footer></Footer>
 		</>
 	);
 }
