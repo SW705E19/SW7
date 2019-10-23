@@ -4,7 +4,7 @@ import { makeStyles} from '@material-ui/core/styles';
 import { Facebook, Twitter, Instagram, LinkedIn } from '@material-ui/icons';
 
 function Footer() {
-	const useStyles = makeStyles(theme => ({
+	const useStyles = makeStyles(() => ({
 		footer: {
 			position: 'fixed',
 			left: 0,
@@ -20,24 +20,22 @@ function Footer() {
 		<footer className={classes.footer}>
 			<Grid container spacing={1}>
 				<Grid item xs={12}>
-					<Grid item xs={12}>
-						<IconButton>
-							<Facebook />
-						</IconButton>
-						<IconButton>
-							<Instagram />
-						</IconButton>
-						<IconButton>
-							<Twitter />
-						</IconButton>
-						<IconButton>
-							<LinkedIn />
-						</IconButton>
-									
-					</Grid>
-					<Grid item xs={12}>
-						<p>Copyright © Techkrus Digital Solutions</p>
-					</Grid>
+					<IconButton>
+						<Facebook />
+					</IconButton>
+					<IconButton>
+						<Instagram />
+					</IconButton>
+					<IconButton>
+						<Twitter />
+					</IconButton>
+					<IconButton>
+						<LinkedIn />
+					</IconButton>
+								
+				</Grid>
+				<Grid item xs={12}>
+					<p>Copyright © 2019 SW705E19</p>
 				</Grid>
 			</Grid>
 		</footer>
