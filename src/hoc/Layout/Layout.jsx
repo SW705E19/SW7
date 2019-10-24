@@ -4,15 +4,15 @@ import Footer from '../../components/Footer/Footer';
 
 function Layout(props) {
 	return (
-		<>
+		<div id="page-container">
 			<div>Toolbar</div>
 			<div>Sidedrawer</div>
 			<div>Backdrop</div>
-			<main>
+			<main id="content-wrap">
 				{props.children}
 			</main>
 			<Footer></Footer>
-		</>
+		</div>
 	);
 }
 

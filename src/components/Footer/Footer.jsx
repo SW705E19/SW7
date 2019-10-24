@@ -6,12 +6,13 @@ import { Facebook, Twitter, Instagram, LinkedIn } from '@material-ui/icons';
 function Footer() {
 	const useStyles = makeStyles(() => ({
 		footer: {
-			position: 'fixed',
+			position: 'absolute',
 			left: 0,
 			bottom: 0,
-			width: '100%',
+			width: '99vw',
 			textAlign: 'center',
 			borderTopStyle: 'ridge',
+			height:'2.5rem',
 		}
 	}));
 
