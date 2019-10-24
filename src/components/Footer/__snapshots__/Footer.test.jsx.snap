@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer test test if grid is rendered 1`] = `
+exports[`Footer sss test test if footer is rendered 1`] = `
 <footer
   className="makeStyles-footer-1"
 >
