@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense } from 'react';
 import './i18n';
 import Layout from './hoc/Layout/Layout';
 
