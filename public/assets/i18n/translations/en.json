@@ -3,5 +3,6 @@
     "email": "Email",
     "password": "Password",
     "forgotpassword?": "Forgot password?",
-    "signup": "Sign up"
+    "signup": "Sign up",
+	"error.notfound" : "Error 404, page not found"
 }

@@ -8,6 +8,7 @@ function Layout() {
 		<Router>
 			<div>
 				<Switch>
+					<Route path="/login" component={Login} />
 					<Route component={NotFound} />
 				</Switch>
 			</div>

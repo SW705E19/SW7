@@ -1,7 +1,14 @@
 import React from 'react';
-
+import { Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+	
 function NotFound(){
-	return (<h1>error 404 page not found</h1>);
+	const { t } = useTranslation();
+	return (
+		<Typography variant="h4">
+			{t('error.notfound')}
+		</Typography>
+	);
 }
 
 export default NotFound;
