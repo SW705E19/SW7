@@ -4,5 +4,5 @@
     "password": "Password",
     "forgotpassword?": "Forgot password?",
     "signup": "Sign up",
-	"error.notfound" : "Error 404, page not found"
+	"error.notfound" : "Error 404, page not found."
 }

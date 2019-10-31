@@ -4,5 +4,5 @@
     "password": "Password",
     "forgotpassword?": "Glemt password?",
 	"signup": "Opret konto",
-	"error.notfound" : "Fejl 404, siden blev ikke fundet"
+	"error.notfound" : "Fejl 404, siden blev ikke fundet."
 }
