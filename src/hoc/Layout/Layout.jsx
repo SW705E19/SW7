@@ -1,23 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import LandingPage from '../../containers/LandingPage/LandingPage';
+import NotFound from '../../containers/NotFound/NotFound';
 
-function Layout(props) {
+function Layout() {
+	const routing = (
+		<Router>
+			<div>
+				<Switch>
+					<Route exact path="/" component={LandingPage} />
+					<Route component={NotFound} />
+				</Switch>
+			</div>
+		</Router>
+	);
+
 	return (
 		<>
 			<div>Toolbar</div>
 			<div>Sidedrawer</div>
 			<div>Backdrop</div>
-			<main>
-				{props.children}
-			</main>
+			<div>
+				{routing}
+			</div>
 			<div>Footer</div>
 		</>
 	);
 }
-
-Layout.propTypes = {
-	props: PropTypes.node,
-	children: PropTypes.node,
-};
 
 export default Layout;
