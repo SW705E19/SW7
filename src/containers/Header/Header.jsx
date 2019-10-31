@@ -1,9 +1,9 @@
 import  React from 'react';
-import { AppBar, Toolbar, IconButton, Hidden, Button, List, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Hidden, Button, List, ListItem, ListItemIcon, ListItemText, Typography} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { AccountCircle, Menu, Notifications, Home, Event, Mail} from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
-
+import logo_transparent from '../../assets/logo_transparent.png'; 
 
 const styles = {
 	toolbarButtons: {
@@ -17,20 +17,20 @@ function Header({classes}) {
 		left: false,
 	});
 
-	const toggleDrawer = (side, open) => event => {
+	const toggleDrawer = (open) => event => {
 		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
 		  return;
 		}
 	
-		setState({ ...state, [side]: open });
+		setState({ ...state, 'left': open });
 	};
 
-	const sideList = side => (
+	const sideList =
 		<div
 		  className={classes.list}
 		  role="presentation"
-		  onClick={toggleDrawer(side, false)}
-		  onKeyDown={toggleDrawer(side, false)}
+		  onClick={toggleDrawer(false)}
+		  onKeyDown={toggleDrawer(false)}
 		>
 		  <List>
 		  <ListItem button key = 'Home'>
@@ -68,24 +68,23 @@ function Header({classes}) {
 				</ListItemIcon>
 			</ListItem>
 		  </List>
-		</div>
-	  );
+		</div>;
 	
 
 	
 	return (
-		<AppBar position="static" >
+		<AppBar position="static">
 			<Toolbar>
 				<Hidden mdUp>
-					<Button onClick={toggleDrawer('left', true)}><Menu/></Button>
-					<Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-   			     	   {sideList('left')}
+					<Button onClick={toggleDrawer(true)}><Menu/></Button>
+					<Drawer open={state.left} onClose={toggleDrawer(false)}>
+   			     	   {sideList}
   			 	    </Drawer> 
 				</Hidden>
 				<Hidden smDown>
-					<IconButton className={classes.menuButton}>
-						<Home fontSize="large" />
-					</IconButton>
+					<Typography>
+						<img  src={logo_transparent} alt="fireSpot" height="80" width="80"/>
+					</Typography>
 
 					<div className={classes.toolbarButtons}>
 						<IconButton>
