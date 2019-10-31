@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import LandingPage from '../../containers/LandingPage/LandingPage';
 import NotFound from '../../containers/NotFound/NotFound';
 
 function Layout() {
@@ -8,7 +7,6 @@ function Layout() {
 		<Router>
 			<div>
 				<Switch>
-					<Route exact path="/" component={LandingPage} />
 					<Route component={NotFound} />
 				</Switch>
 			</div>
