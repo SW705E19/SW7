@@ -1,26 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Login from '../../containers/Login/Login';
 import Header from '../../components/Header/Header';
 
-
-
-function Layout(props) {
+function Layout() {
 	return (
 		<>
-			<Header></Header>
+			<Header />
 			<div>Sidedrawer</div>
 			<div>Backdrop</div>
 			<main>
-				{props.children}
+				<Login />
 			</main>
 			<div>Footer</div>
 		</>
 	);
 }
-
-Layout.propTypes = {
-	props: PropTypes.node,
-	children: PropTypes.node,
-};
 
 export default Layout;
