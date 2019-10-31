@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import LandingPage from '../../containers/LandingPage/LandingPage';
 import NotFound from '../../containers/NotFound/NotFound';
