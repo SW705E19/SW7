@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NotFound from '../../containers/NotFound/NotFound';
+import Login from '../../containers/Login/Login';
 
 function Layout() {
 	const routing = (
@@ -21,6 +22,7 @@ function Layout() {
 			<div>
 				{routing}
 			</div>
+
 			<div>Footer</div>
 		</>
 	);

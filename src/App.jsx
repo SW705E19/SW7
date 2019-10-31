@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import './i18n';
 import Layout from './hoc/Layout/Layout';
 
 function App() {
 	return (
 		<div>
-			<Layout>
-				<p>Test</p>
-			</Layout>
+			<Suspense fallback={null}>
+				<Layout>
+					<p>Test</p>
+				</Layout>
+			</Suspense>
 		</div>
 	);
 }
