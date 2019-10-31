@@ -1,9 +1,9 @@
 import  React from 'react';
-import { AppBar, Toolbar, IconButton, Hidden, Button, List, ListItem, ListItemIcon, ListItemText, Typography} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Hidden, Button, List, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { AccountCircle, Menu, Notifications, Home, Event, Mail} from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
-import logo_transparent from '../../assets/logo_transparent.png'; 
+import logo_transparent from '../../assets/logo.png'; 
 
 const styles = {
 	toolbarButtons: {
@@ -82,9 +82,9 @@ function Header({classes}) {
   			 	    </Drawer> 
 				</Hidden>
 				<Hidden smDown>
-					<Typography>
-						<img  src={logo_transparent} alt="fireSpot" height="80" width="80"/>
-					</Typography>
+					<IconButton>
+						<img  src={logo_transparent} alt="" height="45" width="45"/>
+					</IconButton>
 
 					<div className={classes.toolbarButtons}>
 						<IconButton>
