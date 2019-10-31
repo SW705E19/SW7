@@ -14,7 +14,7 @@ const styles = {
 
 function Header({classes}) {
 	const [state, setState] = React.useState({
-		left: false,
+		isMenuOpen: false,
 	});
 
 	const toggleDrawer = (open) => event => {
@@ -22,7 +22,7 @@ function Header({classes}) {
 			return;
 		}
 	
-		setState({ ...state, 'left': open });
+		setState({ ...state, 'isMenuOpen': open });
 	};
 
 	const sideList =
@@ -77,7 +77,7 @@ function Header({classes}) {
 			<Toolbar>
 				<Hidden mdUp>
 					<Button onClick={toggleDrawer(true)}><Menu/></Button>
-					<Drawer open={state.left} onClose={toggleDrawer(false)}>
+					<Drawer open={state.isMenuOpen} onClose={toggleDrawer(false)}>
 						{sideList}
 					</Drawer> 
 				</Hidden>
