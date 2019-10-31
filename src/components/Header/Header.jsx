@@ -19,7 +19,7 @@ function Header({classes}) {
 
 	const toggleDrawer = (open) => event => {
 		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-		  return;
+			return;
 		}
 	
 		setState({ ...state, 'left': open });
@@ -27,47 +27,47 @@ function Header({classes}) {
 
 	const sideList =
 		<div
-		  className={classes.list}
-		  role="presentation"
-		  onClick={toggleDrawer(false)}
-		  onKeyDown={toggleDrawer(false)}
+			className={classes.list}
+			role="presentation"
+			onClick={toggleDrawer(false)}
+			onKeyDown={toggleDrawer(false)}
 		>
-		  <List>
-		  <ListItem button key = 'Home'>
-				<ListItemText primary='Home' />
-				<ListItemIcon>
-					<Home fontSize="large" />
-				</ListItemIcon>
-			</ListItem>
+			<List>
+				<ListItem button key = 'Home'>
+					<ListItemText primary='Home' />
+					<ListItemIcon>
+						<Home fontSize="large" />
+					</ListItemIcon>
+				</ListItem>
 
-			<ListItem button key = 'Mail'>
-				<ListItemText primary='Inbox' />
-				<ListItemIcon>
-					<Mail fontSize="large" />
-				</ListItemIcon>
-			</ListItem>
+				<ListItem button key = 'Mail'>
+					<ListItemText primary='Inbox' />
+					<ListItemIcon>
+						<Mail fontSize="large" />
+					</ListItemIcon>
+				</ListItem>
 
-			<ListItem button key = 'Event'>
-				<ListItemText primary='Calendar' />
-				<ListItemIcon>
-					<Event fontSize="large" />
-				</ListItemIcon>
-			</ListItem>
+				<ListItem button key = 'Event'>
+					<ListItemText primary='Calendar' />
+					<ListItemIcon>
+						<Event fontSize="large" />
+					</ListItemIcon>
+				</ListItem>
 
-			<ListItem button key = 'Notifications'>
-				<ListItemText primary='Notifications' />
-				<ListItemIcon>
-					<Notifications fontSize="large" />
-				</ListItemIcon>
-			</ListItem>
+				<ListItem button key = 'Notifications'>
+					<ListItemText primary='Notifications' />
+					<ListItemIcon>
+						<Notifications fontSize="large" />
+					</ListItemIcon>
+				</ListItem>
 			
-			<ListItem button key = 'AccountCircle'>
-				<ListItemText primary='My account' />
-				<ListItemIcon>
-					<AccountCircle fontSize="large" />
-				</ListItemIcon>
-			</ListItem>
-		  </List>
+				<ListItem button key = 'AccountCircle'>
+					<ListItemText primary='My account' />
+					<ListItemIcon>
+						<AccountCircle fontSize="large" />
+					</ListItemIcon>
+				</ListItem>
+			</List>
 		</div>;
 	
 
@@ -78,8 +78,8 @@ function Header({classes}) {
 				<Hidden mdUp>
 					<Button onClick={toggleDrawer(true)}><Menu/></Button>
 					<Drawer open={state.left} onClose={toggleDrawer(false)}>
-   			     	   {sideList}
-  			 	    </Drawer> 
+						{sideList}
+					</Drawer> 
 				</Hidden>
 				<Hidden smDown>
 					<IconButton>
