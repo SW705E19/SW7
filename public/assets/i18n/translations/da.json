@@ -3,5 +3,6 @@
     "email": "Email",
     "password": "Password",
     "forgotpassword?": "Glemt password?",
-    "signup": "Opret konto"
+	"signup": "Opret konto",
+	"error.notfound" : "Fejl 404, siden blev ikke fundet."
 }
