@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../../containers/Header/Header';
+
+
 
 function Layout(props) {
 	return (
 		<>
-			<div>Toolbar</div>
+			<Header></Header>
 			<div>Sidedrawer</div>
 			<div>Backdrop</div>
 			<main>
