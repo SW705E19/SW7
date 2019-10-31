@@ -6,12 +6,10 @@ import Login from '../../containers/Login/Login';
 function Layout() {
 	const routing = (
 		<Router>
-			<div>
-				<Switch>
-					<Route path="/login" component={Login} />
-					<Route component={NotFound} />
-				</Switch>
-			</div>
+			<Switch>
+				<Route path="/login" component={Login} />
+				<Route component={NotFound} />
+			</Switch>
 		</Router>
 	);
 
