@@ -1,8 +1,18 @@
 {
-    "signin": "Sign in",
-    "email": "Email",
-    "password": "Password",
-    "forgotpassword?": "Forgot password?",
-    "signup": "Sign up",
-	"error.notfound" : "Error 404, page not found."
+  "signin": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "forgotpassword?": "Forgot password?",
+  "signup": "Sign up",
+  "error.notfound": "Error 404, page not found.",
+  "registerasauser": "Register as a user",
+  "firstname": "First name",
+  "lastname": "Last name",
+  "phonenumber": "Phone number",
+  "address": "Address",
+  "education": "Education",
+  "dateOfBirth": "Date of birth",
+  "register": "Register",
+  "languages": "Languages",
+  "subjectofinterst": "Subject of interest"
 }

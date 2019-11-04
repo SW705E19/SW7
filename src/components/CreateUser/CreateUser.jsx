@@ -50,9 +50,9 @@ function textField(name) {
 
 function selectMultiple(name) {
   if (name === "languages") {
-    return <SelectMultipleLanguages selectMultiple="Languages" />;
+    return <SelectMultipleLanguages selectMultiple={name} />;
   } else {
-    return <SelectMultipleLanguages selectMultiple="Subject of interest" />;
+    return <SelectMultipleLanguages selectMultiple={name} />;
   }
 }
 
@@ -64,32 +64,32 @@ function CreateUser() {
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Typography align="center" component="h1" variant="title">
-          Register as a user
+          {t("registerasauser")}
         </Typography>
         <form className={classes.form} noValidate autoComplete="off">
           <Grid container spacing={2} direction="row" justify="Center">
             <Grid item xs={12} sm={6}>
-              {textField("First name")}
+              {textField(t("firstname"))}
             </Grid>
             <Grid item xs={12} sm={6}>
-              {textField("Last name")}
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
-            <Grid item xs={12} sm={6}>
-              {textField("Email")}
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              {textField("Phone number")}
+              {textField(t("lastname"))}
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
             <Grid item xs={12} sm={6}>
-              {textField("Address")}
+              {textField(t("email"))}
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              {textField(t("phonenumber"))}
+            </Grid>
+          </Grid>
+          <Grid container spacing={2} direction="row" justify="Center">
+            <Grid item xs={12} sm={6}>
+              {textField(t("address"))}
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              {textField("Education")}
+              {textField(t("education"))}
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
@@ -98,7 +98,7 @@ function CreateUser() {
                 variant="outlined"
                 margin="normal"
                 id="date"
-                label="Birthday"
+                label={t("dateOfBirth")}
                 type="date"
                 className={classes.textField}
                 InputLabelProps={{
@@ -116,7 +116,7 @@ function CreateUser() {
           </Grid>
           <Grid justify="center">
             <Button variant="outlined" color="inherit">
-              Register
+              {t("register")}
             </Button>
           </Grid>
         </form>

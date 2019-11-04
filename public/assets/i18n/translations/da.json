@@ -1,8 +1,16 @@
 {
-    "signin": "Log ind",
-    "email": "Email",
-    "password": "Password",
-    "forgotpassword?": "Glemt password?",
-	"signup": "Opret konto",
-	"error.notfound" : "Fejl 404, siden blev ikke fundet."
+  "signin": "Log ind",
+  "email": "Email",
+  "password": "Password",
+  "forgotpassword?": "Glemt password?",
+  "signup": "Opret konto",
+  "error.notfound": "Fejl 404, siden blev ikke fundet.",
+  "registerasauser": "Opret bruger",
+  "firstname": "Fornavn",
+  "lastname": "Efternavn",
+  "phonenumber": "Telefonnummer",
+  "address": "Adresse",
+  "education": "Uddannelse",
+  "dateOfBirth": "Fødselsdag",
+  "register": "Register"
 }
