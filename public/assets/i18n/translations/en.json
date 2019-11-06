@@ -14,5 +14,10 @@
   "dateOfBirth": "Date of birth",
   "register": "Register",
   "languages": "Languages",
-  "subjectofinterst": "Subject of interest"
+  "subjectofinterst": "Subject of interest",
+  "searchforsubjectofinterst": "Search for subject of interest",
+  "searchforlanguages": "Search for languages",
+  "danish": "Danish",
+  "english": "English",
+  "german": "German"
 }

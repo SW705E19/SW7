@@ -12,5 +12,12 @@
   "address": "Adresse",
   "education": "Uddannelse",
   "dateOfBirth": "Fødselsdag",
-  "register": "Register"
+  "register": "Register",
+  "languages": "Sprog",
+  "subjectofinterst": "Interesseområder",
+  "searchforsubjectofinterst": "Søg efter interesseområder",
+  "searchforlanguages": "Søg efter sprog",
+  "danish": "Dansk",
+  "english": "Engelsk",
+  "german": "Tysk"
 }

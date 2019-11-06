@@ -15,17 +15,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200
-  },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3)
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
@@ -46,14 +41,6 @@ function textField(name) {
       autoFocus
     />
   );
-}
-
-function selectMultiple(name) {
-  if (name === "languages") {
-    return <SelectMultipleLanguages selectMultiple={name} />;
-  } else {
-    return <SelectMultipleLanguages selectMultiple={name} />;
-  }
 }
 
 function CreateUser() {
@@ -87,20 +74,19 @@ function CreateUser() {
             <Grid item xs={12} sm={6}>
               {textField(t("address"))}
             </Grid>
-
             <Grid item xs={12} sm={6}>
               {textField(t("education"))}
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
+                fullWidth
                 variant="outlined"
                 margin="normal"
                 id="date"
                 label={t("dateOfBirth")}
                 type="date"
-                className={classes.textField}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -108,14 +94,15 @@ function CreateUser() {
               />
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
-            {selectMultiple("languages")}
-          </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
-            {selectMultiple("subject of interest")}
-          </Grid>
+          <SelectMultipleLanguages selectMultiple />
           <Grid justify="center">
-            <Button variant="outlined" color="inherit">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="inherit"
+              justify="center"
+            >
               {t("register")}
             </Button>
           </Grid>

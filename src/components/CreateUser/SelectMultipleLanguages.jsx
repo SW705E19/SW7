@@ -10,54 +10,8 @@ import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
 import MenuItem from "@material-ui/core/MenuItem";
 import CancelIcon from "@material-ui/icons/Cancel";
-
-const languageSuggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" },
-  { label: "Angola" },
-  { label: "Anguilla" },
-  { label: "Antarctica" },
-  { label: "Antigua and Barbuda" },
-  { label: "Argentina" },
-  { label: "Armenia" },
-  { label: "Aruba" },
-  { label: "Australia" },
-  { label: "Austria" },
-  { label: "Azerbaijan" },
-  { label: "Bahamas" },
-  { label: "Bahrain" },
-  { label: "Bangladesh" },
-  { label: "Barbados" },
-  { label: "Belarus" },
-  { label: "Belgium" },
-  { label: "Belize" },
-  { label: "Benin" },
-  { label: "Bermuda" },
-  { label: "Bhutan" },
-  { label: "Bolivia, Plurinational State of" },
-  { label: "Bonaire, Sint Eustatius and Saba" },
-  { label: "Bosnia and Herzegovina" },
-  { label: "Botswana" },
-  { label: "Bouvet Island" },
-  { label: "Brazil" },
-  { label: "British Indian Ocean Territory" },
-  { label: "Brunei Darussalam" }
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label
-}));
-
-const subjectOfInterestSuggestions = [
-  { label: "Football" },
-  { label: "Math" }
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label
-}));
+import { useTranslation } from "react-i18next";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,9 +44,6 @@ const useStyles = makeStyles(theme => ({
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2)
-  },
-  singleValue: {
-    fontSize: 16
   },
   placeholder: {
     position: "absolute",
@@ -272,29 +223,6 @@ Placeholder.propTypes = {
   selectProps: PropTypes.object.isRequired
 };
 
-function SingleValue(props) {
-  return (
-    <Typography
-      className={props.selectProps.classes.singleValue}
-      {...props.innerProps}
-    >
-      {props.children}
-    </Typography>
-  );
-}
-
-SingleValue.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * Props passed to the wrapping element for the group.
-   */
-  innerProps: PropTypes.any.isRequired,
-  selectProps: PropTypes.object.isRequired
-};
-
 function ValueContainer(props) {
   return (
     <div className={props.selectProps.classes.valueContainer}>
@@ -367,14 +295,31 @@ const components = {
   NoOptionsMessage,
   Option,
   Placeholder,
-  SingleValue,
   ValueContainer
 };
 
-export default function SelectMultipleLanguages(props) {
+export default function SelectMultiple(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [multi, setMulti] = React.useState(null);
+  const { t } = useTranslation();
+
+  const languageSuggestions = [
+    { label: t("danish") },
+    { label: t("english") },
+    { label: t("german") }
+  ].map(suggestion => ({
+    value: suggestion.label,
+    label: suggestion.label
+  }));
+
+  const subjectOfInterestSuggestions = [
+    { label: "Football" },
+    { label: "Math" }
+  ].map(suggestion => ({
+    value: suggestion.label,
+    label: suggestion.label
+  }));
 
   const handleChangeMulti = value => {
     setMulti(value);
@@ -390,33 +335,51 @@ export default function SelectMultipleLanguages(props) {
     })
   };
 
-  if (props.selectMultiple === "Languages") {
-    var suggestions = languageSuggestions;
-  } else {
-    suggestions = subjectOfInterestSuggestions;
-  }
-
   return (
     <div className={classes.root}>
       <NoSsr>
-        <Select
-          classes={classes}
-          styles={selectStyles}
-          inputId="react-select-multiple"
-          TextFieldProps={{
-            label: "Countries",
-            InputLabelProps: {
-              htmlFor: "react-select-multiple",
-              shrink: true
-            }
-          }}
-          placeholder={props.selectMultiple}
-          options={suggestions}
-          components={components}
-          value={multi}
-          onChange={handleChangeMulti}
-          isMulti
-        />
+        <Grid container spacing={2} direction="column" justify="Center">
+          <Grid item xs={12}>
+            <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: t("searchforlanguages"),
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder={t("languages")}
+              options={languageSuggestions}
+              components={components}
+              value={multi}
+              onChange={handleChangeMulti}
+              isMulti
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Select
+              classes={classes}
+              styles={selectStyles}
+              inputId="react-select-multiple"
+              TextFieldProps={{
+                label: t("searchforsubjectofinterst"),
+                InputLabelProps: {
+                  htmlFor: "react-select-multiple",
+                  shrink: true
+                }
+              }}
+              placeholder={t("subjectofinterst")}
+              options={subjectOfInterestSuggestions}
+              components={components}
+              value={multi}
+              onChange={handleChangeMulti}
+              isMulti
+            />
+          </Grid>
+        </Grid>
       </NoSsr>
     </div>
   );
