@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
-import SelectMultipleLanguages from "../CreateUser/SelectMultipleLanguages";
+import SelectMultiple from "./SelectMultiple";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -54,7 +54,7 @@ function CreateUser() {
           {t("registerasauser")}
         </Typography>
         <form className={classes.form} noValidate autoComplete="off">
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row" >
             <Grid item xs={12} sm={6}>
               {textField(t("firstname"))}
             </Grid>
@@ -62,7 +62,7 @@ function CreateUser() {
               {textField(t("lastname"))}
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row" >
             <Grid item xs={12} sm={6}>
               {textField(t("email"))}
             </Grid>
@@ -70,7 +70,7 @@ function CreateUser() {
               {textField(t("phonenumber"))}
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row" >
             <Grid item xs={12} sm={6}>
               {textField(t("address"))}
             </Grid>
@@ -78,7 +78,7 @@ function CreateUser() {
               {textField(t("education"))}
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row" >
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -94,14 +94,14 @@ function CreateUser() {
               />
             </Grid>
           </Grid>
-          <SelectMultipleLanguages selectMultiple />
-          <Grid justify="center">
+          <SelectMultiple/>
+          <Grid >
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="inherit"
-              justify="center"
+              
             >
               {t("register")}
             </Button>
