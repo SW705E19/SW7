@@ -48,7 +48,7 @@ function CreateUser() {
   const { t } = useTranslation();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <div className={classes.paper}>
         <Typography align="center" component="h1" variant="title">
           {t("registerasauser")}

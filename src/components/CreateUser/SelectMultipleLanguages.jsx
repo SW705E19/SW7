@@ -1,3 +1,8 @@
+// This file creates two integrated autocompleted fields on the Create User site.
+// Much of the code in this file is taken from https://material-ui.com/components/integrated-autocomplete/ 
+// From this there has been made changes so it suit selecting multiple languages and selecting multiple subject on interest.
+// The repository can be seen here: https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/integrated-autocomplete/IntegrationReactSelect.js
+
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -298,10 +303,12 @@ const components = {
   ValueContainer
 };
 
-export default function SelectMultiple(props) {
+export default function SelectMultiple() {
   const classes = useStyles();
   const theme = useTheme();
-  const [multi, setMulti] = React.useState(null);
+  const [languages, setLanguages] = React.useState(null);
+  const [subjectOfInterest, setSubjectOfInterest] = React.useState(null);
+  
   const { t } = useTranslation();
 
   const languageSuggestions = [
@@ -321,8 +328,12 @@ export default function SelectMultiple(props) {
     label: suggestion.label
   }));
 
-  const handleChangeMulti = value => {
-    setMulti(value);
+  const handleChangeLanguages = value => {
+    setLanguages(value);
+  };
+
+  const handleChangeSubjectOfInterest = value => {
+    setSubjectOfInterest(value);
   };
 
   const selectStyles = {
@@ -334,6 +345,7 @@ export default function SelectMultiple(props) {
       }
     })
   };
+
 
   return (
     <div className={classes.root}>
@@ -354,8 +366,8 @@ export default function SelectMultiple(props) {
               placeholder={t("languages")}
               options={languageSuggestions}
               components={components}
-              value={multi}
-              onChange={handleChangeMulti}
+              value={languages}
+              onChange={handleChangeLanguages}
               isMulti
             />
           </Grid>
@@ -374,8 +386,8 @@ export default function SelectMultiple(props) {
               placeholder={t("subjectofinterst")}
               options={subjectOfInterestSuggestions}
               components={components}
-              value={multi}
-              onChange={handleChangeMulti}
+              value={subjectOfInterest}
+              onChange={handleChangeSubjectOfInterest}
               isMulti
             />
           </Grid>
