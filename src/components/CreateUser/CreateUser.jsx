@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   TextField,
   Container,
@@ -11,44 +11,44 @@ import { useTranslation } from "react-i18next";
 import SelectMultiple from "./SelectMultiple";
 
 const useStyles = makeStyles(theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap'
-	},
-	form: {
-		width: '100%',
-		marginTop: theme.spacing(3)
-	},
-	paper: {
-		marginTop: theme.spacing(10),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center'
-	}
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(3)
+  },
+  paper: {
+    marginTop: theme.spacing(10),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
 }));
 
 function textField(name) {
-	return (
-		<TextField
-			variant="outlined"
-			margin="normal"
-			required
-			fullWidth
-			id={name}
-			label={name}
-			name={name}
-			autoComplete={name}
-			autoFocus
-		/>
-	);
+  return (
+    <TextField
+      variant="outlined"
+      margin="normal"
+      required
+      fullWidth
+      id={name}
+      label={name}
+      name={name}
+      autoComplete={name}
+      autoFocus
+    />
+  );
 }
 
 function CreateUser() {
-	const classes = useStyles();
-	const { t } = useTranslation();
+  const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <div className={classes.paper}>
         <Typography align="center" component="h1" variant="title">
           {t("registerasauser")}
@@ -94,7 +94,7 @@ function CreateUser() {
               />
             </Grid>
           </Grid>
-          <SelectMultipleLanguages selectMultiple />
+          <SelectMultiple selectMultiple />
           <Grid justify="center">
             <Button
               type="submit"
