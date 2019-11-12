@@ -51,10 +51,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run fix",
-      "pre-push": [
-        "npx jest --silent",
-        "npm run lint"
-      ]
+      "pre-push": "set CI=true && npm run lint && react-scripts test"
     }
   }
 }
