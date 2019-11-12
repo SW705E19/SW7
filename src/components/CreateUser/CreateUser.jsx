@@ -31,26 +31,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function textField(name) {
-  return (
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      id={name}
-      label={name}
-      name={name}
-      autoComplete={name}
-      autoFocus
-    />
-  );
-}
-
-function CreateUser() {
+function CreateUser(props) {
   const classes = useStyles();
   const { t } = useTranslation();
-
+  const { handleChange } = props.handleChange;
+  const { values } = props.values;
   return (
     <Container component="main" maxWidth="sm">
       <div className={classes.paper}>
@@ -58,28 +43,105 @@ function CreateUser() {
           {t("registerasauser")}
         </Typography>
         <form className={classes.form} noValidate autoComplete="off">
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id={t("registerasauser")}
+            label={t("registerasauser")}
+            name={t("registerasauser")}
+            autoComplete={t("registerasauser")}
+            autoFocus
+          />
           <Grid container spacing={2} direction="row" justify="Center">
             <Grid item xs={12} sm={6}>
-              {textField(t("firstname"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("firstname")}
+                label={t("firstname")}
+                name={t("firstname")}
+                autoComplete={t("firstname")}
+                onChange={e => this.props.handleChange("firstname")}
+                autoFocus
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              {textField(t("lastname"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("lastname")}
+                label={t("lastname")}
+                name={t("lastname")}
+                autoComplete={t("lastname")}
+                onChange={e => this.props.handleChange("lastname")}
+                autoFocus
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
             <Grid item xs={12} sm={6}>
-              {textField(t("email"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("email")}
+                label={t("email")}
+                name={t("email")}
+                autoComplete={t("email")}
+                onChange={e => this.props.handleChange("email")}
+                autoFocus
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              {textField(t("phonenumber"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("phoneNumber")}
+                label={t("phoneNumber")}
+                name={t("phoneNumber")}
+                autoComplete={t("phoneNumber")}
+                onChange={e => this.props.handleChange("phoneNumber")}
+                autoFocus
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
             <Grid item xs={12} sm={6}>
-              {textField(t("address"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("address")}
+                label={t("address")}
+                name={t("address")}
+                autoComplete={t("address")}
+                onChange={e => this.props.handleChange("address")}
+                autoFocus
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              {textField(t("education"))}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id={t("education")}
+                label={t("education")}
+                name={t("education")}
+                autoComplete={t("education")}
+                onChange={e => this.props.handleChange("education")}
+                autoFocus
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2} direction="row" justify="Center">
@@ -94,6 +156,7 @@ function CreateUser() {
                 InputLabelProps={{
                   shrink: true
                 }}
+                onChange={e => this.props.handleChange("dateOfBirth")}
                 autoFocus
               />
             </Grid>

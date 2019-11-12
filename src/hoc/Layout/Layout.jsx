@@ -4,12 +4,14 @@ import NotFound from "../../containers/NotFound/NotFound";
 import Login from "../../containers/Login/Login";
 import Header from "../../components/Header/Header";
 import CreateUser from "../../components/CreateUser/CreateUser";
+import { UserForm } from "../../components/CreateUser/UserForm";
+
 function Layout() {
   const routing = (
     <Router>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/createuser" component={CreateUser} />
+        <Route path="/createuser" component={UserForm} />
         <Route component={NotFound} />
       </Switch>
     </Router>
@@ -18,7 +20,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <CreateUser />
+      <UserForm />
       <div>Sidedrawer</div>
       <div>Backdrop</div>
       <div>{routing}</div>
