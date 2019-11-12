@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NotFound from '../../containers/NotFound/NotFound';
-import Login from '../../containers/Login/Login';
+import Login from '../../components/Login/Login';
 import Header from '../../components/Header/Header';
 
 function Layout() {
