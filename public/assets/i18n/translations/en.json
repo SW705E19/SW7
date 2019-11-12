@@ -14,12 +14,12 @@
     "dateOfBirth": "Date of birth",
     "register": "Register",
     "languages": "Languages",
-    "subjectofinterst": "Subject of interest",
-    "searchforsubjectofinterst": "Search for subject of interest",
+    "subjectofinterest": "Subject of interest",
+    "searchforsubjectofinterest": "Search for subject of interest",
     "searchforlanguages": "Search for languages",
     "danish": "Danish",
     "english": "English",
     "german": "German",
     "description": "Description",
-    "tutorInfo": "Tutor Info"
+    "infoabouttutor": "Info about tutor"
   }

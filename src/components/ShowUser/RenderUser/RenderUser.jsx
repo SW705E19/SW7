@@ -59,7 +59,7 @@ function RenderUser(props) {
 						{props.user.education}
 					</Typography>
 					<Typography variant="subtitle1" color="textPrimary">
-						{t('subjectofinterst')}
+						{t('subjectofinterest')}
 					</Typography>
 					<Typography variant="caption" color="textSecondary">
 						{props.user.subjects}
@@ -74,7 +74,7 @@ function RenderUser(props) {
 
 				{ props.user.roles != null && props.user.roles.includes('TUTOR') ? <CardContent>
 					<Typography component="h2" variant="h5">
-						{t('tutorInfo')}
+						{t('infoabouttutor')}
 					</Typography>
 					<Typography variant="subtitle1" color="textPrimary">
 						{props.user.tutorInfo.description}

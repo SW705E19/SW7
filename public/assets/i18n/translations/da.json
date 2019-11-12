@@ -14,12 +14,12 @@
     "dateOfBirth": "Fødselsdag",
     "register": "Register",
     "languages": "Sprog",
-    "subjectofinterst": "Interesseområder",
-    "searchforsubjectofinterst": "Søg efter interesseområder",
+    "subjectofinterest": "Interesseområder",
+    "searchforsubjectofinterest": "Søg efter interesseområder",
     "searchforlanguages": "Søg efter sprog",
     "danish": "Dansk",
     "english": "Engelsk",
     "german": "Tysk",
     "description": "Beskrivelse",
-    "tutorInfo": "Information om underviser"
+    "infoabouttutor": "Information om underviser"
 }
