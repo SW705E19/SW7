@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttonWrapper: {
     flex: 1,
-    paddingBottom: 200
+    paddingBottom: 50
   }
 }));
 
