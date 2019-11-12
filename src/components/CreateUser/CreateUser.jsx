@@ -24,6 +24,10 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
+  },
+  buttonWrapper: {
+    flex: 1,
+    paddingBottom: 200
   }
 }));
 
@@ -95,7 +99,8 @@ function CreateUser() {
             </Grid>
           </Grid>
           <SelectMultiple selectMultiple />
-          <Grid justify="center">
+
+          <Grid justify="center" className={classes.buttonWrapper}>
             <Button
               type="submit"
               fullWidth

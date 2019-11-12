@@ -5,9 +5,8 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import clsx from "clsx";
 import Select from "react-select";
-import { emphasize, makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import NoSsr from "@material-ui/core/NoSsr";
 import TextField from "@material-ui/core/TextField";
@@ -17,7 +16,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { useTranslation } from "react-i18next";
 import Grid from "@material-ui/core/Grid";
-
+import Button from "@material-ui/core/Button";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -38,14 +37,6 @@ const useStyles = makeStyles(theme => ({
   },
   chip: {
     margin: theme.spacing(0.5, 0.25)
-  },
-  chipFocused: {
-    backgroundColor: emphasize(
-      theme.palette.type === "light"
-        ? theme.palette.grey[300]
-        : theme.palette.grey[700],
-      0.08
-    )
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2)
@@ -249,9 +240,6 @@ function MultiValue(props) {
     <Chip
       tabIndex={-1}
       label={props.children}
-      className={clsx(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused
-      })}
       onDelete={props.removeProps.onClick}
       deleteIcon={<CancelIcon {...props.removeProps} />}
     />
