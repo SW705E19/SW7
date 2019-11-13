@@ -67,6 +67,7 @@ class Login extends React.Component {
 							label={t('email')}
 							name="email"
 							autoComplete="email"
+							type="email"
 							onChange={this.handleUsernameChange}
 							value={this.state.username}
 							autoFocus

@@ -1,34 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import renderer from 'react-test-renderer';
 
 import Login from './Login';
-import { Container, TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button, Grid, Link } from '@material-ui/core';
+import { AddAlarmOutlined } from '@material-ui/icons';
 
 
 configure({adapter: new Adapter()});
 
 describe('<Login />', () => {
 	let wrapper;
+	let testinstance;
 
 	beforeEach(() => {
-		wrapper = shallow(<Login />);
+		wrapper = renderer.create(<Login />);
+		testinstance  = wrapper.root;
 	});
 
-	it('should render a <Container />', () => {
-		expect(wrapper.find(Container)).toHaveLength(1);
+	it('should render both <Links />', () => {
+		expect(testinstance.findAllByType(Link)).toHaveLength(2);
 	});
 
 	it('should render both <TextField />s', () => {
-		expect(wrapper.find(TextField)).toHaveLength(2);
+		expect(testinstance.findAllByType(TextField)).toHaveLength(2);
 	});
 
 	it('should render a <Button />', () => {
-		expect(wrapper.find(Button)).toHaveLength(1);
+		expect(testinstance.findAllByType(Button)).toHaveLength(1);
 	});
 
 	it('should render a container <Grid /> with two sub grids', () => {
-		expect(wrapper.find(Grid)).toHaveLength(3);
+		expect(testinstance.findAllByType(Grid)).toHaveLength(3);
 	});
 });
