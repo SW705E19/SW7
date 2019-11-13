@@ -89,7 +89,7 @@ class Login extends React.Component {
 							fullWidth
 							variant="contained"
 							color="primary"
-							onClick={() => authenticationService.login(this.username, this.password)}
+							onClick={() => authenticationService.login(this.state.username, this.state.password)}
 						>
 							{t('signin')} 
 						</Button>
