@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint-plugin-jest": "^22.19.0",
     "i18next": "^19.0.0",
     "i18next-xhr-backend": "^3.2.1",
@@ -14,6 +16,7 @@
     "react-i18next": "^11.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-test-renderer": "^16.11.0",
     "react-window": "^1.8.5"
   },
   "scripts": {
@@ -40,10 +43,18 @@
     ]
   },
   "devDependencies": {
+    "codecov": "^3.6.1",
+    "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run fix",
+      "pre-push": "set CI=true && npm run lint && react-scripts test"
+    }
   }
 }
