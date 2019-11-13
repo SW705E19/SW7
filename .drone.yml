@@ -6,7 +6,6 @@ steps:
   - name: noderun
     image: node
     commands:
-      - npm install
       - npm ci
       - npm test
-      - npx codecov -t :secret:f15YREnR7axRnVWwKmymWHRFiSx51msYuSDfsGsyfjB3ucCNeJu2tqYut+kjX3mklu51VbVQzvOF2Jm4QPVyxU8sVMk4yUwdexkSgDIV9+o=
+      - npx codecov -t :0fc721ee-7baa-4492-b2b6-c23002e54627
