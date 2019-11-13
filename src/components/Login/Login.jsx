@@ -49,7 +49,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { classes, t, i18 } = this.props;
+		const { classes, t } = this.props;
 
 
 		return (
@@ -89,7 +89,7 @@ class Login extends React.Component {
 							fullWidth
 							variant="contained"
 							color="primary"
-							onClick={authenticationService.login(this.username, this.password)}
+							onClick={() => authenticationService.login(this.username, this.password)}
 						>
 							{t('signin')} 
 						</Button>

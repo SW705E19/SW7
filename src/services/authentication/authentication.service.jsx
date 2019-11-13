@@ -18,7 +18,7 @@ function login(username, password) {
 		body: JSON.stringify({ username, password })
 	};
 
-	return fetch(`http://localhost:3000/api/auth/login`, requestOptions)
+	return fetch(`http://${process.env.REACT_APP_API_URI}auth/login`, requestOptions)
 	.then(res => JSON.parse(res))
 		.then(handleResponse)
 		.then(user => {
