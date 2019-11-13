@@ -35,4 +35,16 @@ describe('<Login />', () => {
 	it('should render a container <Grid /> with two sub grids', () => {
 		expect(testinstance.findAllByType(Grid)).toHaveLength(3);
 	});
+
+	it('email textfield is updated', () => {
+		const text = 'admin';
+		const wrapper = shallow(<TextField username={text} />);
+		expect(wrapper.prop('username')).toEqual(text);
+	  });
+
+	  it('password textfield is updated', () => {
+		const text = 'adminpassword';
+		const wrapper = shallow(<TextField password={text} />);
+		expect(wrapper.prop('password')).toEqual(text);
+	  });
 });
