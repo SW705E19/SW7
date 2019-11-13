@@ -19,6 +19,7 @@ function login(username, password) {
 	};
 
 	return fetch(`http://localhost:3000/api/auth/login`, requestOptions)
+	.then(res => JSON.parse(res))
 		.then(handleResponse)
 		.then(user => {
 			// store user details and jwt token in local storage to keep user logged in between page refreshes

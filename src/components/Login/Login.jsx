@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, TextField, Link, Grid, Typography } from '@material-ui/core';
 //import { makeStyles } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
 import { withStyles } from "@material-ui/core/styles";
 
@@ -49,8 +49,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { classes } = this.props;
-		const { t } = useTranslation();
+		const { classes, t, i18 } = this.props;
 
 
 		return (
@@ -113,5 +112,4 @@ class Login extends React.Component {
 	}
 }
 
-
-export default withStyles  (styles)(Login);
+export default withTranslation()(withStyles(styles)(Login));
