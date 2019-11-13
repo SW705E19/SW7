@@ -8,4 +8,4 @@ steps:
     commands:
       - npm ci
       - npm test
-      - CODECOV_TOKEN="0fc721ee-7baa-4492-b2b6-c23002e54627" && npx codecov --disable=gcov
+      - npx codecov -t "0fc721ee-7baa-4492-b2b6-c23002e54627" --disable=gcov
