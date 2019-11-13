@@ -3,12 +3,9 @@ type: docker
 name: node
 
 steps:
-  - name: codecov
-      image: robertstettner/drone-codecov
-      secrets: [ 0fc721ee-7baa-4492-b2b6-c23002e54627 ]
-  - name: run
-      image: node
-      commands:
-        - npm install
-        - npm ci
-        - npm test --coverage && npx codecov
+  - name: noderun
+    image: node
+    commands:
+      - npm install
+      - npm ci
+      - npm test
