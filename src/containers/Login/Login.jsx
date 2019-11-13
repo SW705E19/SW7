@@ -1,29 +1,35 @@
 import React from 'react';
-import { Button, TextField, Link, Grid, Typography, Container } from '@material-ui/core';
+import {
+	Button,
+	TextField,
+	Link,
+	Grid,
+	Typography,
+	Container
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 function Layout() {
-
 	const useStyles = makeStyles(theme => ({
 		'@global': {
 			body: {
-				backgroundColor: theme.palette.common.white,
-			},
+				backgroundColor: theme.palette.common.white
+			}
 		},
 		paper: {
 			marginTop: theme.spacing(8),
 			display: 'flex',
 			flexDirection: 'column',
-			alignItems: 'center',
+			alignItems: 'center'
 		},
 		form: {
 			width: '100%', // Fix IE 11 issue.
-			marginTop: theme.spacing(1),
+			marginTop: theme.spacing(1)
 		},
 		submit: {
-			margin: theme.spacing(3, 0, 2),
-		},
+			margin: theme.spacing(3, 0, 2)
+		}
 	}));
 
 	const classes = useStyles();
@@ -58,12 +64,7 @@ function Layout() {
 						id="password"
 						autoComplete="current-password"
 					/>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-					>
+					<Button type="submit" fullWidth variant="contained" color="primary">
 						{t('signin')}
 					</Button>
 
