@@ -16,7 +16,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useTranslation } from 'react-i18next';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
