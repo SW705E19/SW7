@@ -11,7 +11,7 @@ function Layout() {
 		<Router>
 			<Switch>
 				<Route path="/login" component={Login} />
-				<Route path="/AdminDashboard" component={AdminDashboard} />
+				<Route path="/admin" component={AdminDashboard} />
 				<Route component={NotFound} />
 			</Switch>
 		</Router>
