@@ -9,4 +9,4 @@ steps:
       - npm install
       - npm ci
       - npm test
-      - npx codecov
+      - npx codecov -t :secret:f15YREnR7axRnVWwKmymWHRFiSx51msYuSDfsGsyfjB3ucCNeJu2tqYut+kjX3mklu51VbVQzvOF2Jm4QPVyxU8sVMk4yUwdexkSgDIV9+o=
