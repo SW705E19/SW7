@@ -2,10 +2,10 @@ kind: pipeline
 type: docker
 name: node
 
-pipeline:
-  codecov:
-    image: robertstettner/drone-codecov
-    secrets: [ 0fc721ee-7baa-4492-b2b6-c23002e54627 ]
+steps:
+  - codecov:
+      image: robertstettner/drone-codecov
+      secrets: [ 0fc721ee-7baa-4492-b2b6-c23002e54627 ]
   frontend:
     - name: noderun
       image: node
