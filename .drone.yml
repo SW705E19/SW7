@@ -7,5 +7,4 @@ steps:
     image: node
     commands:
       - npm ci
-      - npm test
-      - npx codecov -t "0fc721ee-7baa-4492-b2b6-c23002e54627"
+      - npm test:coverage
