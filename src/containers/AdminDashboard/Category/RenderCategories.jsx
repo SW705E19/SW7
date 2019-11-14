@@ -1,47 +1,43 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
 import { withTranslation } from 'react-i18next';
 import { List, TextField, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { categoryService } from '../../../services/category.service';
+import { categoryService } from '../../../services/category/category.service';
 
 
 const styles = theme => ({
 	root: {
 		width: '100%',
-		height: 400,
 		maxWidth: 360,
 		backgroundColor: theme.palette.background.paper
 	},
-	spacing: 2
+	list: {
+		//TODO make responsive size
+		maxHeight: 360,
+		overflow: 'scroll',
+
+	}
 });
 
 function renderRow(categories, classes) {
 	return (
-		<div className={classes.demo}>
-			<List>
-				{categories != null
-					? categories.map(function(item) {
-						return (
-							<ListItem button key={item.id}>
-								<ListItemText primary={item.name}
-									secondary={item.description} />
-							</ListItem>
-						);
-					})
-					: null}
-			</List>
-		</div>
+		<List className={classes.list}>
+			{categories != null
+				? categories.map(function(item) {
+					return (
+						<ListItem button key={item.id}>
+							<ListItemText primary={item.name}
+								secondary={item.description} />
+						</ListItem>
+					);
+				})
+				: null}
+		</List>
 	);
 }
-
-renderRow.propTypes = {
-	index: PropTypes.number.isRequired,
-	style: PropTypes.object.isRequired
-};
 
 class RenderCategories extends React.Component {
 	constructor(props) {
@@ -51,11 +47,18 @@ class RenderCategories extends React.Component {
 			category: {
 				name: '',
 				description: ''
-			}
+			},
+			categories: []
 		};
 
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.submit = this.submit.bind(this);
+	}
+
+	componentDidMount() {
+		categoryService.getAll().then(data => {
+			this.setState({categories: data});
+		});
 	}
 
 	handleOnChange(event) {
@@ -66,7 +69,10 @@ class RenderCategories extends React.Component {
 
 	submit() {
 		categoryService.create(
-			this.state.category);
+			this.state.category).then(data => {
+			const newCategories = this.state.categories.concat(data);
+			this.setState({categories: newCategories});
+		});
 	}
 
 	render() {
@@ -77,7 +83,7 @@ class RenderCategories extends React.Component {
 	
 				<Grid container>
 					<Grid item xs={12}>
-						{renderRow(this.props.categories, classes)}
+						{renderRow(this.state.categories, classes)}
 					</Grid>
 					<Grid item xs={12}>
 						<TextField

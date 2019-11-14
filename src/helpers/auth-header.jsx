@@ -1,12 +1,12 @@
-import { authenticationService } from './services/authentication/authenticationService';
+import { authenticationService } from '../services/authentication/authentication.service';
 
 export function authHeader() {
 	// returns authorization of logged in user, or empty object if not logged in.
-	const currentUser = authenticationService.currentUserValue;
-	if (currentUser && currentUser.token) {
+	const token = authenticationService.currentUserValue;
+	if (token) {
 		return {
-			Authorization: `Bearer ${currentUser.token}`,
-			'Content-Type': 'application/json'
+			authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json' 
 		};
 	} else {
 		return {};
