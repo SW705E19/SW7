@@ -22,13 +22,13 @@ class MultipleSelection extends Component {
 
 	handleLanguageChange(e){
         this.setState({
-            languageValues : e.target.languageValues
+            languageValues : e.target.value
         })
 	} 
       
     handleSubjectOfInterestChange(e){
         this.setState({
-            subjectOfInterestValues : e.target.subjectOfInterestValues
+            subjectOfInterestValues : e.target.value
         })
 	} 
 

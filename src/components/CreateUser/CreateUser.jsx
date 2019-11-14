@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
-import SelectMultiple from "./SelectMultiple";
+import MultipleSelection from "./MultipleSelection";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,18 +42,7 @@ function CreateUser(props) {
           {t("registerasauser")}
         </Typography>
         <form className={classes.form} noValidate autoComplete="off">
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id={t("registerasauser")}
-            label={t("registerasauser")}
-            name={t("registerasauser")}
-            autoComplete={t("registerasauser")}
-            autoFocus
-          />
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row">
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -63,7 +52,6 @@ function CreateUser(props) {
                 name="firstname"
                 id={t("firstname")}
                 label={t("firstname")}
-                name={t("firstname")}
                 autoComplete={t("firstname")}
                 onChange={props.handleChange}
                 autoFocus
@@ -77,14 +65,14 @@ function CreateUser(props) {
                 fullWidth
                 id={t("lastname")}
                 label={t("lastname")}
-                name={t("lastname")}
+                name={"lastname"}
                 autoComplete={t("lastname")}
-                onChange={() => props.handleChange("lastname")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row">
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -93,9 +81,9 @@ function CreateUser(props) {
                 fullWidth
                 id={t("email")}
                 label={t("email")}
-                name={t("email")}
+                name={"email"}
                 autoComplete={t("email")}
-                onChange={() => props.handleChange("email")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
@@ -105,16 +93,16 @@ function CreateUser(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={t("phoneNumber")}
-                label={t("phoneNumber")}
-                name={t("phoneNumber")}
-                autoComplete={t("phoneNumber")}
-                onChange={() => props.handleChange("phoneNumber")}
+                id={t("phonenumber")}
+                label={t("phonenumber")}
+                name={"phonenumber"}
+                autoComplete={t("phonenumber")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row">
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -123,9 +111,9 @@ function CreateUser(props) {
                 fullWidth
                 id={t("address")}
                 label={t("address")}
-                name={t("address")}
+                name={"address"}
                 autoComplete={t("address")}
-                onChange={() => props.handleChange("address")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
@@ -137,18 +125,19 @@ function CreateUser(props) {
                 fullWidth
                 id={t("education")}
                 label={t("education")}
-                name={t("education")}
+                name={"education"}
                 autoComplete={t("education")}
-                onChange={() => props.handleChange("education")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
           </Grid>
-          <Grid container spacing={2} direction="row" justify="Center">
+          <Grid container spacing={2} direction="row">
             <Grid item xs={12}>
               <TextField
                 fullWidth
                 variant="outlined"
+                name="dateOfBirth"
                 margin="normal"
                 id="date"
                 label={t("dateOfBirth")}
@@ -156,20 +145,19 @@ function CreateUser(props) {
                 InputLabelProps={{
                   shrink: true
                 }}
-                onChange={() => props.handleChange("dateOfBirth")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
           </Grid>
-          <SelectMultiple selectMultiple />
+          <MultipleSelection />
 
-          <Grid justify="center" className={classes.buttonWrapper}>
+          <Grid className={classes.buttonWrapper}>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="inherit"
-              justify="center"
             >
               {t("register")}
             </Button>

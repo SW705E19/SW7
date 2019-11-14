@@ -5,15 +5,7 @@ export class UserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      education: "",
-      dateOfBirth: "",
-      subjectOfInterst: "",
-      languages: ""
+
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,32 +16,9 @@ export class UserForm extends Component {
 
 
   render() {
-    const {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      address,
-      education,
-      dateOfBirth,
-      subjectOfInterst,
-      languages
-    } = this.state;
-    const values = {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      address,
-      education,
-      dateOfBirth,
-      subjectOfInterst,
-      languages
-    };
     return (
       <CreateUser 
         handleChange={this.handleChange} 
-        values={values} 
       />
     );
   }
