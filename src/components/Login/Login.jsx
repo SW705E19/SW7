@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, TextField, Link, Grid, Typography } from '@material-ui/core';
-//import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
 import { withStyles } from "@material-ui/core/styles";
