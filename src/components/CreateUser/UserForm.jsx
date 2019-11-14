@@ -18,9 +18,11 @@ export class UserForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   };
+
+
   render() {
     const {
       firstName,
@@ -45,7 +47,10 @@ export class UserForm extends Component {
       languages
     };
     return (
-      <CreateUser handleChange={() => this.handleChange} values={values} />
+      <CreateUser 
+        handleChange={this.handleChange} 
+        values={values} 
+      />
     );
   }
 }

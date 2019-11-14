@@ -23,7 +23,7 @@ function Layout() {
 			<div>{routing}</div>
 
 			<div>Footer</div>
-		</div>
+		</>
 	);
 }
 

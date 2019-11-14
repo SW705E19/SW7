@@ -60,11 +60,12 @@ function CreateUser(props) {
                 margin="normal"
                 required
                 fullWidth
+                name="firstname"
                 id={t("firstname")}
                 label={t("firstname")}
                 name={t("firstname")}
                 autoComplete={t("firstname")}
-                onChange={() => props.handleChange("firstname")}
+                onChange={props.handleChange}
                 autoFocus
               />
             </Grid>
