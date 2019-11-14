@@ -1,4 +1,3 @@
-import config from 'config';
 import { authHeader, handleResponse } from '@/helpers';
 
 export const userService = {
