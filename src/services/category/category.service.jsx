@@ -37,10 +37,10 @@ function create(category) {
 		});
 }
 
-function archive(categoryId) {
+function archive() {
 
 }
 
-function update(category) {
+function update() {
 
 }
