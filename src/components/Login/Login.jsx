@@ -91,6 +91,8 @@ class Login extends React.Component {
 							fullWidth
 							variant="contained"
 							color="primary"
+							className = "login-button"
+							id = "login"
 							onClick={() => authenticationService.login(this.state.username, this.state.password)}
 						>
 							{t('signin')} 
