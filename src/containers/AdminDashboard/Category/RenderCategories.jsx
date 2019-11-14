@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { withTranslation } from 'react-i18next';
 import { List, TextField, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { categoryService } from '../../../services/category.service';
 
 
 const styles = theme => ({
@@ -47,15 +48,25 @@ class RenderCategories extends React.Component {
 		super(props);
 
 		this.state = {
-			categoryName: '',
-			categoryDescription: ''
+			category: {
+				name: '',
+				description: ''
+			}
 		};
 
-		this.handleCategoryNameChange = this.handleCategoryNameChange.bind(this);
+		this.handleOnChange = this.handleOnChange.bind(this);
+		this.submit = this.submit.bind(this);
 	}
 
-	handleCategoryNameChange(event) {
-		this.setState({categoryName: event.target.value});
+	handleOnChange(event) {
+		let category = this.state.category;
+		category[event.target.name] = event.target.value;
+		this.setState({category: category});
+	}
+
+	submit() {
+		categoryService.create(
+			this.state.category);
 	}
 
 	render() {
@@ -71,11 +82,23 @@ class RenderCategories extends React.Component {
 					<Grid item xs={12}>
 						<TextField
 							id="create-category"
-							label="Create category"
+							name="name"
+							label="Category name"
 							className={classes.textField}
 							margin="normal"
 							fullWidth={true}
-							onChange={this.handleCategoryNameChange}
+							onChange={this.handleOnChange}
+						/>
+					</Grid>
+					<Grid item xs={12}>
+						<TextField
+							id="create-category"
+							name="description"
+							label="Category description"
+							className={classes.textField}
+							margin="normal"
+							fullWidth={true}
+							onChange={this.handleOnChange}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -86,6 +109,7 @@ class RenderCategories extends React.Component {
 							className={classes.button}
 							startIcon={<SaveIcon />}
 							fullWidth={true}
+							onClick={this.submit}
 						>
 				Save
 						</Button>
