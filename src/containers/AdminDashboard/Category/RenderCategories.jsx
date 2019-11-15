@@ -1,8 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-import Grid from '@material-ui/core/Grid';
-import { List, TextField, ListItem, ListItemText } from '@material-ui/core';
+import { List, TextField, ListItem, ListItemText, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { categoryService } from '../../../services/category/category.service';
 import { withTranslation } from 'react-i18next';
@@ -12,7 +10,6 @@ const styles = theme => ({
 	root: {
 		width: '100%',
 		maxWidth: 360,
-		backgroundColor: theme.palette.background.paper,
 		left: '40%',
 		position: 'absolute',
 	},
