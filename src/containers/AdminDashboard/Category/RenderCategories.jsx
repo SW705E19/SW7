@@ -11,7 +11,6 @@ const styles = () => ({
 		width: '100%',	
 	},
 	list: {
-		//TODO make the size responsive
 		maxHeight: 360,
 		overflow: 'scroll',
 	}
