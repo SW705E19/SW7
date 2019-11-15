@@ -13,7 +13,7 @@ class ShowService extends Component {
 		fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${this.props.match.params.id}`)
 			.then(res => res.json())
 			.then((data) => {
-				this.setState({ user: data });
+				this.setState({ service: data });
 			})
 			.catch(console.log);
 	}

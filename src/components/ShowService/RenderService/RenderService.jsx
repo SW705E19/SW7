@@ -1,26 +1,35 @@
 import React from 'react';
-import { Card, Avatar, Grid, Typography, CardContent } from "@material-ui/core";
+import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions} from '@material-ui/core';
 
-import { makeStyles } from "@material-ui/core/styles";
-import { useTranslation } from "react-i18next";
+import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from 'react-i18next';
 
-function RenderService(props) {
+//change to RenderService(props) when getting data from backend
+function RenderService() {
 	const useStyles = makeStyles(theme => ({
 		root: {
 			padding: theme.spacing(3, 2),
-			flexGrow: 1,
-			width: 700
 		},
 		media: {
 			height: 140
+		},
+		servicepicture:  {
+			height: 350,
+			width: 350,
 		},
 		avatar: {
 			height: 140,
 			width: 140,
 		},
 		item: {
-			padding: theme.spacing(2),
 			textAlign: 'center'
+		},
+		card: {
+			height: '100%',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'space-between'
+			
 		}
 	}));
 
@@ -29,34 +38,54 @@ function RenderService(props) {
 	return (
 		<>
 			<Grid container justify="center" alignItems="center">
-				<Avatar className={classes.avatar} />
+				<Avatar className={classes.servicepicture} />
 			</Grid>
 			<Grid container className={classes.root} spacing={3}>
-				<Grid className = {classes.item} item xs={6} justify="center">
+				<Grid className = {classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
-							<Grid container justify="center" alignItems="center">
-							<Avatar className={classes.avatar} />
-							</Grid>
 							<Typography component="h2" variant="h5">
-								{"Tutor name"}
-								<Typography variant="subtitle1" color="textPrimary">
-									{"Tutor description"}
-								</Typography>
+								{'Tutor Name'}
+								<Grid container justify="center" alignItems="center">
+									<Avatar className={classes.avatar} />
+								</Grid>
+							</Typography>
+							<Typography variant="subtitle1" color="textPrimary">
+								{'Tutor Description'}
 							</Typography>
 						</CardContent>
+						<CardActions>
+							<Button
+								type="button"
+								variant="contained"
+								color="primary"
+								fullWidth
+							>
+								{t('gototutorpage')}
+							</Button>
+						</CardActions>
 					</Card>
 				</Grid>
-				<Grid className = {classes.item} item xs={6} justify="center">
+				<Grid className = {classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{"service nmae"}
+								{'Service Name'}
 								<Typography variant="subtitle1" color="textPrimary">
-									{'service description'}
+									{'Service Description'}
 								</Typography>
 							</Typography>
 						</CardContent>
+						<CardActions>
+							<Button
+								type="button"
+								variant="contained"
+								color="primary"
+								fullWidth
+							>
+								{t('contacttutor')}
+							</Button>
+						</CardActions>
 					</Card>
 				</Grid>
 			</Grid>
