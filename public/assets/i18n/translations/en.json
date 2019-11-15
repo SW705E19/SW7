@@ -21,5 +21,8 @@
     "english": "English",
     "german": "German",
     "description": "Description",
-    "infoabouttutor": "Info about tutor"
+    "infoabouttutor": "Info about tutor",
+    "save": "Save",
+    "categoryname": "Category name",
+    "categorydescription": "Category description"
   }

@@ -3,8 +3,8 @@ import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NotFound from '../../containers/NotFound/NotFound';
-
 import Login from '../../components/Login/Login';
+import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import Header from '../../components/Header/Header';
 
@@ -13,6 +13,7 @@ function Layout() {
 		<Router>
 			<Switch>
 				<Route path="/login" component={Login} />
+				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
 				<Route component={NotFound} />
 			</Switch>
