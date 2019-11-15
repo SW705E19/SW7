@@ -62,8 +62,7 @@ class RenderCategories extends React.Component {
 		const{classes, t} = this.props;
 
 		return (
-			<div>
-	
+			<>
 				<Grid className={classes.root}>
 					<Grid item xs={12}>
 						{renderRow(this.state.categories, classes)}
@@ -105,7 +104,7 @@ class RenderCategories extends React.Component {
 						</Button>
 					</Grid>
 				</Grid>
-			</div>
+			</>
 		);
 	}
 }
