@@ -4,7 +4,7 @@ import RenderCategories from './Category/RenderCategories';
 class AdminDashboard extends Component {
 	render() {
 		return (
-			<RenderCategories ></RenderCategories>
+			<RenderCategories />
 		);
 	}
 }
