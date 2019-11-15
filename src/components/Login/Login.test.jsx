@@ -5,7 +5,6 @@ import renderer from 'react-test-renderer';
 import Login from './Login';
 import { TextField, Button, Grid, Link } from '@material-ui/core';
 
-
 configure({adapter: new Adapter()});
 
 describe('<Login />', () => {
