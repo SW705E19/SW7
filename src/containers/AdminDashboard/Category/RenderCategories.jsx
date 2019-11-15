@@ -22,23 +22,6 @@ const styles = theme => ({
 	}
 });
 
-function renderRow(categories, classes) {
-	return (
-		<List className={classes.list}>
-			{categories != null
-				? categories.map(function(item) {
-					return (
-						<ListItem button key={item.id}>
-							<ListItemText primary={item.name}
-								secondary={item.description} />
-						</ListItem>
-					);
-				})
-				: null}
-		</List>
-	);
-}
-
 class RenderCategories extends React.Component {
 	constructor(props) {
 		super(props);
@@ -87,7 +70,7 @@ class RenderCategories extends React.Component {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							id="create-category"
+							id="create-category-name"
 							name="name"
 							label="Category name"
 							className={classes.textField}
@@ -98,7 +81,7 @@ class RenderCategories extends React.Component {
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							id="create-category"
+							id="create-category-description"
 							name="description"
 							label="Category description"
 							className={classes.textField}
@@ -107,8 +90,9 @@ class RenderCategories extends React.Component {
 							onChange={this.handleOnChange}
 						/>
 					</Grid>
-					<Grid item xs={12}>
+					<Grid id="button-grid" item xs={12}>
 						<Button
+							id="submit-button"
 							variant="contained"
 							color="primary"
 							size="large"
@@ -125,5 +109,24 @@ class RenderCategories extends React.Component {
 		);
 	}
 }
+
+
+function renderRow(categories, classes) {
+	return (
+		<List className={classes.list}>
+			{categories != null
+				? categories.map(function(item) {
+					return (
+						<ListItem button key={item.id}>
+							<ListItemText primary={item.name}
+								secondary={item.description} />
+						</ListItem>
+					);
+				})
+				: null}
+		</List>
+	);
+}
+
 
 export default withTranslation()(withStyles(styles)(RenderCategories));

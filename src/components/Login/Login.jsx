@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, TextField, Link, Grid, Typography } from '@material-ui/core';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from '@material-ui/core/styles';
 
- const styles = theme => ({
+const styles = theme => ({
  	'@global': {
  		body: {
  			backgroundColor: theme.palette.common.white,
@@ -31,8 +31,8 @@ class Login extends React.Component {
 		super(props);
 
 		this.state = {
-			username: "",
-			password: ""
+			username: '',
+			password: ''
 		};
 
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -52,65 +52,65 @@ class Login extends React.Component {
 
 
 		return (
-				<div className={classes.paper}>
-					<Typography component="h1" variant="h5">
-						{t('signin')}
-					</Typography>
-					<form className={classes.form} noValidate>
-						<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							id="email"
-							label={t('email')}
-							name="email"
-							autoComplete="email"
-							type="email"
-							id="email"
-							onChange={this.handleUsernameChange}
-							value={this.state.username}
-							autoFocus
-						/>
-						<TextField
-							variant="outlined"
-							margin="normal"
-							required
-							fullWidth
-							name="password"
-							label={t('password')}
-							type="password"
-							id="password"
-							onChange={this.handlePasswordChange}
-							value={this.state.password}
-							autoComplete="current-password"
-						/>
-						<Button
-							type="button"
-							fullWidth
-							variant="contained"
-							color="primary"
-							className = "login-button"
-							id = "login"
-							onClick={() => authenticationService.login(this.state.username, this.state.password)}
-						>
-							{t('signin')} 
-						</Button>
+			<div className={classes.paper}>
+				<Typography component="h1" variant="h5">
+					{t('signin')}
+				</Typography>
+				<form className={classes.form} noValidate>
+					<TextField
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						id="email"
+						label={t('email')}
+						name="email"
+						autoComplete="email"
+						type="email"
+						id="email"
+						onChange={this.handleUsernameChange}
+						value={this.state.username}
+						autoFocus
+					/>
+					<TextField
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label={t('password')}
+						type="password"
+						id="password"
+						onChange={this.handlePasswordChange}
+						value={this.state.password}
+						autoComplete="current-password"
+					/>
+					<Button
+						type="button"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className = "login-button"
+						id = "login"
+						onClick={() => authenticationService.login(this.state.username, this.state.password)}
+					>
+						{t('signin')} 
+					</Button>
 
-						<Grid container>
-							<Grid item xs>
-								<Link href="#" variant="body2">
-									{ t('forgotpassword?') }
-								</Link>
-							</Grid>
-							<Grid item>
-								<Link href="#" variant="body2">
-									{ t('signup') }
-								</Link>
-							</Grid>
+					<Grid container>
+						<Grid item xs>
+							<Link href="#" variant="body2">
+								{ t('forgotpassword?') }
+							</Link>
 						</Grid>
-					</form>
-				</div>
+						<Grid item>
+							<Link href="#" variant="body2">
+								{ t('signup') }
+							</Link>
+						</Grid>
+					</Grid>
+				</form>
+			</div>
 		);
 	}
 }
