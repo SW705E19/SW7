@@ -2,20 +2,22 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
-import { withTranslation } from 'react-i18next';
 import { List, TextField, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { categoryService } from '../../../services/category/category.service';
+import { withTranslation } from 'react-i18next';
 
 
 const styles = theme => ({
 	root: {
 		width: '100%',
 		maxWidth: 360,
-		backgroundColor: theme.palette.background.paper
+		backgroundColor: theme.palette.background.paper,
+		left: '40%',
+		position: 'absolute',
 	},
 	list: {
-		//TODO make responsive size
+		//TODO make the size responsive
 		maxHeight: 360,
 		overflow: 'scroll',
 
@@ -60,11 +62,12 @@ class RenderCategories extends React.Component {
 
 	render() {
 
-		const{classes} = this.props;
+		const{classes, t} = this.props;
+
 		return (
-			<div className={classes.root}>
+			<div>
 	
-				<Grid container>
+				<Grid className={classes.root}>
 					<Grid item xs={12}>
 						{renderRow(this.state.categories, classes)}
 					</Grid>
@@ -72,7 +75,7 @@ class RenderCategories extends React.Component {
 						<TextField
 							id="create-category-name"
 							name="name"
-							label="Category name"
+							label= {t('categoryname')}
 							className={classes.textField}
 							margin="normal"
 							fullWidth={true}
@@ -83,7 +86,7 @@ class RenderCategories extends React.Component {
 						<TextField
 							id="create-category-description"
 							name="description"
-							label="Category description"
+							label={t('categorydescription')}
 							className={classes.textField}
 							margin="normal"
 							fullWidth={true}
@@ -101,7 +104,7 @@ class RenderCategories extends React.Component {
 							fullWidth={true}
 							onClick={this.submit}
 						>
-				Save
+							{t('save')}
 						</Button>
 					</Grid>
 				</Grid>

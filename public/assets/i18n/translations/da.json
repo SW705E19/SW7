@@ -21,5 +21,8 @@
     "english": "Engelsk",
     "german": "Tysk",
     "description": "Beskrivelse",
-    "infoabouttutor": "Information om underviser"
+    "infoabouttutor": "Information om underviser",
+    "save": "Gem",
+    "categoryname": "Kategori navn",
+    "categorydescription": "Kategori beskrivelse"
 }
