@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 
 import RenderService from './RenderService/RenderService';
-import { TextField, Button, Grid, Card, CardContent, CardActions, Typography, Avatar } from '@material-ui/core';
+import { Button, Grid, Card, CardContent, CardActions, Typography, Avatar } from '@material-ui/core';
 
 configure({adapter: new Adapter()});
 
