@@ -109,7 +109,7 @@ function renderRow(categories, classes) {
 	if(categories.length != 0 && categories) {
 		return (
 			<List className={classes.list}>
-				 {categories.map(function(item) {
+				{categories.map(function(item) {
 					return (
 						<ListItem button key={item.id}>
 							<ListItemText primary={item.name}
@@ -117,7 +117,7 @@ function renderRow(categories, classes) {
 						</ListItem>
 					);
 				})}
-					 
+			
 			</List>
 		);
 	} else {
