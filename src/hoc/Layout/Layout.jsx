@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@material-ui/core'
+import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NotFound from '../../containers/NotFound/NotFound';
@@ -29,7 +29,7 @@ function Layout() {
 		<>
 			<Header />
 			<div className={classes.appBarSpacer} />
-			<Container component="main" maxWidth="sm" p={8}>
+			<Container component="main" maxWidth="md" p={8}>
 				{routing}
 			</Container>
 		</>
