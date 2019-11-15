@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import RenderCategories from './Category/RenderCategories';
 
 class AdminDashboard extends Component {
