@@ -6,7 +6,7 @@ import { categoryService } from '../../../services/category/category.service';
 import { withTranslation } from 'react-i18next';
 
 
-const styles = theme => ({
+const styles = () => ({
 	root: {
 		width: '100%',
 		maxWidth: 360,
@@ -17,7 +17,6 @@ const styles = theme => ({
 		//TODO make the size responsive
 		maxHeight: 360,
 		overflow: 'scroll',
-
 	}
 });
 
