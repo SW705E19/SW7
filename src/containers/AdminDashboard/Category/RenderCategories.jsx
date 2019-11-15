@@ -1,6 +1,6 @@
 import React from 'react';
 import SaveIcon from '@material-ui/icons/Save';
-import { List, TextField, ListItem, ListItemText, Grid, Button } from '@material-ui/core';
+import { List, TextField, ListItem, ListItemText, Grid, Button, Container } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { categoryService } from '../../../services/category/category.service';
 import { withTranslation } from 'react-i18next';
@@ -8,10 +8,7 @@ import { withTranslation } from 'react-i18next';
 
 const styles = () => ({
 	root: {
-		width: '100%',
-		maxWidth: 360,
-		left: '40%',
-		position: 'absolute',
+		width: '100%',	
 	},
 	list: {
 		//TODO make the size responsive
@@ -61,8 +58,8 @@ class RenderCategories extends React.Component {
 		const{classes, t} = this.props;
 
 		return (
-			<>
-				<Grid className={classes.root}>
+			<Container maxWidth="sm">
+				<Grid className={classes.root} container>
 					<Grid item xs={12}>
 						{renderRow(this.state.categories, classes)}
 					</Grid>
@@ -103,7 +100,7 @@ class RenderCategories extends React.Component {
 						</Button>
 					</Grid>
 				</Grid>
-			</>
+			</Container>
 		);
 	}
 }
