@@ -106,7 +106,7 @@ class RenderCategories extends React.Component {
 
 
 function renderRow(categories, classes) {
-	if(categories.length != 0 && categories) {
+	if(categories.length !== 0 && categories) {
 		return (
 			<List className={classes.list}>
 				{categories.map(function(item) {
