@@ -15,7 +15,7 @@ import MultipleSelection from "./MultipleSelection";
 // Fjern sprog fra languagesuggestions når de er valgte.
 // Lav confirmation på felter - Benyt onBlur til confirmation og error
 
-const styles = theme =>  ({
+const styles = theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap"
@@ -58,7 +58,9 @@ function UserForm(props) {
                 id={t("firstname")}
                 label={t("firstname")}
                 autoComplete={t("firstname")}
-                onBlur={() => {console.log("this shit works")}}
+                onBlur={() => {
+                  console.log("this shit works");
+                }}
                 onChange={props.handleChange}
                 autoFocus
                 error="test"
@@ -157,22 +159,16 @@ function UserForm(props) {
               />
             </Grid>
           </Grid>
-          <MultipleSelection 
+          <MultipleSelection
             handleChange={props.handleChange}
             languageValues={props.languageValues}
-            subjectOfInterestValues={props.subjectOfInterestValues} 
+            subjectOfInterestValues={props.subjectOfInterestValues}
           />
 
           <Grid className={classes.buttonWrapper}>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="inherit"
-            >
+            <Button type="submit" fullWidth variant="contained" color="inherit">
               {t("register")}
             </Button>
-
           </Grid>
         </FormControl>
       </div>
@@ -180,4 +176,4 @@ function UserForm(props) {
   );
 }
 
-export default withTranslation()(withStyles(styles)(UserForm))
+export default withTranslation()(withStyles(styles)(UserForm));

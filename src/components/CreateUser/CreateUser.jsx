@@ -6,22 +6,21 @@ export class CreateUser extends Component {
     super(props);
     this.state = {
       languageValues: [],
-      subjectOfInterestValues: [],
+      subjectOfInterestValues: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
+  }
 
   render() {
     return (
-      <UserForm 
+      <UserForm
         handleChange={this.handleChange}
         languageValues={this.state.languageValues}
-        subjectOfInterestValues={this.state.subjectOfInterestValues} 
+        subjectOfInterestValues={this.state.subjectOfInterestValues}
       />
     );
   }

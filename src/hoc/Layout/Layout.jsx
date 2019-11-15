@@ -6,7 +6,7 @@ import NotFound from "../../containers/NotFound/NotFound";
 import Login from "../../containers/Login/Login";
 import ShowUser from "../../components/ShowUser/ShowUser";
 import Header from "../../components/Header/Header";
-import { UserForm } from "../../components/CreateUser/UserForm";
+import { CreateUser } from "../../components/CreateUser/CreateUser";
 
 function Layout() {
   const routing = (
@@ -14,7 +14,7 @@ function Layout() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/user/:id" component={ShowUser} />
-        <Route path="/createuser" component={UserForm} />
+        <Route path="/createuser" component={CreateUser} />
         <Route component={NotFound} />
       </Switch>
     </Router>
@@ -29,7 +29,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <UserForm />
+      <CreateUser />
       <div className={classes.appBarSpacer} />
       <Container component="main" maxWidth="sm" p={8}>
         {routing}
