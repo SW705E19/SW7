@@ -55,15 +55,13 @@ function UserForm(props) {
                 required
                 fullWidth
                 name="firstname"
-                id={t("firstname")}
+                id={"firstname"}
                 label={t("firstname")}
-                autoComplete={t("firstname")}
-                onBlur={() => {
-                  console.log("this shit works");
-                }}
+                autoComplete={"firstname"}
                 onChange={props.handleChange}
                 autoFocus
-                error="test"
+                onBlur={props.handleBlur}
+                error={!props.firstNameValid}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -72,11 +70,13 @@ function UserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={t("lastname")}
+                id={"lastname"}
                 label={t("lastname")}
                 name={"lastname"}
-                autoComplete={t("lastname")}
+                autoComplete={"lastname"}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                error={!props.lastNameValid}
                 autoFocus
               />
             </Grid>
@@ -88,11 +88,13 @@ function UserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={t("email")}
+                id={"email"}
                 label={t("email")}
                 name={"email"}
-                autoComplete={t("email")}
+                autoComplete={"email"}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                error={!props.emailValid}
                 autoFocus
               />
             </Grid>
@@ -102,11 +104,14 @@ function UserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={t("phonenumber")}
+                id={"phonenumber"}
                 label={t("phonenumber")}
                 name={"phonenumber"}
-                autoComplete={t("phonenumber")}
+                autoComplete={"phonenumber"}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                error={!props.phoneNumberValid}
+                helperText={props.phoneNumberValid ? "" : "fuk"}
                 autoFocus
               />
             </Grid>
@@ -118,11 +123,13 @@ function UserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={t("address")}
+                id={"address"}
                 label={t("address")}
                 name={"address"}
-                autoComplete={t("address")}
+                autoComplete={"address"}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
+                error={!props.addressValid}
                 autoFocus
               />
             </Grid>
@@ -130,13 +137,13 @@ function UserForm(props) {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
                 fullWidth
-                id={t("education")}
+                id={"education"}
                 label={t("education")}
                 name={"education"}
-                autoComplete={t("education")}
+                autoComplete={"education"}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
                 autoFocus
               />
             </Grid>
@@ -155,7 +162,9 @@ function UserForm(props) {
                   shrink: true
                 }}
                 onChange={props.handleChange}
+                onBlur={props.handleBlur}
                 autoFocus
+                error={!props.dateOfBirthValid}
               />
             </Grid>
           </Grid>
