@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions} from '@material-ui/core';
+import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,8 @@ function RenderService() {
 			padding: theme.spacing(3, 2),
 		},
 		media: {
-			height: 140
+			height: 0,
+			paddingTop: '56.25%',
 		},
 		servicepicture:  {
 			height: 350,
@@ -22,10 +23,12 @@ function RenderService() {
 			width: 140,
 		},
 		item: {
-			textAlign: 'center'
+			textAlign: 'center',
+			width: '100%'
 		},
 		card: {
 			height: '100%',
+
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between'
@@ -37,10 +40,19 @@ function RenderService() {
 	const classes = useStyles();
 	return (
 		<>
-			<Grid container justify="center" alignItems="center">
-				<Avatar className={classes.servicepicture} />
-			</Grid>
+			<Typography component="h2" variant="h5" className={classes.item}>
+				{'The Service Name'}
+			</Typography>
 			<Grid container className={classes.root} spacing={3}>
+				<Grid className = {classes.item} item md={12}>
+					<Card justify="center" alignItems="center" className={classes.card}>
+						<CardMedia className={classes.media}
+							image="">
+					
+						</CardMedia>
+					</Card>
+				</Grid>
+			
 				<Grid className = {classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
