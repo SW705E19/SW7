@@ -2,7 +2,7 @@ import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-import { TextField, Button, Grid, List} from '@material-ui/core';
+import { TextField, Button, Grid} from '@material-ui/core';
 import RenderCategories from './RenderCategories';
 
 
@@ -17,17 +17,12 @@ describe('<RenderCategories />', () => {
 		testinstance  = wrapper.root;
 	});
 
-
 	it('should render a <Button />', () => {
 		expect(testinstance.findAllByType(Button)).toHaveLength(1);
 	});
     
 	it('should render five <Grid />', () => {
 		expect(testinstance.findAllByType(Grid)).toHaveLength(5);
-	});
-    
-	it('should render a <List />', () => {
-		expect(testinstance.findAllByType(List)).toHaveLength(1);
 	});
   
 	it('should render two textfields <TextField />', () => {
