@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RenderService from '../ShowService/RenderService/RenderService';
+import { serviceService } from '../../services/service/service.service';
 
 class ShowService extends Component {
 	constructor(props) {
@@ -10,8 +11,7 @@ class ShowService extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${this.props.match.params.id}`)
-			.then(res => res.json())
+		fetch(serviceService.getById(this.props.match.params.id))
 			.then((data) => {
 				this.setState({ service: data });
 			})

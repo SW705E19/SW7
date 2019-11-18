@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
 //change to RenderService(props) when getting data from backend
-function RenderService() {
+function RenderService(props) {
+	console.log(props);
 	const useStyles = makeStyles(theme => ({
 		root: {
 			padding: theme.spacing(3, 2),
@@ -38,16 +39,20 @@ function RenderService() {
 
 	const { t } = useTranslation();
 	const classes = useStyles();
+
+	const random = 1 + (Math.random() * (200 - 1));
+	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
+
 	return (
 		<>
 			<Typography component="h2" variant="h5" className={classes.item}>
-				{'The Service Name'}
+				{props.service.name}
 			</Typography>
 			<Grid container className={classes.root} spacing={3}>
 				<Grid className = {classes.item} item md={12}>
-					<Card justify="center" alignItems="center" className={classes.card}>
+					<Card justify="center"  className={classes.card}>
 						<CardMedia className={classes.media}
-							image="">
+							image={randomUrl}>
 					
 						</CardMedia>
 					</Card>
@@ -84,7 +89,7 @@ function RenderService() {
 							<Typography component="h2" variant="h5">
 								{'Service Name'}
 								<Typography variant="subtitle1" color="textPrimary">
-									{'Service Description'}
+									{props.service.description}
 								</Typography>
 							</Typography>
 						</CardContent>
