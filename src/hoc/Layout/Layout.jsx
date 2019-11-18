@@ -6,6 +6,7 @@ import NotFound from '../../containers/NotFound/NotFound';
 import Login from '../../components/Login/Login';
 import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
+import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
 
 function Layout() {
@@ -15,6 +16,7 @@ function Layout() {
 				<Route path="/login" component={Login} />
 				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
+				<Route path ="/service/:id" component={ShowService}/>
 				<Route component={NotFound} />
 			</Switch>
 		</Router>
