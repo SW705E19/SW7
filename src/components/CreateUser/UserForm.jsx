@@ -58,10 +58,21 @@ function UserForm(props) {
                 id={"firstname"}
                 label={t("firstname")}
                 autoComplete={"firstname"}
-                onChange={props.handleChange}
+                onChange={props.handleBlur}
                 autoFocus
                 onBlur={props.handleBlur}
-                error={props.firstName.firstNameValid && props.firstName.flag}
+                error={
+                  props.firstName.flag
+                    ? !props.firstName.firstNameValid
+                    : props.firstName.flag
+                }
+                helperText={
+                  props.firstName.flag
+                    ? props.firstName.firstNameValid
+                      ? ""
+                      : t("typefirstname")
+                    : ""
+                }
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -74,9 +85,20 @@ function UserForm(props) {
                 label={t("lastname")}
                 name={"lastname"}
                 autoComplete={"lastname"}
-                onChange={props.handleChange}
+                onChange={props.handleBlur}
                 onBlur={props.handleBlur}
-                error={props.lastName.lastNameValid && props.lastName.flag}
+                error={
+                  props.lastName.flag
+                    ? !props.lastName.lastNameValid
+                    : props.lastName.flag
+                }
+                helperText={
+                  props.lastName.flag
+                    ? props.lastName.lastNameValid
+                      ? ""
+                      : t("typelastname")
+                    : ""
+                }
                 autoFocus
               />
             </Grid>
@@ -92,9 +114,18 @@ function UserForm(props) {
                 label={t("email")}
                 name={"email"}
                 autoComplete={"email"}
-                onChange={props.handleChange}
+                onChange={props.handleBlur}
                 onBlur={props.handleBlur}
-                error={props.email.emailValid && props.email.flag}
+                error={
+                  props.email.flag ? !props.email.emailValid : props.email.flag
+                }
+                helperText={
+                  props.email.flag
+                    ? props.email.emailValid
+                      ? ""
+                      : t("typevalidemail")
+                    : ""
+                }
                 autoFocus
               />
             </Grid>
@@ -104,18 +135,22 @@ function UserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                id={"phonenumber"}
+                id={"phoneNumber"}
                 label={t("phonenumber")}
-                name={"phonenumber"}
-                autoComplete={"phonenumber"}
-                onChange={props.handleChange}
+                name={"phoneNumber"}
+                autoComplete={"phoneNumber"}
+                onChange={props.handleBlur}
                 onBlur={props.handleBlur}
                 error={
-                  props.phoneNumber.phoneNumberValid && props.phoneNumber.flag
+                  props.phoneNumber.flag
+                    ? !props.phoneNumber.phoneNumberValid
+                    : props.phoneNumber.flag
                 }
                 helperText={
-                  props.phoneNumber.phoneNumberValid && props.phoneNumber.flag
-                    ? "Please insert a valid phone number"
+                  props.phoneNumber.flag
+                    ? props.phoneNumber.phoneNumberValid
+                      ? ""
+                      : t("typecorrectphonenumber")
                     : ""
                 }
                 autoFocus
@@ -133,9 +168,20 @@ function UserForm(props) {
                 label={t("address")}
                 name={"address"}
                 autoComplete={"address"}
-                onChange={props.handleChange}
+                onChange={props.handleBlur}
                 onBlur={props.handleBlur}
-                error={props.address.addressValid && props.address.address}
+                error={
+                  props.address.flag
+                    ? !props.address.addressValid
+                    : props.address.flag
+                }
+                helperText={
+                  props.address.flag
+                    ? props.address.addressValid
+                      ? ""
+                      : t("typeaddress")
+                    : ""
+                }
                 autoFocus
               />
             </Grid>
@@ -166,10 +212,21 @@ function UserForm(props) {
                 InputLabelProps={{
                   shrink: true
                 }}
-                onChange={props.handleChange}
+                onChange={props.handleBlur}
                 onBlur={props.handleBlur}
                 autoFocus
-                error={props.dateOfBirth.dateOfBirthValid}
+                error={
+                  props.dateOfBirth.flag
+                    ? !props.dateOfBirth.dateOfBirthValid
+                    : props.dateOfBirth.flag
+                }
+                helperText={
+                  props.dateOfBirth.flag
+                    ? props.dateOfBirth.dateOfBirthValid
+                      ? ""
+                      : t("birthdaynotcorrect")
+                    : ""
+                }
               />
             </Grid>
           </Grid>

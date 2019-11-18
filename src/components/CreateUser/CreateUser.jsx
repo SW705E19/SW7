@@ -11,12 +11,12 @@ export class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: { firstName: "", firstNameValid: false, flag: false },
-      lastName: { lastName: "", lastNameValid: false, flag: false },
-      address: { address: "", addressValid: false, flag: false },
-      email: { email: "", emailValid: false, flag: false },
-      phoneNumber: { phonenumber: "", phoneNumberValid: false, flag: false },
-      dateOfBirth: { dateOfBirth: "", dateOfBirthValid: false, flag: false },
+      firstName: { firstName: "", firstNameValid: true, flag: false },
+      lastName: { lastName: "", lastNameValid: true, flag: false },
+      address: { address: "", addressValid: true, flag: false },
+      email: { email: "", emailValid: true, flag: false },
+      phoneNumber: { phonenumber: "", phoneNumberValid: true, flag: false },
+      dateOfBirth: { dateOfBirth: "", dateOfBirthValid: true, flag: false },
       languageValues: [],
       subjectOfInterestValues: []
     };
@@ -25,22 +25,53 @@ export class CreateUser extends Component {
   }
 
   handleBlur(e) {
-    //Update Flag here
     if (e.target.name === "firstname") {
-      this.setState({ ["firstNameValid"]: notEmptyValidation(e.target.value) });
-    } else if (e.target.name === "email") {
-      this.setState({ ["emailValid"]: emailValidation(e.target.value) });
-    } else if (e.target.name === "lastname") {
-      this.setState({ ["lastNameValid"]: notEmptyValidation(e.target.value) });
-    } else if (e.target.name === "address") {
-      this.setState({ ["addressValid"]: notEmptyValidation(e.target.value) });
-    } else if (e.target.name === "phonenumber") {
       this.setState({
-        ["phoneNumberValid"]: phoneNumberValidation(e.target.value)
+        firstName: {
+          firstName: e.target.value,
+          firstNameValid: notEmptyValidation(e.target.value),
+          flag: true
+        }
+      });
+    } else if (e.target.name === "email") {
+      this.setState({
+        email: {
+          email: e.target.value,
+          emailValid: emailValidation(e.target.value),
+          flag: true
+        }
+      });
+    } else if (e.target.name === "lastname") {
+      this.setState({
+        lastName: {
+          lastName: e.target.value,
+          lastNameValid: notEmptyValidation(e.target.value),
+          flag: true
+        }
+      });
+    } else if (e.target.name === "address") {
+      this.setState({
+        address: {
+          address: e.target.value,
+          addressValid: notEmptyValidation(e.target.value),
+          flag: true
+        }
+      });
+    } else if (e.target.name === "phoneNumber") {
+      this.setState({
+        phoneNumber: {
+          phoneNumber: e.target.value,
+          phoneNumberValid: phoneNumberValidation(e.target.value),
+          flag: true
+        }
       });
     } else if (e.target.name === "dateOfBirth") {
       this.setState({
-        ["dateOfBirthValid"]: dateOfBirthValidation(e.target.value)
+        dateOfBirth: {
+          dateOfBirth: e.target.value,
+          dateOfBirthValid: dateOfBirthValidation(e.target.value),
+          flag: true
+        }
       });
     }
   }
