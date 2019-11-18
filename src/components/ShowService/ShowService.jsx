@@ -11,10 +11,10 @@ class ShowService extends Component {
 	}
 
 	componentDidMount() {
-		fetch(serviceService.getById(this.props.match.params.id))
+		fetch(serviceService.getById(this.props.match.params.id)
 			.then((data) => {
 				this.setState({ service: data });
-			})
+			}))
 			.catch(console.log);
 	}
 	render() {

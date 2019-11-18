@@ -4,9 +4,7 @@ import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardM
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-//change to RenderService(props) when getting data from backend
 function RenderService(props) {
-	console.log(props);
 	const useStyles = makeStyles(theme => ({
 		root: {
 			padding: theme.spacing(3, 2),
@@ -87,7 +85,7 @@ function RenderService(props) {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{'Service Name'}
+								{props.service.name}
 								<Typography variant="subtitle1" color="textPrimary">
 									{props.service.description}
 								</Typography>

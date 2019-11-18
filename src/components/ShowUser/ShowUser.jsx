@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RenderUser from '../ShowUser/RenderUser/RenderUser';
+import { userService } from '../../services/user/user.service';
 
 class ShowUser extends Component {
 	constructor(props) {
@@ -10,11 +11,10 @@ class ShowUser extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${this.props.match.params.id}`)
-			.then(res => res.json())
+		fetch(userService.getById(this.props.match.params.id)
 			.then((data) => {
 				this.setState({ user: data });
-			})
+			}))
 			.catch(console.log);
 	}
 	render() {

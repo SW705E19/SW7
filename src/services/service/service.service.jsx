@@ -9,10 +9,18 @@ export const serviceService = {
 
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions).then(handleResponse);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions)
+		.then(handleResponse)
+		.then(services => {
+			return JSON.parse(services);
+		});
 }
 
 function getById(id) {
-    const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`http://localhost:${process.env.REACT_APP_API_PORT}/api/services/${id}`, requestOptions).then(handleResponse);
+	const requestOptions = { method: 'GET', headers: authHeader() };
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${id}`, requestOptions)
+		.then(handleResponse)
+		.then(service => {
+			return JSON.parse(service);
+		});
 }
