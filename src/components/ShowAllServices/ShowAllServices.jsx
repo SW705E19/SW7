@@ -1,5 +1,6 @@
-import {React, Component} from 'react';
+import React, { Component } from 'react';
 import {serviceService as serviceAPI} from '../../services/service/service.service';
+import RenderShowAllServices from './RenderAllServices/RenderShowAllServices';
 
 class ShowAllServices extends Component {
 	constructor(props){
@@ -10,13 +11,13 @@ class ShowAllServices extends Component {
 	}
 
 	componentDidMount(){
-		serviceAPI.getAll().then(res => console.log(res));
+		serviceAPI.getAll()
+			.then(res => this.setState({ services: res}))
+			.catch(error => console.log(error));
 	}
 
 	render(){
-		return (
-			<div></div>
-		);
+		return <RenderShowAllServices services={this.state.services} />;
 	}
 }
 

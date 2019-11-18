@@ -17,8 +17,8 @@ function Layout() {
 				<Route path="/login" component={Login} />
 				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
-				<Route path="/service/" component={ShowAllServices} />
 				<Route path ="/service/:id" component={ShowService}/>
+				<Route path="/service/" component={ShowAllServices} />
 				<Route component={NotFound} />
 			</Switch>
 		</Router>

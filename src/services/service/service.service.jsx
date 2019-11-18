@@ -1,4 +1,4 @@
-import { authHeader, handleResponse } from '@/helpers';
+import { authHeader, handleResponse } from '../../helpers';
 
 export const serviceService = {
 	getAll
@@ -6,5 +6,9 @@ export const serviceService = {
 
 function getAll(){
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/services/`, requestOptions).then(handleResponse);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions)
+		.then(handleResponse)
+		.then(services => {
+			return JSON.parse(services);
+		});
 }
