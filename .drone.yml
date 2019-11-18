@@ -7,4 +7,5 @@ steps:
     image: node
     commands:
       - npm ci
+      - npm run lint
       - npm run test:coverage
