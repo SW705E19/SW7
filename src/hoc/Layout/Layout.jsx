@@ -7,6 +7,7 @@ import NotFound from '../../containers/NotFound/NotFound';
 import Login from '../../components/Login/Login';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import Header from '../../components/Header/Header';
+import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 
 function Layout() {
 	const routing = (
@@ -14,6 +15,7 @@ function Layout() {
 			<Switch>
 				<Route path="/login" component={Login} />
 				<Route path="/user/:id" component={ShowUser} />
+				<Route path="/service/" component={ShowAllServices} />
 				<Route component={NotFound} />
 			</Switch>
 		</Router>
