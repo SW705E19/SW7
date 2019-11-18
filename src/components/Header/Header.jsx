@@ -91,7 +91,7 @@ function Header({ classes }) {
 	);
 
 	return (
-		<AppBar position="fixed">
+		<AppBar position="sticky">
 			<Toolbar>
 				<Hidden mdUp>
 					<Button onClick={toggleDrawer(true)}>
