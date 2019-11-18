@@ -1,15 +1,13 @@
 import React from 'react';
 import { categoryService } from '../../services/category/category.service';
 import { withStyles } from '@material-ui/core/styles';
-import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel} from '@material-ui/core';
+import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input} from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 
 
-const styles = theme => ({
+const styles = () => ({
 	formControl: {
-	  margin: theme.spacing(1),
-	  minWidth: '30%',
-	  maxWidth: '80%',
+	  width: '100%',
 	},
 });
 
@@ -67,7 +65,7 @@ class CreateService extends React.Component {
 		return(
 			<> 
 				<Container maxWidth="sm">
-					<Typography >
+					<Typography title="h1">
 						Create a service
 					</Typography>
 					<FormControl  noValidate autoComplete="off" className={classes.formControl}>
@@ -95,33 +93,36 @@ class CreateService extends React.Component {
 									variant="outlined"
 								/>
 							</Grid>
-							
-
+						
 							<Grid item xs={12}>
-								<InputLabel id="categories">Categories</InputLabel>
-								<Select 
-									fullWidth
-									labelId="categories"
-									value={this.state.service.categories}
-									onChange={this.handleOnChange}
-									name="categories"
-									variant="outlined"
-									renderValue={selected => {
-										if(selected.length === 0) {
-											return null; }
-										else {
-											return selected.map(cat => {
-												return cat;
-											}).join(', ');
+								<FormControl  noValidate autoComplete="off" className={classes.formControl}>
+									<InputLabel className={classes.inputLabel} id="categories">Categories</InputLabel>
+									<Select 
+										fullWidth
+										input={<Input />}
+										labelId="categories"
+										value={this.state.service.categories}
+										onChange={this.handleOnChange}
+										name="categories"
+										variant="outlined"
+										renderValue={selected => {
+											if(selected.length === 0) {
+												return null; }
+											else {
+												return selected.map(cat => {
+													return cat;
+												}).join(', ');	
+											}
+										}}
+										MenuProps={MenuProps}
+										multiple>
+										{this.menuItems(this.state.categories)}
+									</Select>
+								</FormControl>
 
-											
-										}
-									}}
-									MenuProps={MenuProps}
-									multiple={true}>
-									{this.menuItems(this.state.categories)}
-								</Select>
 							</Grid>
+								
+	
 							
 							<Grid item xs={12}>
 								<Button type="submit" fullWidth variant="contained" color="inherit">
@@ -131,6 +132,7 @@ class CreateService extends React.Component {
 
 						</Grid>
 					</FormControl>
+					
 				</Container>
 
 				
