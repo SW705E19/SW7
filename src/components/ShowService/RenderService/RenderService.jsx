@@ -65,7 +65,7 @@ function RenderService(props) {
 									<Avatar className={classes.avatar} />
 								</Grid>
 							</Typography>
-							<Typography variant="subtitle1" color="textPrimary">
+							<Typography color="textPrimary">
 								{'Tutor Description'}
 							</Typography>
 						</CardContent>
@@ -86,7 +86,7 @@ function RenderService(props) {
 						<CardContent>
 							<Typography component="h2" variant="h5">
 								{props.service.name}
-								<Typography variant="subtitle1" color="textPrimary">
+								<Typography color="textPrimary">
 									{props.service.description}
 								</Typography>
 							</Typography>
