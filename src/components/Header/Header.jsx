@@ -1,9 +1,26 @@
-import  React from 'react';
-import { AppBar, Toolbar, IconButton, Hidden, Button, List, ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
+import React from 'react';
+import {
+	AppBar,
+	Toolbar,
+	IconButton,
+	Hidden,
+	Button,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { AccountCircle, Menu, Notifications, Home, Event, Mail} from '@material-ui/icons';
+import {
+	AccountCircle,
+	Menu,
+	Notifications,
+	Home,
+	Event,
+	Mail
+} from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
-import logo_transparent from '../../assets/logo.png'; 
+import logo_transparent from '../../assets/logo.png';
 
 const styles = {
 	toolbarButtons: {
@@ -11,21 +28,23 @@ const styles = {
 	}
 };
 
-
-function Header({classes}) {
+function Header({ classes }) {
 	const [state, setState] = React.useState({
-		isMenuOpen: false,
+		isMenuOpen: false
 	});
 
-	const toggleDrawer = (open) => event => {
-		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+	const toggleDrawer = open => event => {
+		if (
+			event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+		) {
 			return;
 		}
-	
-		setState({ ...state, 'isMenuOpen': open });
+
+		setState({ ...state, isMenuOpen: open });
 	};
 
-	const sideList =
+	const sideList = (
 		<div
 			className={classes.list}
 			role="presentation"
@@ -33,57 +52,58 @@ function Header({classes}) {
 			onKeyDown={toggleDrawer(false)}
 		>
 			<List>
-				<ListItem button key = 'Home'>
-					<ListItemText primary='Home' />
+				<ListItem button key="Home">
+					<ListItemText primary="Home" />
 					<ListItemIcon>
 						<Home fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button key = 'Mail'>
-					<ListItemText primary='Inbox' />
+				<ListItem button key="Mail">
+					<ListItemText primary="Inbox" />
 					<ListItemIcon>
 						<Mail fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button key = 'Event'>
-					<ListItemText primary='Calendar' />
+				<ListItem button key="Event">
+					<ListItemText primary="Calendar" />
 					<ListItemIcon>
 						<Event fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button key = 'Notifications'>
-					<ListItemText primary='Notifications' />
+				<ListItem button key="Notifications">
+					<ListItemText primary="Notifications" />
 					<ListItemIcon>
 						<Notifications fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
-			
-				<ListItem button key = 'AccountCircle'>
-					<ListItemText primary='My account' />
+
+				<ListItem button key="AccountCircle">
+					<ListItemText primary="My account" />
 					<ListItemIcon>
 						<AccountCircle fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
 			</List>
-		</div>;
-	
+		</div>
+	);
 
-	
 	return (
-		<AppBar position="static">
+		<AppBar position="fixed">
 			<Toolbar>
 				<Hidden mdUp>
-					<Button onClick={toggleDrawer(true)}><Menu/></Button>
+					<Button onClick={toggleDrawer(true)}>
+						<Menu />
+					</Button>
 					<Drawer open={state.isMenuOpen} onClose={toggleDrawer(false)}>
 						{sideList}
-					</Drawer> 
+					</Drawer>
 				</Hidden>
 				<Hidden smDown>
 					<IconButton>
-						<img  src={logo_transparent} alt="" height="45" width="45"/>
+						<img src={logo_transparent} alt="" height="45" width="45" />
 					</IconButton>
 
 					<div className={classes.toolbarButtons}>
