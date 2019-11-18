@@ -1,38 +1,26 @@
-import React from 'react';
-import { Button, TextField, Link, Grid, Typography } from '@material-ui/core';
-import { useTranslation, withTranslation } from 'react-i18next';
+import React, { Component } from 'react';
+import { Container, Button, TextField, Link, Grid, Typography } from '@material-ui/core';
+import { withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from '@material-ui/core/styles';
 
- const styles = theme => ({
- 	'@global': {
- 		body: {
- 			backgroundColor: theme.palette.common.white,
- 		},
- 	},
- 	paper: {
- 		marginTop: theme.spacing(8),
- 		display: 'flex',
- 		flexDirection: 'column',
- 		alignItems: 'center',
- 	},
- 	form: {
- 		width: '100%', // Fix IE 11 issue.
- 		marginTop: theme.spacing(1),
- 	},
- 	submit: {
- 		margin: theme.spacing(3, 0, 2),
- 	},
+const styles = theme => ({
+	paper: {
+		marginTop: theme.spacing(8),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+	}
 });
 
 
-class Login extends React.Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			username: "",
-			password: ""
+			username: '',
+			password: ''
 		};
 
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -52,6 +40,7 @@ class Login extends React.Component {
 
 
 		return (
+			<Container maxWidth="sm">
 				<div className={classes.paper}>
 					<Typography component="h1" variant="h5">
 						{t('signin')}
@@ -67,7 +56,6 @@ class Login extends React.Component {
 							name="email"
 							autoComplete="email"
 							type="email"
-							id="email"
 							onChange={this.handleUsernameChange}
 							value={this.state.username}
 							autoFocus
@@ -90,27 +78,28 @@ class Login extends React.Component {
 							fullWidth
 							variant="contained"
 							color="primary"
-							className = "login-button"
-							id = "login"
+							className="login-button"
+							id="login"
 							onClick={() => authenticationService.login(this.state.username, this.state.password)}
 						>
-							{t('signin')} 
+							{t('signin')}
 						</Button>
 
 						<Grid container>
 							<Grid item xs>
 								<Link href="#" variant="body2">
-									{ t('forgotpassword?') }
+									{t('forgotpassword?')}
 								</Link>
 							</Grid>
 							<Grid item>
 								<Link href="#" variant="body2">
-									{ t('signup') }
+									{t('signup')}
 								</Link>
 							</Grid>
 						</Grid>
 					</form>
 				</div>
+			</Container>
 		);
 	}
 }
