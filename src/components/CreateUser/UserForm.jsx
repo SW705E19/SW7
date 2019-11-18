@@ -61,7 +61,7 @@ function UserForm(props) {
                 onChange={props.handleChange}
                 autoFocus
                 onBlur={props.handleBlur}
-                error={!props.firstNameValid}
+                error={props.firstName.firstNameValid && props.firstName.flag}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -76,7 +76,7 @@ function UserForm(props) {
                 autoComplete={"lastname"}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={!props.lastNameValid}
+                error={props.lastName.lastNameValid && props.lastName.flag}
                 autoFocus
               />
             </Grid>
@@ -94,7 +94,7 @@ function UserForm(props) {
                 autoComplete={"email"}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={!props.emailValid}
+                error={props.email.emailValid && props.email.flag}
                 autoFocus
               />
             </Grid>
@@ -110,8 +110,14 @@ function UserForm(props) {
                 autoComplete={"phonenumber"}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={!props.phoneNumberValid}
-                helperText={props.phoneNumberValid ? "" : "fuk"}
+                error={
+                  props.phoneNumber.phoneNumberValid && props.phoneNumber.flag
+                }
+                helperText={
+                  props.phoneNumber.phoneNumberValid && props.phoneNumber.flag
+                    ? "Please insert a valid phone number"
+                    : ""
+                }
                 autoFocus
               />
             </Grid>
@@ -129,7 +135,7 @@ function UserForm(props) {
                 autoComplete={"address"}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
-                error={!props.addressValid}
+                error={props.address.addressValid && props.address.address}
                 autoFocus
               />
             </Grid>
@@ -143,7 +149,6 @@ function UserForm(props) {
                 name={"education"}
                 autoComplete={"education"}
                 onChange={props.handleChange}
-                onBlur={props.handleBlur}
                 autoFocus
               />
             </Grid>
@@ -164,7 +169,7 @@ function UserForm(props) {
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
                 autoFocus
-                error={!props.dateOfBirthValid}
+                error={props.dateOfBirth.dateOfBirthValid}
               />
             </Grid>
           </Grid>

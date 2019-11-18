@@ -11,12 +11,12 @@ export class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstNameValid: false,
-      lastNameValid: false,
-      addressValid: false,
-      emailValid: false,
-      phoneNumberValid: false,
-      dateOfBirthValid: false,
+      firstName: { firstName: "", firstNameValid: false, flag: false },
+      lastName: { lastName: "", lastNameValid: false, flag: false },
+      address: { address: "", addressValid: false, flag: false },
+      email: { email: "", emailValid: false, flag: false },
+      phoneNumber: { phonenumber: "", phoneNumberValid: false, flag: false },
+      dateOfBirth: { dateOfBirth: "", dateOfBirthValid: false, flag: false },
       languageValues: [],
       subjectOfInterestValues: []
     };
@@ -25,6 +25,7 @@ export class CreateUser extends Component {
   }
 
   handleBlur(e) {
+    //Update Flag here
     if (e.target.name === "firstname") {
       this.setState({ ["firstNameValid"]: notEmptyValidation(e.target.value) });
     } else if (e.target.name === "email") {
@@ -51,12 +52,12 @@ export class CreateUser extends Component {
   render() {
     return (
       <UserForm
-        firstNameValid={this.state.firstNameValid}
-        lastNameValid={this.state.lastNameValid}
-        addressValid={this.state.addressValid}
-        emailValid={this.state.emailValid}
-        phoneNumberValid={this.state.phoneNumberValid}
-        dateOfBirthValid={this.state.dateOfBirthValid}
+        firstName={this.state.firstName}
+        lastName={this.state.lastName}
+        address={this.state.address}
+        email={this.state.email}
+        phoneNumber={this.state.phoneNumber}
+        dateOfBirth={this.state.dateOfBirth}
         handleChange={this.handleChange}
         languageValues={this.state.languageValues}
         subjectOfInterestValues={this.state.subjectOfInterestValues}
