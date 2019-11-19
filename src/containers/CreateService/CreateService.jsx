@@ -3,6 +3,8 @@ import { categoryService } from '../../services/category/category.service';
 import { withStyles } from '@material-ui/core/styles';
 import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input} from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
+import { serviceService } from '../../services/service/service.service';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 
 const styles = () => ({
@@ -43,12 +45,27 @@ class CreateService extends React.Component {
 		categoryService.getAll().then(data => {
 			this.setState({categories: data});
 		});
+		let service = this.state.service;
+		console.log(authenticationService.currentUserValue);
+		console.log(authenticationService.currentUser);
+		//service[tutorInfo] = authenticationService.currentUserValue
+
 	}
     
 	handleOnChange(event) {
 		let service = this.state.service;
 		service[event.target.name] = event.target.value;
 		this.setState({service: service});
+	}
+
+	submit() {
+		serviceService.create(this.state.service)
+			.then(
+				// Redirect to a page that shows the created service
+			)
+			.catch(
+				// Give error feedback to user
+			);
 	}
     
 	menuItems(suggestions) {
@@ -125,7 +142,7 @@ class CreateService extends React.Component {
 	
 							
 							<Grid item xs={12}>
-								<Button type="submit" fullWidth variant="contained" color="inherit">
+								<Button type="submit" fullWidth variant="contained" color="inherit" onClick={this.submit}>
 								Save
 								</Button>
 							</Grid>
