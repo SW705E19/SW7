@@ -35,9 +35,20 @@ function dateOfBirthValidation(dateOfBirth) {
   return day > 0 && day <= monthLength[month - 1];
 }
 
+function validPassword(firstPassword, secondPassword) {
+  let re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  console.log(firstPassword);
+  console.log(secondPassword);
+  if (firstPassword != secondPassword) {
+    return false;
+  }
+  return re.test(firstPassword);
+}
+
 export {
   notEmptyValidation,
   emailValidation,
   phoneNumberValidation,
-  dateOfBirthValidation
+  dateOfBirthValidation,
+  validPassword
 };

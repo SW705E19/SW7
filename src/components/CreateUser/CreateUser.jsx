@@ -4,7 +4,8 @@ import {
   emailValidation,
   dateOfBirthValidation,
   phoneNumberValidation,
-  notEmptyValidation
+  notEmptyValidation,
+  validPassword
 } from "../../helpers/validation-functions";
 import userService from "../../services/user/user.service";
 
@@ -18,6 +19,7 @@ export class CreateUser extends Component {
       email: { email: "", emailValid: true },
       phoneNumber: { phonenumber: "", phoneNumberValid: true },
       dateOfBirth: { dateOfBirth: "", dateOfBirthValid: true },
+      password: { firstPassword: "", secondPassword: "", passwordValid: true },
       languageValues: [],
       subjectOfInterestValues: []
     };
@@ -68,6 +70,22 @@ export class CreateUser extends Component {
           dateOfBirthValid: true
         }
       });
+    } else if (e.target.name === "firstPassword") {
+      this.setState({
+        password: {
+          firstPassword: e.target.value,
+          secondPassword: this.state.password.secondPassword,
+          passwordValid: true
+        }
+      });
+    } else if (e.target.name === "secondPassword") {
+      this.setState({
+        password: {
+          firstPassword: this.state.password.firstPassword,
+          secondPassword: e.target.value,
+          passwordValid: true
+        }
+      });
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }
@@ -102,6 +120,14 @@ export class CreateUser extends Component {
         dateOfBirthValid: dateOfBirthValidation(
           this.state.dateOfBirth.dateOfBirth
         )
+      },
+      password: {
+        firstPassword: this.state.password.firstPassword,
+        secondPassword: this.state.password.secondPassword,
+        passwordValid: validPassword(
+          this.state.password.firstPassword,
+          this.state.password.secondPassword
+        )
       }
     });
     if (
@@ -112,14 +138,7 @@ export class CreateUser extends Component {
       this.state.address.addressValid &&
       this.state.dateOfBirth.dateOfBirthValid
     ) {
-      userService
-        .CreateUser(this.state)
-        .then(() => {
-          //redirect
-        })
-        .catch(() => {
-          //Fejl som aldrig burde ske.
-        });
+      // kald apien
     }
   }
 
@@ -134,6 +153,7 @@ export class CreateUser extends Component {
         dateOfBirth={this.state.dateOfBirth}
         handleChange={this.handleChange}
         languageValues={this.state.languageValues}
+        password={this.state.password}
         subjectOfInterestValues={this.state.subjectOfInterestValues}
         handleSubmit={this.handleSubmit}
       />

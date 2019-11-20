@@ -1,7 +1,7 @@
 {
-    "infoabouttutor": "Info about tutor",
-    "contacttutor": "Contact tutor",
-    "gototutorpage": "Go to tutor's page",
+  "infoabouttutor": "Info about tutor",
+  "contacttutor": "Contact tutor",
+  "gototutorpage": "Go to tutor's page",
   "signin": "Sign in",
   "email": "Email",
   "password": "Password",
@@ -24,15 +24,16 @@
   "english": "English",
   "german": "German",
   "description": "Description",
-  "infoabouttutor": "Info about tutor",
   "birthdaynotcorrect": "Date of birth is not correct",
   "typeaddress": "Insert your address",
   "typecorrectphonenumber": "The phone number is not valid",
   "typevalidemail": "The email is not valid",
   "typelastname": "Insert your first name",
-  "typefirstname": "Insert your last name"
+  "typefirstname": "Insert your last name",
+  "save": "Save",
+  "categoryname": "Category name",
+  "categorydescription": "Category description",
+  "typepassword": "Type password",
+  "typepasswordagain": "Type password again",
+  "passwordError": "Password must be at least 8 digits, must contains at least one small letter, one big letter and one number"
 }
-
-    "save": "Save",
-    "categoryname": "Category name",
-    "categorydescription": "Category description"

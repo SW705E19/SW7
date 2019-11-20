@@ -27,12 +27,12 @@
   "typecorrectphonenumber": "Telefonnummeret er ikke korrekt",
   "typevalidemail": "Emailen er ikke korrekt",
   "typelastname": "Indtast dit efternavn",
-  "typefirstname": "Indtast dit efternavn"
-    "description": "Beskrivelse",
-    "infoabouttutor": "Information om underviser",
-    "contacttutor": "Kontakt underviseren",
-    "gototutorpage": "Gå til underviserens side",
-    "save": "Gem",
-    "categoryname": "Kategorinavn",
-    "categorydescription": "Kategoribeskrivelse"
+  "typefirstname": "Indtast dit efternavn",
+  "contacttutor": "Kontakt underviseren",
+  "gototutorpage": "Gå til underviserens side",
+  "save": "Gem",
+  "categoryname": "Kategorinavn",
+  "categorydescription": "Kategoribeskrivelse",
+  "typepassword": "Indtast password",
+  "typepasswordagain": "Indtast password igen"
 }
