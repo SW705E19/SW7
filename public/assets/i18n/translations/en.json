@@ -24,5 +24,8 @@
     "infoabouttutor": "Info about tutor",
     "save": "Save",
     "categoryname": "Category name",
-    "categorydescription": "Category description"
+    "categorydescription": "Category description",
+    "name": "Name",
+    "categories": "Categories",
+    "createaservice": "Create a service"
   }

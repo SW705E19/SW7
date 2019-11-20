@@ -32,9 +32,7 @@ function create(service) {
 	const requestOptions = { method: 'POST', 
 		headers: authHeader(),
 		body: service};
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/service/`, requestOptions)
-		.then(handleResponse)
-		.then(service => {
-			return JSON.parse(service);
-		});
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions)
+		.then(handleResponse);
+		
 }

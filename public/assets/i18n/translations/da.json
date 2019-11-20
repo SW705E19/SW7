@@ -24,5 +24,9 @@
     "infoabouttutor": "Information om underviser",
     "save": "Gem",
     "categoryname": "Kategorinavn",
-    "categorydescription": "Kategoribeskrivelse"
+    "categorydescription": "Kategoribeskrivelse",
+    "name": "Navn",
+    "categories": "Kategorier",
+    "createaservice": "Opret en service"
+
 }

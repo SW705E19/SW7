@@ -5,11 +5,12 @@ import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, Tex
 import { withTranslation } from 'react-i18next';
 import { serviceService } from '../../services/service/service.service';
 import { authenticationService } from '../../services/authentication/authentication.service';
-
+import { userService } from '../../services/user/user.service';
+import { Redirect } from 'react-router';
 
 const styles = () => ({
 	formControl: {
-	  width: '100%',
+		width: '100%',
 	},
 });
 
@@ -32,13 +33,19 @@ class CreateService extends React.Component {
 			service: {
 				description: '',
 				name: '',
-				tutorInfo: {},
+				tutorInfo: {
+					id: ''
+				},
 				categories: []
 			},
 			categories: [],
+			chosenCategoryNames: [],
+			redirect: false
 		};
         
 		this.handleOnChange = this.handleOnChange.bind(this);
+		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
+		this.submit = this.submit.bind(this);
 	}
     
 	componentDidMount() {
@@ -46,10 +53,10 @@ class CreateService extends React.Component {
 			this.setState({categories: data});
 		});
 		let service = this.state.service;
-		console.log(authenticationService.currentUserValue);
-		console.log(authenticationService.currentUser);
-		//service[tutorInfo] = authenticationService.currentUserValue
-
+		userService.getById(authenticationService.getCurrentUserId()).then(data => {
+			service.tutorInfo.id = data.tutorInfo.id;
+		});
+		this.setState({service: service});
 	}
     
 	handleOnChange(event) {
@@ -58,14 +65,33 @@ class CreateService extends React.Component {
 		this.setState({service: service});
 	}
 
+	handleOnChangeCategories(event) {
+		let chosenCategoryNames = this.state.chosenCategoryNames;
+		chosenCategoryNames = event.target.value;
+		this.setState({chosenCategoryNames: chosenCategoryNames});
+	}
+
 	submit() {
+		this.addChosenCategories();
 		serviceService.create(this.state.service)
-			.then(
-				// Redirect to a page that shows the created service
-			)
-			.catch(
-				// Give error feedback to user
-			);
+			.then(() => {
+				// TODO Redirect to show service page
+				this.setState({redirect: true});
+			})
+			.catch(() => {
+				// TODO give error message to user
+			});
+	}
+
+	addChosenCategories() {
+		let chosenCategories = [];
+		let chosenCategoryNames = this.state.chosenCategoryNames;
+		let service = this.state.service;
+		chosenCategoryNames.forEach(catName => {
+			chosenCategories.push(this.state.categories.find(x => x.name === catName));
+		});
+		service.categories = chosenCategories;
+		this.setState({service: service});
 	}
     
 	menuItems(suggestions) {
@@ -79,11 +105,18 @@ class CreateService extends React.Component {
     
 	render() {
 		const{classes, t} = this.props;
-		return(
-			<> 
+
+		if(this.state.redirect) {
+			// TODO Make better redirection
+			// Redirect to show service page
+			return <Redirect to="/admin"/>;
+		}
+		else
+		{	
+			return (
 				<Container maxWidth="sm">
-					<Typography title="h1">
-						Create a service
+					<Typography variant="h4" component="h4" align="center">
+						{t('createaservice')}
 					</Typography>
 					<FormControl  noValidate autoComplete="off" className={classes.formControl}>
 						<Grid container spacing={2} direction="row">
@@ -91,20 +124,22 @@ class CreateService extends React.Component {
 								<TextField
 									variant="outlined"
 									margin="normal"
-									required
 									fullWidth
-									id={'name'}
-									label={('Name')}
-									name={'name'}
-									autoComplete={'name'}
+									onChange={this.handleOnChange}
+									id="name"
+									label={t('name')}
+									name="name"
+									autoComplete="name"
 									autoFocus
 								/>
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
 									id="outlined-textarea"
-									label="Description"
+									label={t('description')}
+									name={'description'}
 									multiline
+									onChange={this.handleOnChange}
 									fullWidth
 									margin="normal"
 									variant="outlined"
@@ -113,13 +148,13 @@ class CreateService extends React.Component {
 						
 							<Grid item xs={12}>
 								<FormControl  noValidate autoComplete="off" className={classes.formControl}>
-									<InputLabel className={classes.inputLabel} id="categories">Categories</InputLabel>
+									<InputLabel className={classes.inputLabel} id="categories">{t('categories')}</InputLabel>
 									<Select 
 										fullWidth
 										input={<Input />}
 										labelId="categories"
-										value={this.state.service.categories}
-										onChange={this.handleOnChange}
+										value={this.state.chosenCategoryNames}
+										onChange={this.handleOnChangeCategories}
 										name="categories"
 										variant="outlined"
 										renderValue={selected => {
@@ -143,7 +178,7 @@ class CreateService extends React.Component {
 							
 							<Grid item xs={12}>
 								<Button type="submit" fullWidth variant="contained" color="inherit" onClick={this.submit}>
-								Save
+									{t('save')}
 								</Button>
 							</Grid>
 
@@ -151,11 +186,11 @@ class CreateService extends React.Component {
 					</FormControl>
 					
 				</Container>
-
+			
 				
-			</>
-		);
-
+			);
+		}
+									
 	}
 }
 
