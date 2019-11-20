@@ -4,8 +4,7 @@ import {
   Container,
   Typography,
   Grid,
-  Button,
-  FormControl
+  Button
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import { withTranslation } from "react-i18next";

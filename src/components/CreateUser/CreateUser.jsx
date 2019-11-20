@@ -6,6 +6,7 @@ import {
   phoneNumberValidation,
   notEmptyValidation
 } from "../../helpers/validation-functions";
+import userService from "../../services/user/user.service";
 
 export class CreateUser extends Component {
   constructor(props) {
@@ -73,7 +74,6 @@ export class CreateUser extends Component {
   }
 
   handleSubmit(e) {
-    console.log("handleSubmit called");
     this.setState({
       firstName: {
         firstName: this.state.firstName.firstName,
@@ -112,7 +112,14 @@ export class CreateUser extends Component {
       this.state.address.addressValid &&
       this.state.dateOfBirth.dateOfBirthValid
     ) {
-      //handle submit
+      userService
+        .CreateUser(this.state)
+        .then(() => {
+          //redirect
+        })
+        .catch(() => {
+          //Fejl som aldrig burde ske.
+        });
     }
   }
 
