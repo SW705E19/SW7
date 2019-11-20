@@ -11,10 +11,6 @@ import { withStyles } from "@material-ui/styles";
 import { withTranslation } from "react-i18next";
 import MultipleSelection from "./MultipleSelection";
 
-// TODO liste:
-// Fjern sprog fra languagesuggestions når de er valgte.
-// Lav confirmation på felter - Benyt onBlur til confirmation og error
-
 const styles = theme => ({
   container: {
     display: "flex",
@@ -43,10 +39,10 @@ function UserForm(props) {
   return (
     <Container component="main" maxWidth="sm">
       <div className={classes.paper}>
-        <Typography align="center" component="h1" variant="title">
+        <Typography align="center" variant="h4">
           {t("registerasauser")}
         </Typography>
-        <FormControl className={classes.form} noValidate autoComplete="off">
+        <div className={classes.form}>
           <Grid container spacing={2} direction="row">
             <Grid item xs={12} sm={6}>
               <TextField
@@ -58,20 +54,11 @@ function UserForm(props) {
                 id={"firstname"}
                 label={t("firstname")}
                 autoComplete={"firstname"}
-                onChange={props.handleBlur}
+                onChange={props.handleChange}
                 autoFocus
-                onBlur={props.handleBlur}
-                error={
-                  props.firstName.flag
-                    ? !props.firstName.firstNameValid
-                    : props.firstName.flag
-                }
+                error={!props.firstName.firstNameValid}
                 helperText={
-                  props.firstName.flag
-                    ? props.firstName.firstNameValid
-                      ? ""
-                      : t("typefirstname")
-                    : ""
+                  props.firstName.firstNameValid ? "" : t("typefirstname")
                 }
               />
             </Grid>
@@ -85,19 +72,10 @@ function UserForm(props) {
                 label={t("lastname")}
                 name={"lastname"}
                 autoComplete={"lastname"}
-                onChange={props.handleBlur}
-                onBlur={props.handleBlur}
-                error={
-                  props.lastName.flag
-                    ? !props.lastName.lastNameValid
-                    : props.lastName.flag
-                }
+                onChange={props.handleChange}
+                error={!props.lastName.lastNameValid}
                 helperText={
-                  props.lastName.flag
-                    ? props.lastName.lastNameValid
-                      ? ""
-                      : t("typelastname")
-                    : ""
+                  props.lastName.lastNameValid ? "" : t("typelastname")
                 }
                 autoFocus
               />
@@ -114,18 +92,9 @@ function UserForm(props) {
                 label={t("email")}
                 name={"email"}
                 autoComplete={"email"}
-                onChange={props.handleBlur}
-                onBlur={props.handleBlur}
-                error={
-                  props.email.flag ? !props.email.emailValid : props.email.flag
-                }
-                helperText={
-                  props.email.flag
-                    ? props.email.emailValid
-                      ? ""
-                      : t("typevalidemail")
-                    : ""
-                }
+                onChange={props.handleChange}
+                error={!props.email.emailValid}
+                helperText={props.email.emailValid ? "" : t("typevalidemail")}
                 autoFocus
               />
             </Grid>
@@ -139,19 +108,12 @@ function UserForm(props) {
                 label={t("phonenumber")}
                 name={"phoneNumber"}
                 autoComplete={"phoneNumber"}
-                onChange={props.handleBlur}
-                onBlur={props.handleBlur}
-                error={
-                  props.phoneNumber.flag
-                    ? !props.phoneNumber.phoneNumberValid
-                    : props.phoneNumber.flag
-                }
+                onChange={props.handleChange}
+                error={!props.phoneNumber.phoneNumberValid}
                 helperText={
-                  props.phoneNumber.flag
-                    ? props.phoneNumber.phoneNumberValid
-                      ? ""
-                      : t("typecorrectphonenumber")
-                    : ""
+                  props.phoneNumber.phoneNumberValid
+                    ? ""
+                    : t("typecorrectphonenumber")
                 }
                 autoFocus
               />
@@ -168,20 +130,9 @@ function UserForm(props) {
                 label={t("address")}
                 name={"address"}
                 autoComplete={"address"}
-                onChange={props.handleBlur}
-                onBlur={props.handleBlur}
-                error={
-                  props.address.flag
-                    ? !props.address.addressValid
-                    : props.address.flag
-                }
-                helperText={
-                  props.address.flag
-                    ? props.address.addressValid
-                      ? ""
-                      : t("typeaddress")
-                    : ""
-                }
+                onChange={props.handleChange}
+                error={!props.address.addressValid}
+                helperText={props.address.addressValid ? "" : t("typeaddress")}
                 autoFocus
               />
             </Grid>
@@ -212,20 +163,13 @@ function UserForm(props) {
                 InputLabelProps={{
                   shrink: true
                 }}
-                onChange={props.handleBlur}
-                onBlur={props.handleBlur}
+                onChange={props.handleChange}
                 autoFocus
-                error={
-                  props.dateOfBirth.flag
-                    ? !props.dateOfBirth.dateOfBirthValid
-                    : props.dateOfBirth.flag
-                }
+                error={!props.dateOfBirth.dateOfBirthValid}
                 helperText={
-                  props.dateOfBirth.flag
-                    ? props.dateOfBirth.dateOfBirthValid
-                      ? ""
-                      : t("birthdaynotcorrect")
-                    : ""
+                  props.dateOfBirth.dateOfBirthValid
+                    ? ""
+                    : t("birthdaynotcorrect")
                 }
               />
             </Grid>
@@ -237,11 +181,17 @@ function UserForm(props) {
           />
 
           <Grid className={classes.buttonWrapper}>
-            <Button type="submit" fullWidth variant="contained" color="inherit">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="inherit"
+              onClick={props.handleSubmit}
+            >
               {t("register")}
             </Button>
           </Grid>
-        </FormControl>
+        </div>
       </div>
     </Container>
   );

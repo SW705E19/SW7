@@ -4,8 +4,6 @@ import { withTranslation } from "react-i18next";
 import { withStyles } from "@material-ui/styles";
 
 const styles = theme => ({});
-// TODO liste:
-// Fjern sprog fra languagesuggestions når de er valgte.
 function menuItems(suggestions, values) {
   return suggestions.map((value, i) => (
     <MenuItem key={i} value={value.value}>
@@ -44,7 +42,6 @@ function MultipleSelection(props) {
         name="languageValues"
         multiple={true}
         value={props.languageValues}
-        renderValue={selected => selected.join(", ")}
         onChange={props.handleChange}
         variant="outlined"
       >
@@ -60,7 +57,6 @@ function MultipleSelection(props) {
         name="subjectOfInterestValues"
         multiple={true}
         value={props.subjectOfInterestValues}
-        renderValue={selected => selected.join(", ")}
         onChange={props.handleChange}
         variant="outlined"
       >

@@ -11,73 +11,109 @@ export class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: { firstName: "", firstNameValid: true, flag: false },
-      lastName: { lastName: "", lastNameValid: true, flag: false },
-      address: { address: "", addressValid: true, flag: false },
-      email: { email: "", emailValid: true, flag: false },
-      phoneNumber: { phonenumber: "", phoneNumberValid: true, flag: false },
-      dateOfBirth: { dateOfBirth: "", dateOfBirthValid: true, flag: false },
+      firstName: { firstName: "", firstNameValid: true },
+      lastName: { lastName: "", lastNameValid: true },
+      address: { address: "", addressValid: true },
+      email: { email: "", emailValid: true },
+      phoneNumber: { phonenumber: "", phoneNumberValid: true },
+      dateOfBirth: { dateOfBirth: "", dateOfBirthValid: true },
       languageValues: [],
       subjectOfInterestValues: []
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleBlur = this.handleBlur.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleBlur(e) {
+  handleChange(e) {
     if (e.target.name === "firstname") {
       this.setState({
         firstName: {
           firstName: e.target.value,
-          firstNameValid: notEmptyValidation(e.target.value),
-          flag: true
+          firstNameValid: true
         }
       });
     } else if (e.target.name === "email") {
       this.setState({
         email: {
           email: e.target.value,
-          emailValid: emailValidation(e.target.value),
-          flag: true
+          emailValid: true
         }
       });
     } else if (e.target.name === "lastname") {
       this.setState({
         lastName: {
           lastName: e.target.value,
-          lastNameValid: notEmptyValidation(e.target.value),
-          flag: true
+          lastNameValid: true
         }
       });
     } else if (e.target.name === "address") {
       this.setState({
         address: {
           address: e.target.value,
-          addressValid: notEmptyValidation(e.target.value),
-          flag: true
+          addressValid: true
         }
       });
     } else if (e.target.name === "phoneNumber") {
       this.setState({
         phoneNumber: {
           phoneNumber: e.target.value,
-          phoneNumberValid: phoneNumberValidation(e.target.value),
-          flag: true
+          phoneNumberValid: true
         }
       });
     } else if (e.target.name === "dateOfBirth") {
       this.setState({
         dateOfBirth: {
           dateOfBirth: e.target.value,
-          dateOfBirthValid: dateOfBirthValidation(e.target.value),
-          flag: true
+          dateOfBirthValid: true
         }
       });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
     }
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  handleSubmit(e) {
+    console.log("handleSubmit called");
+    this.setState({
+      firstName: {
+        firstName: this.state.firstName.firstName,
+        firstNameValid: notEmptyValidation(this.state.firstName.firstName)
+      },
+      lastName: {
+        lastName: this.state.lastName.lastName,
+        lastNameValid: notEmptyValidation(this.state.lastName.lastName)
+      },
+      email: {
+        email: this.state.email.email,
+        emailValid: emailValidation(this.state.email.email)
+      },
+      address: {
+        address: this.state.address.address,
+        addressValid: notEmptyValidation(this.state.address.address)
+      },
+      phoneNumber: {
+        phoneNumber: this.state.phoneNumber.phoneNumber,
+        phoneNumberValid: phoneNumberValidation(
+          this.state.phoneNumber.phoneNumber
+        )
+      },
+      dateOfBirth: {
+        dateOfBirth: this.state.dateOfBirth.dateOfBirth,
+        dateOfBirthValid: dateOfBirthValidation(
+          this.state.dateOfBirth.dateOfBirth
+        )
+      }
+    });
+    if (
+      this.state.firstName.firstNameValid &&
+      this.state.lastName.lastNameValid &&
+      this.state.phoneNumber.phoneNumberValid &&
+      this.state.email.emailValid &&
+      this.state.address.addressValid &&
+      this.state.dateOfBirth.dateOfBirthValid
+    ) {
+      //handle submit
+    }
   }
 
   render() {
@@ -92,7 +128,7 @@ export class CreateUser extends Component {
         handleChange={this.handleChange}
         languageValues={this.state.languageValues}
         subjectOfInterestValues={this.state.subjectOfInterestValues}
-        handleBlur={this.handleBlur}
+        handleSubmit={this.handleSubmit}
       />
     );
   }
