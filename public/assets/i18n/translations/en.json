@@ -1,4 +1,7 @@
 {
+    "infoabouttutor": "Info about tutor",
+    "contacttutor": "Contact tutor",
+    "gototutorpage": "Go to tutor's page",
   "signin": "Sign in",
   "email": "Email",
   "password": "Password",
@@ -29,3 +32,7 @@
   "typelastname": "Insert your first name",
   "typefirstname": "Insert your last name"
 }
+
+    "save": "Save",
+    "categoryname": "Category name",
+    "categorydescription": "Category description"
