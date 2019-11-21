@@ -8,6 +8,7 @@ import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
+import CreateUser from '../../components/CreateUser/CreateUser';
 
 function Layout() {
 	const routing = (
@@ -17,16 +18,17 @@ function Layout() {
 				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
 				<Route path ="/service/:id" component={ShowService}/>
+				<Route path ="/register" component={CreateUser} />
 				<Route component={NotFound} />
 			</Switch>
 		</Router>
 	);
 
-  const useStyles = makeStyles(theme => ({
-    appBarSpacer: theme.mixins.toolbar
-  }));
+	const useStyles = makeStyles(theme => ({
+		appBarSpacer: theme.mixins.toolbar
+	}));
 
-  const classes = useStyles();
+	const classes = useStyles();
 
 	return (
 		<>

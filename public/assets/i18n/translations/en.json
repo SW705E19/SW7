@@ -35,5 +35,7 @@
   "categorydescription": "Category description",
   "typepassword": "Type password",
   "typepasswordagain": "Type password again",
-  "passwordError": "Password must be at least 8 digits, must contains at least one small letter, one big letter and one number"
+  "passwordError": "Password must be at least 8 digits, must contains at least one small letter, one big letter and one number",
+  "math": "Math",
+  "sports": "Sports"
 }
