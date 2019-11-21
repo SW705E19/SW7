@@ -24,7 +24,7 @@ function MultipleSelection(props) {
 	}));
 
 	const subjectOfInterest = [
-		{ label: t('langauges') },
+		{ label: t('languages') },
 		{ label: t('math') },
 		{ label: t('sports') }
 	].map(suggestion => ({
