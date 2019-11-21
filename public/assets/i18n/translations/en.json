@@ -26,5 +26,7 @@
     "contacttutor": "Contact tutor",
     "save": "Save",
     "categoryname": "Category name",
-    "categorydescription": "Category description"
+    "categorydescription": "Category description",
+    "loginnotifysucc": "Logged in successfully!",
+    "loginnotifyfail": "Login failed!"
   }

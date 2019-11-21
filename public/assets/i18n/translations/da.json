@@ -26,5 +26,7 @@
     "contacttutor": "Kontakt underviseren",
     "save": "Gem",
     "categoryname": "Kategorinavn",
-    "categorydescription": "Kategoribeskrivelse"
+    "categorydescription": "Kategoribeskrivelse",
+    "loginnotifysucc": "Du er logged in!",
+    "loginnotifyfail": "Dit login fejlede!"
 }
