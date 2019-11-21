@@ -57,7 +57,6 @@ class Login extends Component {
 		const handleOnClick = () => {
 			authenticationService.login(this.state.username, this.state.password)
 				.catch((res) => {
-					console.log(res);
 					if(res === 'Unauthorized' || res === 'Bad Request'){
 						notifyfailure();
 					}
