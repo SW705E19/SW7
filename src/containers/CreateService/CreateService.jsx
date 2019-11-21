@@ -53,9 +53,14 @@ class CreateService extends React.Component {
 			this.setState({categories: data});
 		});
 		let service = this.state.service;
-		userService.getById(authenticationService.getCurrentUserId()).then(data => {
-			service.tutorInfo.id = data.tutorInfo.id;
-		});
+		// Gets the tutorInfo Id so it can be connected to the service
+		userService.getTutorInfoByUserId(authenticationService.getCurrentUserId())
+			.then(tutorInfo => {
+				service.tutorInfo.id = tutorInfo.id;
+			})
+			.catch(error => {
+				// TODO Error message to user with toastify
+			});
 		this.setState({service: service});
 	}
     
@@ -79,7 +84,7 @@ class CreateService extends React.Component {
 				this.setState({redirect: true});
 			})
 			.catch(() => {
-				// TODO: give error message to user
+				// TODO: give error message to user with toastify
 			});
 	}
 
@@ -107,8 +112,7 @@ class CreateService extends React.Component {
 		const{classes, t} = this.props;
 
 		if(this.state.redirect) {
-			// TODO Make better redirection
-			// Redirect to show service page
+			// TODO Redirect to show service page
 			return <Redirect to="/admin"/>;
 		}
 		else
@@ -145,7 +149,6 @@ class CreateService extends React.Component {
 									variant="outlined"
 								/>
 							</Grid>
-						
 							<Grid item xs={12}>
 								<FormControl  noValidate autoComplete="off" className={classes.formControl}>
 									<InputLabel className={classes.inputLabel} id="categories">{t('categories')}</InputLabel>
@@ -171,26 +174,17 @@ class CreateService extends React.Component {
 										{this.menuItems(this.state.categories)}
 									</Select>
 								</FormControl>
-
 							</Grid>
-								
-	
-							
 							<Grid item xs={12}>
 								<Button type="submit" fullWidth variant="contained" color="inherit" onClick={this.submit}>
 									{t('save')}
 								</Button>
 							</Grid>
-
 						</Grid>
-					</FormControl>
-					
+					</FormControl>	
 				</Container>
-			
-				
 			);
-		}
-									
+		}								
 	}
 }
 
