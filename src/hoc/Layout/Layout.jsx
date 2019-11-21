@@ -34,7 +34,7 @@ function Layout() {
 		<>
 			<Header />
 			<div className={classes.appBarSpacer} />
-			<Container component="main" maxWidth="sm" p={8}>
+			<Container component="main" maxWidth="md">
 				{routing}
 			</Container>
 		</>
