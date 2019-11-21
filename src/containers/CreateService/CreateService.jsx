@@ -75,17 +75,17 @@ class CreateService extends React.Component {
 		this.addChosenCategories();
 		serviceService.create(this.state.service)
 			.then(() => {
-				// TODO Redirect to show service page
+				// TODO: Redirect to show service page
 				this.setState({redirect: true});
 			})
 			.catch(() => {
-				// TODO give error message to user
+				// TODO: give error message to user
 			});
 	}
 
 	addChosenCategories() {
 		let chosenCategories = [];
-		let chosenCategoryNames = this.state.chosenCategoryNames;
+		const chosenCategoryNames = this.state.chosenCategoryNames;
 		let service = this.state.service;
 		chosenCategoryNames.forEach(catName => {
 			chosenCategories.push(this.state.categories.find(x => x.name === catName));
@@ -127,7 +127,7 @@ class CreateService extends React.Component {
 									fullWidth
 									onChange={this.handleOnChange}
 									id="name"
-									label={t('name')}
+									label={t('createservicename')}
 									name="name"
 									autoComplete="name"
 									autoFocus

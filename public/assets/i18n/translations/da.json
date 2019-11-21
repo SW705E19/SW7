@@ -27,7 +27,7 @@
     "save": "Gem",
     "categoryname": "Kategorinavn",
     "categorydescription": "Kategoribeskrivelse",
-    "name": "Navn",
+    "createservicename": "Navn",
     "categories": "Kategorier",
     "createaservice": "Opret en service"
 
