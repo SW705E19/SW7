@@ -181,7 +181,7 @@ function UserForm(props) {
                 label={t("education")}
                 name={"education"}
                 autoComplete={"education"}
-                onChange={props.handleChange}
+                onChange={e => props.handleChange(e)}
                 autoFocus
               />
             </Grid>

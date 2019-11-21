@@ -29,6 +29,7 @@ export class CreateUser extends Component {
 
   handleChange(e) {
     if (e.target.name === "firstname") {
+      let validation = notEmptyValidation(e.target.value);
       this.setState({
         firstName: {
           firstName: e.target.value,
@@ -36,6 +37,7 @@ export class CreateUser extends Component {
         }
       });
     } else if (e.target.name === "email") {
+      let validation = emailValidation(e.target.value); 
       this.setState({
         email: {
           email: e.target.value,
@@ -43,6 +45,7 @@ export class CreateUser extends Component {
         }
       });
     } else if (e.target.name === "lastname") {
+      let validation = notEmptyValidation(e.target.value);
       this.setState({
         lastName: {
           lastName: e.target.value,
@@ -50,6 +53,7 @@ export class CreateUser extends Component {
         }
       });
     } else if (e.target.name === "address") {
+      let validation = notEmptyValidation(e.target.value)
       this.setState({
         address: {
           address: e.target.value,
@@ -57,13 +61,15 @@ export class CreateUser extends Component {
         }
       });
     } else if (e.target.name === "phoneNumber") {
+      let validation = phoneNumberValidation(e.target.value)
       this.setState({
         phoneNumber: {
           phoneNumber: e.target.value,
           phoneNumberValid: true
         }
       });
-    } else if (e.target.name === "dateOfBirth") {
+    } else if (e.target.name === 'dateOfBirth') {
+      let validation = dateOfBirthValidation(e.target.value)
       this.setState({
         dateOfBirth: {
           dateOfBirth: e.target.value,
