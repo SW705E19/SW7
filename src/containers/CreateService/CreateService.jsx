@@ -58,7 +58,7 @@ class CreateService extends React.Component {
 			.then(tutorInfo => {
 				service.tutorInfo.id = tutorInfo.id;
 			})
-			.catch(error => {
+			.catch(() => {
 				// TODO Error message to user with toastify
 			});
 		this.setState({service: service});
