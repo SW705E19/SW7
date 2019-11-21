@@ -13,7 +13,6 @@ function menuItems(suggestions) {
 }
 
 function MultipleSelection(props) {
-	// Tilføjes flere sprog
 	const { t } = props;
 	const languageSuggestions = [
 		{ label: t('danish') },
@@ -24,11 +23,10 @@ function MultipleSelection(props) {
 		label: suggestion.label
 	}));
 
-	// Skal læses fra databasen
 	const subjectOfInterest = [
-		{ label: 'football' },
-		{ label: 'math' },
-		{ label: 'Beating up Rasmus that little bitch' }
+		{ label: t('langauges') },
+		{ label: t('math') },
+		{ label: t('sports') }
 	].map(suggestion => ({
 		value: suggestion.label,
 		label: suggestion.label

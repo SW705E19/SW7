@@ -34,5 +34,7 @@
   "categoryname": "Kategorinavn",
   "categorydescription": "Kategoribeskrivelse",
   "typepassword": "Indtast password",
-  "typepasswordagain": "Indtast password igen"
+  "typepasswordagain": "Indtast password igen",
+  "math": "Matematik",
+  "sports": "Sport"
 }
