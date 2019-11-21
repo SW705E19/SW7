@@ -7,7 +7,7 @@ import {
 	notEmptyValidation,
 	validPassword
 } from '../../helpers/validation-functions';
-import userService from '../../services/user/user.service';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 export class CreateUser extends Component {
 	constructor(props) {
@@ -17,9 +17,10 @@ export class CreateUser extends Component {
 			lastName: { lastName: '', lastNameValid: true },
 			address: { address: '', addressValid: true },
 			email: { email: '', emailValid: true },
-			phoneNumber: { phonenumber: '', phoneNumberValid: true },
+			phoneNumber: { phoneNumber: '', phoneNumberValid: true },
 			dateOfBirth: { dateOfBirth: '', dateOfBirthValid: true },
 			password: { firstPassword: '', secondPassword: '', passwordValid: true },
+			education: '',
 			languageValues: [],
 			subjectOfInterestValues: []
 		};
@@ -156,7 +157,19 @@ export class CreateUser extends Component {
       this.state.address.addressValid &&
       this.state.dateOfBirth.dateOfBirthValid
 		) {
-			// kald apien
+			let user = {firstName : this.state.firstName.firstName,
+				lastName : this.state.lastName.lastName,
+				phoneNumber : this.state.phoneNumber.phoneNumber,
+				email : this.state.email.email,
+				address : this.state.address.address,
+				dateOfBirth : this.state.dateOfBirth.dateOfBirth,
+				education : this.state.education,
+				password : this.state.password.firstPassword,
+				languages : this.state.languageValues,
+				subjectsOfInterest : this.state.subjectOfInterestValues,
+				roles : [],
+				avatarUrl: ''};
+			authenticationService.createUser(user);
 		}
 	}
 

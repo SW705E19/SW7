@@ -6,6 +6,7 @@ const currentUserSubject = new BehaviorSubject(localStorage.getItem('currentUser
 export const authenticationService = {
 	login,
 	logout,
+	createUser,
 	currentUser: currentUserSubject.asObservable(),
 	get currentUserValue () { return currentUserSubject.value; }
 };
@@ -27,6 +28,23 @@ function login(username, password) {
 			return user;
 		});
 }
+
+
+function createUser(user) {
+	const requestOptions = {
+		method: 'POST',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify(user),
+	};
+
+	return fetch(
+		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/auth/register/`,
+		requestOptions
+	).then(handleResponse).then(user => {
+		localStorage.setItem('currentUser', user);
+	});
+}
+
 
 function logout() {
 	// remove user from local storage to log user out
