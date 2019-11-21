@@ -216,7 +216,7 @@ function UserForm(props) {
 						subjectOfInterestValues={props.subjectOfInterestValues}
 					/>
 					<Grid className={classes.buttonWrapper}>
-					{/* TODO: Her skal redirectes til enten vis services eller ens brugerside*/}
+						{/* TODO: Her skal redirectes til enten vis services eller ens brugerside*/}
 						<Button
 							type="submit"
 							fullWidth
