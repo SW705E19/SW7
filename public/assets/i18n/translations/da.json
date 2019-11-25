@@ -27,6 +27,6 @@
     "save": "Gem",
     "categoryname": "Kategorinavn",
     "categorydescription": "Kategoribeskrivelse",
-    "loginnotifysucc": "Du er logged in!",
+    "loginnotifysucc": "Du har logget ind!",
     "loginnotifyfail": "Dit login fejlede!"
 }
