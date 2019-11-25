@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia} from '@material-ui/core';
+import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -27,12 +27,10 @@ function RenderService(props) {
 		},
 		card: {
 			height: '100%',
-
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between'
-			
-		}
+		},
 	}));
 
 	const { t } = useTranslation();
@@ -43,15 +41,11 @@ function RenderService(props) {
 
 	return (
 		<>
-			<Typography component="h2" variant="h5" className={classes.item}>
-				{props.service.name}
-			</Typography>
-			<Grid container className={classes.root} spacing={3}>
+			<Grid container className={classes.root} spacing={2}>
 				<Grid className = {classes.item} item md={12}>
 					<Card justify="center"  className={classes.card}>
 						<CardMedia className={classes.media}
-							image={randomUrl}>
-					
+							image={randomUrl}>					
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -60,13 +54,15 @@ function RenderService(props) {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{'Tutor Name'}
+								{props.tutor.firstName} {props.tutor.lastName}
+								<Divider orientation="horizontal" />
+								<Box m={0.5} />
 								<Grid container justify="center" alignItems="center">
 									<Avatar className={classes.avatar} />
 								</Grid>
-							</Typography>
+							</Typography>						
 							<Typography color="textPrimary">
-								{'Tutor Description'}
+								{props.tutorInfo.description}
 							</Typography>
 						</CardContent>
 						<CardActions>
@@ -86,6 +82,14 @@ function RenderService(props) {
 						<CardContent>
 							<Typography component="h2" variant="h5">
 								{props.service.name}
+								<Divider orientation="horizontal" />
+								<Box fontStyle="italic" >
+									<Typography color="textPrimary" style={{fontSize: 12}}>
+										{'Categories: ' + props.categories.map((category, index) =>  category.name + (index ? '.' : ', ')).join('')}
+									</Typography>
+								</Box>
+								<Divider orientation="horizontal" />
+								<Box m={0.5} />
 								<Typography color="textPrimary">
 									{props.service.description}
 								</Typography>
