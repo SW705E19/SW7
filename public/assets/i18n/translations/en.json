@@ -38,16 +38,9 @@
   "passwordError": "Password must be at least 8 digits, must contains at least one small letter, one big letter and one number",
   "math": "Math",
   "sports": "Sports",
-    "description": "Description",
-    "infoabouttutor": "Info about tutor",
-    "gototutorpage": "Go to tutor's page",
-    "contacttutor": "Contact tutor",
-    "save": "Save",
-    "categoryname": "Category name",
-    "categorydescription": "Category description",
-    "loginnotifysucc": "Logged in successfully!",
-    "loginnotifyfail": "Login failed!"
-    "createservicename": "Name",
-    "categories": "Categories",
-    "createaservice": "Create a service"
-  }
+  "loginnotifysucc": "Logged in successfully!",
+  "loginnotifyfail": "Login failed!",
+  "createservicename": "Name",
+  "categories": "Categories",
+  "createaservice": "Create a service"
+}
