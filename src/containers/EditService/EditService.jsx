@@ -91,8 +91,7 @@ class CreateService extends React.Component {
 	submit() {
 		this.addChosenCategories();
 		serviceService.edit(this.state.service)
-			.then(service => {
-				this.setState({service: service});
+			.then(() => {
 				toast.success(this.props.t('saveservicenotifysuccess'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
@@ -101,7 +100,6 @@ class CreateService extends React.Component {
 				toast.error(this.props.t('saveservicenotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				return;
 			});
 			
 	}
@@ -139,7 +137,7 @@ class CreateService extends React.Component {
 			return (
 				<Container maxWidth="sm">
 					<Typography variant="h4" component="h4" align="center">
-						{t('createaservice')}
+						{t('editservice')}
 					</Typography>
 					<FormControl  noValidate autoComplete="off" className={classes.formControl}>
 						<Grid container spacing={2} direction="row">
@@ -151,7 +149,7 @@ class CreateService extends React.Component {
 									value={this.state.service.name}
 									onChange={this.handleOnChange}
 									id="name"
-									label={t('createservicename')}
+									label={t('editservicename')}
 									name="name"
 									autoComplete="name"
 									autoFocus

@@ -36,5 +36,7 @@
     "getcategoriesnotifyfail": "Could not get categories",
     "getservicenotifyfail": "Could not get service",
     "saveservicenotifysuccess": "Service saved",
-    "saveservicenotifyfail": "Could not save service"
+    "saveservicenotifyfail": "Could not save service",
+    "editservice": "Edit service",
+    "editservicename": "Name"
   }

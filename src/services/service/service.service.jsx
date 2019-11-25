@@ -57,9 +57,5 @@ function edit(service) {
 		headers: authHeader(),
 		body: jsonService};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${service.id}`, requestOptions)
-		.then(handleResponse)
-		.then(service => {
-			return JSON.parse(service);
-		});
-		
+		.then(handleResponse);
 }

@@ -36,5 +36,7 @@
     "getcategoriesnotifyfail": "Kunne ikke hente kategorier",
     "getservicenotifyfail": "Kunne ikke hente service",
     "saveservicenotifysuccess": "Servicen blev gemt",
-    "saveservicenotifyfail": "Servicen kunne ikke gemmes"
+    "saveservicenotifyfail": "Servicen kunne ikke gemmes",
+    "editservice": "Ændr service",
+    "editservicename": "Navn"
 }
