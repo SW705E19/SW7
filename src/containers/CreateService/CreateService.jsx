@@ -42,13 +42,7 @@ class CreateService extends React.Component {
 			chosenCategoryNames: [],
 			redirect: false
 		};
-        
-		this.handleOnChange = this.handleOnChange.bind(this);
-		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
-		this.submit = this.submit.bind(this);
-	}
-    
-	componentDidMount() {
+
 		categoryService.getAll().then(data => {
 			this.setState({categories: data});
 		});
@@ -62,6 +56,14 @@ class CreateService extends React.Component {
 				// TODO Error message to user with toastify
 			});
 		this.setState({service: service});
+        
+		this.handleOnChange = this.handleOnChange.bind(this);
+		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
+		this.submit = this.submit.bind(this);
+	}
+    
+	componentDidMount() {
+
 	}
     
 	handleOnChange(event) {
