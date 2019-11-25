@@ -7,6 +7,7 @@ function RenderShowAllServices(props) {
 			<ServiceList 
 				services={props.services}
 				servicesPerLine={4}
+				onClick={props.onClick}
 			/>
 		</>
 	);

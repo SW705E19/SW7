@@ -1,7 +1,8 @@
 import { authHeader, handleResponse } from '../../helpers';
 
 export const serviceService = {
-	getAll
+	getAll,
+	getRandomImage
 };
 
 function getAll(){
@@ -11,4 +12,9 @@ function getAll(){
 		.then(services => {
 			return JSON.parse(services);
 		});
+}
+
+function getRandomImage(){
+	return fetch('https://picsum.photos/200/500')
+		.then( res => res);
 }
