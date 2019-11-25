@@ -26,5 +26,9 @@
     "contacttutor": "Kontakt underviseren",
     "save": "Gem",
     "categoryname": "Kategorinavn",
-    "categorydescription": "Kategoribeskrivelse"
+    "categorydescription": "Kategoribeskrivelse",
+    "createservicename": "Navn",
+    "categories": "Kategorier",
+    "createaservice": "Opret en service"
+
 }

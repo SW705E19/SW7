@@ -1,5 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { handleResponse } from '../../helpers/handle-response';
+import * as jwt from 'jsonwebtoken';
 
 const currentUserSubject = new BehaviorSubject(localStorage.getItem('currentUser'));
 
@@ -7,7 +8,8 @@ export const authenticationService = {
 	login,
 	logout,
 	currentUser: currentUserSubject.asObservable(),
-	get currentUserValue () { return currentUserSubject.value; }
+	get currentUserValue () { return currentUserSubject.value; },
+	getCurrentUserId
 };
 
 function login(email, password) {
@@ -32,4 +34,9 @@ function logout() {
 	// remove user from local storage to log user out
 	localStorage.removeItem('currentUser');
 	currentUserSubject.next(null);
+}
+
+function getCurrentUserId() {
+	const decodedToken = jwt.decode(localStorage.getItem('currentUser'));
+	return decodedToken.userId;
 }
