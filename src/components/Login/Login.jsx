@@ -3,6 +3,8 @@ import { Container, Button, TextField, Link, Grid, Typography } from '@material-
 import { withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
 import { withStyles } from '@material-ui/core/styles';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = theme => ({
 	paper: {
@@ -37,8 +39,43 @@ class Login extends Component {
 
 	render() {
 		const { classes, t } = this.props;
+		let toastFailId = null;
 
+		const notifysuccess = () => toast.success(t('loginnotifysucc'), {
+			position: toast.POSITION.BOTTOM_RIGHT
+		});
 
+		const notifyfailure = () => {
+			if(!toast.isActive(toastFailId)) {
+				toastFailId = toast.error(t('loginnotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			}
+		};
+
+		//TODO: Add redirect to all services
+		const handleOnClick = () => {
+			authenticationService.login(this.state.username, this.state.password)
+				.catch((res) => {
+					if(res === 'Unauthorized' || res === 'Bad Request'){
+						notifyfailure();
+					}
+				})
+				.then (() => {
+					if (localStorage.length !== 0 ) {
+						notifysuccess();
+					}
+				});
+		};
+
+		const handleEnterPress = (event) => {
+			var code = event.keyCode ||event.which;
+			if (code === 13) {
+				handleOnClick();
+			}	
+		};
+
+		//TODO: Add redirect to button and the two links. Button goes to all services through handleOnClick. Signup link to craete user, forgotten password to somewhere.
 		return (
 			<Container maxWidth="sm">
 				<div className={classes.paper}>
@@ -59,6 +96,7 @@ class Login extends Component {
 							onChange={this.handleUsernameChange}
 							value={this.state.username}
 							autoFocus
+							onKeyPress={handleEnterPress.bind(this)}
 						/>
 						<TextField
 							variant="outlined"
@@ -72,6 +110,7 @@ class Login extends Component {
 							onChange={this.handlePasswordChange}
 							value={this.state.password}
 							autoComplete="current-password"
+							onKeyPress={handleEnterPress.bind(this)}
 						/>
 						<Button
 							type="button"
@@ -80,7 +119,7 @@ class Login extends Component {
 							color="primary"
 							className="login-button"
 							id="login"
-							onClick={() => authenticationService.login(this.state.username, this.state.password)}
+							onClick={handleOnClick}
 						>
 							{t('signin')}
 						</Button>
