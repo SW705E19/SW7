@@ -9,14 +9,17 @@ export const userService = {
 
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/`, requestOptions).then(handleResponse);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/`, requestOptions)
+		.then(handleResponse);
 }
 
 function getById(id) {
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`, requestOptions).then(handleResponse).then(data => {
-		return JSON.parse(data);
-	});
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`, requestOptions)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
 }
 
 function getTutorInfoByUserId(userId) {

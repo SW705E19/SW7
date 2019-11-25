@@ -80,7 +80,7 @@ class CreateService extends React.Component {
 		this.addChosenCategories();
 		serviceService.create(this.state.service)
 			.then(() => {
-				// TODO: Redirect to show service page
+				// TODO: Give succes message with toastify
 				this.setState({redirect: true});
 			})
 			.catch(() => {
