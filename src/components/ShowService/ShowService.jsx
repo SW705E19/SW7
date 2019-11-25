@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import RenderService from '../ShowService/RenderService/RenderService';
 import { serviceService } from '../../services/service/service.service';
+import { Redirect } from 'react-router';
 
 class ShowService extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			service: [],
+			service: {},
 			categories: [],
-			tutor: [],
-			tutorInfo: []
+			tutor: {},
+			tutorInfo: {},
+			redirectToTutor: false
 		};
+		this.setRedirect = this.setRedirect.bind(this);
+	}
+
+	
+	setRedirect () {
+		this.setState({
+			redirectToTutor: true
+		});
 	}
 
 	componentDidMount() {
@@ -25,7 +35,11 @@ class ShowService extends Component {
 			.catch(console.log);
 	}
 	render() {
-		return (<RenderService service={this.state.service} tutor={this.state.tutor} tutorInfo={this.state.tutorInfo} categories={this.state.categories} />);
+		if(this.state.redirectToTutor) {
+			return (<Redirect to={'/user/' + this.state.tutorInfo.id} />);
+		}
+		return (<RenderService service={this.state.service} tutor={this.state.tutor} tutorInfo={this.state.tutorInfo} 
+			categories={this.state.categories} redirectToTutor={this.state.redirectToTutor} setRedirect={this.setRedirect}/>);
 	}
 }
 

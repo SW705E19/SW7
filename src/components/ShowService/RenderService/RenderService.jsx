@@ -71,6 +71,7 @@ function RenderService(props) {
 								variant="contained"
 								color="primary"
 								fullWidth
+								onClick={() => props.setRedirect()}
 							>
 								{t('gototutorpage')}
 							</Button>
