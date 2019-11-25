@@ -3,23 +3,30 @@ import { handleResponse } from '../../helpers/handle-response';
 
 export const userService = {
 	getAll,
-	getById
+	getById,
+	getTutorInfoByUserId
 };
 
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(
-		`${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/users/`,
-		requestOptions
-	).then(handleResponse);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/`, requestOptions)
+		.then(handleResponse);
 }
 
 function getById(id) {
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(
-		`${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/users/${id}`,
-		requestOptions
-	).then(handleResponse);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`, requestOptions)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
 }
 
-export default userService;
+function getTutorInfoByUserId(userId) {
+	const requestOptions = { method: 'GET', headers: authHeader() };
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/tutorInfo/${userId}`, requestOptions)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
+}

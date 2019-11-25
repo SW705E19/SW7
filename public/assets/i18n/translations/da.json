@@ -37,4 +37,15 @@
   "typepasswordagain": "Indtast password igen",
   "math": "Matematik",
   "sports": "Sport"
+    "infoabouttutor": "Information om underviser",
+    "gototutorpage": "Gå til underviserens side",
+    "contacttutor": "Kontakt underviseren",
+    "save": "Gem",
+    "categoryname": "Kategorinavn",
+    "categorydescription": "Kategoribeskrivelse",
+    "loginnotifysucc": "Du har logget ind!",
+    "loginnotifyfail": "Dit login fejlede!"
+    "createservicename": "Navn",
+    "categories": "Kategorier",
+    "createaservice": "Opret en service"
 }

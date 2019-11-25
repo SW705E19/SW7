@@ -9,6 +9,7 @@ import ShowUser from '../../components/ShowUser/ShowUser';
 import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
 import CreateUser from '../../components/CreateUser/CreateUser';
+import CreateService from '../../containers/CreateService/CreateService';
 
 function Layout() {
 	const routing = (
@@ -17,6 +18,7 @@ function Layout() {
 				<Route path="/login" component={Login} />
 				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
+				<Route path="/service/create" component={CreateService} />
 				<Route path ="/service/:id" component={ShowService}/>
 				<Route path ="/register" component={CreateUser} />
 				<Route component={NotFound} />
