@@ -28,7 +28,7 @@
     "categoryname": "Category name",
     "categorydescription": "Category description",
     "loginnotifysucc": "Logged in successfully!",
-    "loginnotifyfail": "Login failed!"
+    "loginnotifyfail": "Login failed!",
     "createservicename": "Name",
     "categories": "Categories",
     "createaservice": "Create a service"

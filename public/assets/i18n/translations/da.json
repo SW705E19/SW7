@@ -28,7 +28,7 @@
     "categoryname": "Kategorinavn",
     "categorydescription": "Kategoribeskrivelse",
     "loginnotifysucc": "Du har logget ind!",
-    "loginnotifyfail": "Dit login fejlede!"
+    "loginnotifyfail": "Dit login fejlede!",
     "createservicename": "Navn",
     "categories": "Kategorier",
     "createaservice": "Opret en service"
