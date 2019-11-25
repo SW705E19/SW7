@@ -7,6 +7,7 @@ import { serviceService } from '../../services/service/service.service';
 import { authenticationService } from '../../services/authentication/authentication.service';
 import { userService } from '../../services/user/user.service';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 
 const styles = () => ({
 	formControl: {
@@ -40,30 +41,41 @@ class CreateService extends React.Component {
 			},
 			categories: [],
 			chosenCategoryNames: [],
-			redirect: false
+			redirectSuccess: false,
+			redirectFail: false
 		};
-
-		categoryService.getAll().then(data => {
-			this.setState({categories: data});
-		});
-		let service = this.state.service;
-		// Gets the tutorInfo Id so it can be connected to the service
-		userService.getTutorInfoByUserId(authenticationService.getCurrentUserId())
-			.then(tutorInfo => {
-				service.tutorInfo.id = tutorInfo.id;
-			})
-			.catch(() => {
-				// TODO Error message to user with toastify
-			});
-		this.setState({service: service});
         
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
 		this.submit = this.submit.bind(this);
 	}
-    
-	componentDidMount() {
 
+	componentDidMount() {
+		categoryService.getAll()
+			.catch(() => {
+				toast.error(this.props.t('getcategoriesnotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				return;
+			})
+			.then(data => {
+				this.setState({categories: data});
+			});
+		let service = this.state.service;
+
+		// Gets the tutorInfo Id so it can be connected to the service
+		userService.getTutorInfoByUserId(authenticationService.getCurrentUserId())
+			.catch(() => {
+				toast.error(this.props.t('gettutorinfonotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				return;
+			})
+			.then(tutorInfo => {
+				service.tutorInfo.id = tutorInfo.id;
+			});
+		
+		this.setState({service: service});
 	}
     
 	handleOnChange(event) {
@@ -81,13 +93,18 @@ class CreateService extends React.Component {
 	submit() {
 		this.addChosenCategories();
 		serviceService.create(this.state.service)
-			.then(() => {
-				// TODO: Give succes message with toastify
-				this.setState({redirect: true});
-			})
-			.catch(() => {
-				// TODO: give error message to user with toastify
+			.then(service => {
+				this.setState({service: service});
+				toast.success(this.props.t('saveservicenotifysuccess'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({redirectSuccess: true});
+			}, () => {
+				toast.error(this.props.t('saveservicenotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
 			});
+			
 	}
 
 	addChosenCategories() {
@@ -113,9 +130,11 @@ class CreateService extends React.Component {
 	render() {
 		const{classes, t} = this.props;
 
-		if(this.state.redirect) {
-			// TODO Redirect to show service page
-			return <Redirect to="/admin"/>;
+		if(this.state.redirectSuccess) {
+			return <Redirect to={'/service/' + this.state.service.id} />;
+		}
+		else if(this.state.redirectFail) {
+			return <Redirect to={'/login/'} />;
 		}
 		else
 		{	

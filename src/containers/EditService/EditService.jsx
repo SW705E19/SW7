@@ -4,9 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input} from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 import { serviceService } from '../../services/service/service.service';
-import { authenticationService } from '../../services/authentication/authentication.service';
-import { userService } from '../../services/user/user.service';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 
 const styles = () => ({
 	formControl: {
@@ -40,16 +39,41 @@ class CreateService extends React.Component {
 			},
 			categories: [],
 			chosenCategoryNames: [],
-			redirect: false
+			redirectSuccess: false,
+			redirectFail: false,
 		};
-        
+		
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
 		this.submit = this.submit.bind(this);
 	}
     
 	componentDidMount() {
-
+		categoryService.getAll()
+			.then(data => {
+				this.setState({categories: data});
+			}, () => {
+				toast.error(this.props.t('getcategoriesnotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({redirectFail: true});
+			});
+            
+		// Gets the tutorInfo Id so it can be connected to the service
+		serviceService.getDetailedById(this.props.match.params.id)
+			.then(service => {
+				this.setState({service: service});
+				let chosenCategoryNames = [];
+				this.state.service.categories.forEach(category => {
+					chosenCategoryNames.push(category.name);
+				});
+				this.setState({chosenCategoryNames: chosenCategoryNames});
+			}, () => {
+				toast.error(this.props.t('getservicenotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({redirectFail: true});
+			});
 	}
     
 	handleOnChange(event) {
@@ -66,14 +90,20 @@ class CreateService extends React.Component {
 
 	submit() {
 		this.addChosenCategories();
-		serviceService.create(this.state.service)
-			.then(() => {
-				// TODO: Give succes message with toastify
-				this.setState({redirect: true});
-			})
-			.catch(() => {
-				// TODO: give error message to user with toastify
+		serviceService.edit(this.state.service)
+			.then(service => {
+				this.setState({service: service});
+				toast.success(this.props.t('saveservicenotifysuccess'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({redirectSuccess: true});
+			}, () => {
+				toast.error(this.props.t('saveservicenotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				return;
 			});
+			
 	}
 
 	addChosenCategories() {
@@ -94,14 +124,15 @@ class CreateService extends React.Component {
 			</MenuItem>
 		));
 	}
-
     
 	render() {
 		const{classes, t} = this.props;
 
-		if(this.state.redirect) {
-			// TODO Redirect to show service page
-			return <Redirect to="/admin"/>;
+		if(this.state.redirectSuccess) {
+			return <Redirect to={'/service/' + this.state.service.id}/>;
+		}
+		else if(this.state.redirectFail) {
+			return <Redirect to={'/login/'}/>;
 		}
 		else
 		{	
@@ -117,6 +148,7 @@ class CreateService extends React.Component {
 									variant="outlined"
 									margin="normal"
 									fullWidth
+									value={this.state.service.name}
 									onChange={this.handleOnChange}
 									id="name"
 									label={t('createservicename')}
@@ -130,6 +162,7 @@ class CreateService extends React.Component {
 									id="outlined-textarea"
 									label={t('description')}
 									name={'description'}
+									value={this.state.service.description}
 									multiline
 									onChange={this.handleOnChange}
 									fullWidth

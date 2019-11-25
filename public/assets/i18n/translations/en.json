@@ -31,5 +31,10 @@
     "loginnotifyfail": "Login failed!",
     "createservicename": "Name",
     "categories": "Categories",
-    "createaservice": "Create a service"
+    "createaservice": "Create a service",
+    "gettutorinfonotifyfail": "Could not get tutor info",
+    "getcategoriesnotifyfail": "Could not get categories",
+    "getservicenotifyfail": "Could not get service",
+    "saveservicenotifysuccess": "Service saved",
+    "saveservicenotifyfail": "Could not save service"
   }
