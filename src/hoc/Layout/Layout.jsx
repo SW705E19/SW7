@@ -8,6 +8,7 @@ import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
+import CreateService from '../../containers/CreateService/CreateService';
 
 function Layout() {
 	const routing = (
@@ -16,6 +17,7 @@ function Layout() {
 				<Route path="/login" component={Login} />
 				<Route path="/admin" component={AdminDashboard} />
 				<Route path="/user/:id" component={ShowUser} />
+				<Route path="/service/create" component={CreateService} />
 				<Route path ="/service/:id" component={ShowService}/>
 				<Route component={NotFound} />
 			</Switch>
@@ -32,7 +34,7 @@ function Layout() {
 		<>
 			<Header />
 			<div className={classes.appBarSpacer} />
-			<Container component="main" maxWidth="md" p={8}>
+			<Container component="main" maxWidth="md">
 				{routing}
 			</Container>
 		</>
