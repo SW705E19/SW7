@@ -42,12 +42,12 @@
   "loginnotifyfail": "Dit login fejlede!",
   "createservicename": "Navn",
   "categories": "Kategorier",
-  "createaservice": "Opret en service"
-    "gettutorinfonotifyfail": "Kunne ikke hente information om tutor",
-    "getcategoriesnotifyfail": "Kunne ikke hente kategorier",
-    "getservicenotifyfail": "Kunne ikke hente service",
-    "saveservicenotifysuccess": "Servicen blev gemt",
-    "saveservicenotifyfail": "Servicen kunne ikke gemmes",
-    "editservice": "Ændr service",
-    "editservicename": "Navn"
+  "createaservice": "Opret en service",
+  "gettutorinfonotifyfail": "Kunne ikke hente information om tutor",
+  "getcategoriesnotifyfail": "Kunne ikke hente kategorier",
+  "getservicenotifyfail": "Kunne ikke hente service",
+  "saveservicenotifysuccess": "Servicen blev gemt",
+  "saveservicenotifyfail": "Servicen kunne ikke gemmes",
+  "editservice": "Ændr service",
+  "editservicename": "Navn"
 }
