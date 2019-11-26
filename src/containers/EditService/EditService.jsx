@@ -24,7 +24,7 @@ const MenuProps = {
 	},
 };
 
-class CreateService extends React.Component {
+class EditService extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -207,4 +207,4 @@ class CreateService extends React.Component {
 	}
 }
 
-export default withTranslation()(withStyles(styles)(CreateService));
+export default withTranslation()(withStyles(styles)(EditService));
