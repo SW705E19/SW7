@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RenderService from '../ShowService/RenderService/RenderService';
 import { serviceService } from '../../services/service/service.service';
 import { Redirect } from 'react-router';
+import { toast } from 'react-toastify';
 
 class ShowService extends Component {
 	constructor(props) {
@@ -26,14 +27,19 @@ class ShowService extends Component {
 	componentDidMount() {
 		fetch(serviceService.getDetailedById(this.props.match.params.id)
 			.then((data) => {
-				this.setState({ service: data });
-				this.setState({categories: data.categories});
-				this.setState({tutor: data.tutorInfo.user});
-				this.setState({tutorInfo: data.tutorInfo});
-				this.setState({categories: data.categories});
+				this.setState({ service: data,
+					categories: data.categories,
+					tutor: data.tutorInfo.user,
+					tutorInfo: data.tutorInfo,
+				});
 			}))
-			.catch(console.log);
+			.catch(() => {
+				toast.error(this.props.t('showservicefail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			});
 	}
+
 	render() {
 		if(this.state.redirectToTutor) {
 			return (<Redirect to={'/user/' + this.state.tutorInfo.id} />);

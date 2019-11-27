@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RenderUser from '../ShowUser/RenderUser/RenderUser';
 import { userService } from '../../services/user/user.service';
+import { toast } from 'react-toastify';
 
 class ShowUser extends Component {
 	constructor(props) {
@@ -15,7 +16,11 @@ class ShowUser extends Component {
 			.then((data) => {
 				this.setState({ user: data });
 			}))
-			.catch(console.log);
+			.catch(() => {
+				toast.error(this.props.t('showuserfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			});
 	}
 	render() {
 		return (<RenderUser user={this.state.user} />);
