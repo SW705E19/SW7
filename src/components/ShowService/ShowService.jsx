@@ -8,10 +8,7 @@ class ShowService extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			service: {},
-			categories: [],
-			tutor: {},
-			tutorInfo: {},
+			service: null,
 			redirectToTutor: false
 		};
 		this.setRedirect = this.setRedirect.bind(this);
@@ -27,10 +24,8 @@ class ShowService extends Component {
 	componentDidMount() {
 		fetch(serviceService.getDetailedById(this.props.match.params.id)
 			.then((data) => {
-				this.setState({ service: data,
-					categories: data.categories,
-					tutor: data.tutorInfo.user,
-					tutorInfo: data.tutorInfo,
+				this.setState({ 
+					service: data
 				});
 			}))
 			.catch(() => {
@@ -42,10 +37,11 @@ class ShowService extends Component {
 
 	render() {
 		if(this.state.redirectToTutor) {
-			return (<Redirect to={'/user/' + this.state.tutorInfo.id} />);
+			return (<Redirect to={'/user/' + this.state.service.tutorInfo.id} />);
 		}
-		return (<RenderService service={this.state.service} tutor={this.state.tutor} tutorInfo={this.state.tutorInfo} 
-			categories={this.state.categories} redirectToTutor={this.state.redirectToTutor} setRedirect={this.setRedirect}/>);
+		return this.state.service ? 
+			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor} setRedirect={this.setRedirect}/> :
+			null; 
 	}
 }
 

@@ -54,7 +54,7 @@ function RenderService(props) {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{props.tutor.firstName} {props.tutor.lastName}
+								{props.service.tutorInfo.user.firstName} {props.service.tutorInfo.user.lastName}
 								<Divider orientation="horizontal" />
 								<Box m={0.5} />
 								<Grid container justify="center" alignItems="center">
@@ -62,7 +62,7 @@ function RenderService(props) {
 								</Grid>
 							</Typography>						
 							<Typography color="textPrimary">
-								{props.tutorInfo.description}
+								{props.service.tutorInfo.description}
 							</Typography>
 						</CardContent>
 						<CardActions>
@@ -86,7 +86,7 @@ function RenderService(props) {
 								<Divider orientation="horizontal" />
 								<Box fontStyle="italic" >
 									<Typography color="textPrimary" style={{fontSize: 12}}>
-										{'Categories: ' + props.categories.map((category, index) =>  category.name + (index ? '.' : ', ')).join('')}
+										{'Categories: ' + props.service.categories.map((category, index) =>  category.name + (index ? '.' : ', ')).join('')}
 									</Typography>
 								</Box>
 								<Divider orientation="horizontal" />
