@@ -42,5 +42,10 @@
   "loginnotifyfail": "Dit login fejlede!",
   "createservicename": "Navn",
   "categories": "Kategorier",
-  "createaservice": "Opret en service"
+  "createaservice": "Opret en service",
+  "deleteuser": "Slet bruger",
+  "edituser": "Rediger bruger",
+  "cancel": "Annuller",
+  "deleteuserwarning": "Er du sikker på at du vil slette din bruger?",
+  "deleteuserdialog": "Hvis du sletter din bruger vil du ikke være i stand til at få den tilbage"
 }

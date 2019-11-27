@@ -42,5 +42,10 @@
   "loginnotifyfail": "Login failed!",
   "createservicename": "Name",
   "categories": "Categories",
-  "createaservice": "Create a service"
+  "createaservice": "Create a service",
+  "deleteuser": "Delete user",
+  "edituser": "Edit user",
+  "cancel": "Cancel",
+  "deleteuserwarning": "Are you sure that you want to delete your user?",
+  "deleteuserdialog": "If you choose to delete your account, you won't be able to get it back"
 }
