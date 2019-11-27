@@ -12,27 +12,28 @@ configure({adapter: new Adapter()});
 describe('<RenderService />', () => {
 	let wrapper;
 	let testinstance;
-	let tutor = {
-		firstName: 'Per',
-		lastName: 'Hansen',
-	};
-	let tutorInfo = {
-		description: 'I am a tutor',
-	};
-	let service = {
+
+	const service = {
 		name: 'Service name',
 		description: 'And this is my service',
+		tutorInfo: {
+			description: 'I am a tutor',
+			user: {
+				firstName: 'Per',
+				lastName: 'Hansen',
+			},
+		},
+		categories: [
+			{
+				name: 'Category1',
+			}, {
+				name: 'Category2',
+			}
+		],
 	};
-	let category = [
-		{
-			name: 'Category1',
-		}, {
-			name: 'Category2',
-		}
-	];
 
 	beforeEach(() => {
-		wrapper = renderer.create(<RenderService service={service} tutor={tutor} tutorInfo={tutorInfo} categories ={category}/>);
+		wrapper = renderer.create(<RenderService service={service}/>);
 		testinstance  = wrapper.root;
 	});
 
