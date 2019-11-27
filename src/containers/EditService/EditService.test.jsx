@@ -47,14 +47,20 @@ describe('<EditService />', () => {
 
 	const props = {
 		match: {
-            
+			params: {
+				id: 1
+			}
 		}
 	};
 
 	const chosenCategoryNames = ['category1', 'category2'];
 
+	function componentDidMount (){
+		return;
+	}
+
 	beforeEach(() => {
-		wrapper = renderer.create(<EditService service={service} categories={categories} chosenCategoryNames={chosenCategoryNames}/>);
+		wrapper = renderer.create(<EditService service={service} categories={categories} chosenCategoryNames={chosenCategoryNames} props={props} componentDidMount={componentDidMount}/>);
 		testinstance  = wrapper.root;
 	});
 
