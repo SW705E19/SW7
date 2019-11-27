@@ -6,7 +6,8 @@ const styles = {
 		width: '100%',
 	},
 	card: {
-		height: '20em'
+		height: '20em',
+		cursor:'pointer'
 	},
 	CardContent: {
 		height: '20%',
@@ -30,26 +31,24 @@ function ServiceList(props,) {
 								className={classes.card}
 								onClick={() => props.onClick(service.id)}
 							>
-								<CardActionArea>
-									<CardMedia 
-										className={classes.media}
-										component='img'
-										image='https://picsum.photos/id/840/200/500'
-									/>
-									<CardContent
-										className={classes.cardContent} 
+								<CardMedia 
+									className={classes.media}
+									component='img'
+									image='https://picsum.photos/id/840/200/500'
+								/>
+								<CardContent
+									className={classes.cardContent} 
+								>
+									<Typography gutterBottom variant='h5' component='h2'>
+										{service.name}
+									</Typography>
+									<Typography
+										variant="body2"
+										component="p"
 									>
-										<Typography gutterBottom variant='h5' component='h2'>
-											{service.name}
-										</Typography>
-										<Typography
-											variant="body2"
-											component="p"
-										>
-											{service.tutorInfo.user.firstName + ' ' + service.tutorInfo.user.lastName}
-										</Typography>
-									</CardContent>
-								</CardActionArea>
+										{service.tutorInfo.user.firstName + ' ' + service.tutorInfo.user.lastName}
+									</Typography>
+								</CardContent>
 
 							</Card>
 						</Grid>;

@@ -7,7 +7,6 @@ export const serviceService = {
 	getRandomImage
 };
 
-
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader()};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions)
@@ -21,7 +20,6 @@ function getRandomImage(){
 	return fetch('https://picsum.photos/200/500')
 		.then( res => res);
 }
-		
 
 function getById(serviceId) {
 	const requestOptions = { method: 'GET', headers: authHeader() };
@@ -39,5 +37,4 @@ function create(service) {
 		body: service};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/`, requestOptions)
 		.then(handleResponse);
-		
 }
