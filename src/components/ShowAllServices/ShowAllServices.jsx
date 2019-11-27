@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {serviceService as serviceAPI} from '../../services/service/service.service';
-import RenderShowAllServices from './RenderAllServices/RenderShowAllServices';
+import ServiceList from '../../containers/ServiceList/ServiceList';
 import {Redirect} from 'react-router';
 
 class ShowAllServices extends Component {
@@ -42,7 +42,11 @@ class ShowAllServices extends Component {
 		if(this.state.redirect){
 			return (<Redirect to={`/service/${this.state.redirectTo}`} />);
 		}
-		return <RenderShowAllServices services={this.state.services} onClick={this.redirect}  />;
+		
+		return this.state.services ? 
+			<ServiceList services={this.state.services} onClick={this.redirect} servicesPerLine={4} /> :
+			null;
+	
 	}
 }
 
