@@ -5,6 +5,7 @@ export const serviceService = {
 	getAll,
 	getById,
 	create,
+	getDetailedById
 };
 
 
@@ -21,6 +22,15 @@ function getAll() {
 function getById(serviceId) {
 	const requestOptions = { method: 'GET', headers: authHeader() };
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${serviceId}`, requestOptions)
+		.then(handleResponse)
+		.then(service => {
+			return JSON.parse(service);
+		});
+}
+
+function getDetailedById(serviceId) {
+	const requestOptions = { method: 'GET', headers: authHeader() };
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/detail/${serviceId}`, requestOptions)
 		.then(handleResponse)
 		.then(service => {
 			return JSON.parse(service);

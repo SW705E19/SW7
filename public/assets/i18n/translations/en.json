@@ -42,5 +42,7 @@
   "loginnotifyfail": "Login failed!",
   "createservicename": "Name",
   "categories": "Categories",
-  "createaservice": "Create a service"
+  "createaservice": "Create a service",
+  "showservicefail": "Could not find the service!",
+  "showuserfail": "Could not find the user!"
 }

@@ -42,5 +42,7 @@
   "loginnotifyfail": "Dit login fejlede!",
   "createservicename": "Navn",
   "categories": "Kategorier",
-  "createaservice": "Opret en service"
+  "createaservice": "Opret en service",
+  "showservicefail": "Kunne ikke finde dette service!",
+  "showuserfail": "Kunne ikke finde denne bruger!"
 }
