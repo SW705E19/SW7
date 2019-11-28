@@ -111,9 +111,6 @@ function Header(props) {
 						<img src={logo_transparent} alt="" height="45" width="45" />
 					</IconButton>
 
-
-
-
 					<Select
 						onChange={props.changeLanguage}
 						value="default"
