@@ -1,11 +1,10 @@
 import React from 'react';
-import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia} from '@material-ui/core';
+import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-//change to RenderService(props) when getting data from backend
-function RenderService() {
+function RenderService(props) {
 	const useStyles = makeStyles(theme => ({
 		root: {
 			padding: theme.spacing(3, 2),
@@ -28,27 +27,25 @@ function RenderService() {
 		},
 		card: {
 			height: '100%',
-
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between'
-			
-		}
+		},
 	}));
 
 	const { t } = useTranslation();
 	const classes = useStyles();
+
+	const random = 1 + (Math.random() * (200 - 1));
+	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
+
 	return (
 		<>
-			<Typography component="h2" variant="h5" className={classes.item}>
-				{'The Service Name'}
-			</Typography>
-			<Grid container className={classes.root} spacing={3}>
+			<Grid container className={classes.root} spacing={2}>
 				<Grid className = {classes.item} item md={12}>
-					<Card justify="center" alignItems="center" className={classes.card}>
+					<Card justify="center"  className={classes.card}>
 						<CardMedia className={classes.media}
-							image="">
-					
+							image={randomUrl}>					
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -57,13 +54,15 @@ function RenderService() {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{'Tutor Name'}
+								{props.service.tutorInfo.user.firstName} {props.service.tutorInfo.user.lastName}
+								<Divider orientation="horizontal" />
+								<Box m={0.5} />
 								<Grid container justify="center" alignItems="center">
 									<Avatar className={classes.avatar} />
 								</Grid>
 							</Typography>
-							<Typography variant="subtitle1" color="textPrimary">
-								{'Tutor Description'}
+							<Typography color="textPrimary">
+								{props.service.tutorInfo.description}
 							</Typography>
 						</CardContent>
 						<CardActions>
@@ -72,6 +71,7 @@ function RenderService() {
 								variant="contained"
 								color="primary"
 								fullWidth
+								onClick={() => props.setRedirect()}
 							>
 								{t('gototutorpage')}
 							</Button>
@@ -82,9 +82,17 @@ function RenderService() {
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
-								{'Service Name'}
-								<Typography variant="subtitle1" color="textPrimary">
-									{'Service Description'}
+								{props.service.name}
+								<Divider orientation="horizontal" />
+								<Box fontStyle="italic" >
+									<Typography color="textPrimary" style={{fontSize: 12}}>
+										{'Categories: ' + props.service.categories.map((category, index) =>  category.name + (index ? '.' : ', ')).join('')}
+									</Typography>
+								</Box>
+								<Divider orientation="horizontal" />
+								<Box m={0.5} />
+								<Typography color="textPrimary">
+									{props.service.description}
 								</Typography>
 							</Typography>
 						</CardContent>
