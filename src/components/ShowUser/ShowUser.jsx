@@ -12,10 +12,10 @@ class ShowUser extends Component {
 	}
 
 	componentDidMount() {
-		fetch(userService.getById(this.props.match.params.id)
+		userService.getById(this.props.match.params.id)
 			.then((data) => {
 				this.setState({ user: data });
-			}))
+			})
 			.catch(() => {
 				toast.error(this.props.t('showuserfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT

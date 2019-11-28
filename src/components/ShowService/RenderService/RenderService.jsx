@@ -60,7 +60,7 @@ function RenderService(props) {
 								<Grid container justify="center" alignItems="center">
 									<Avatar className={classes.avatar} />
 								</Grid>
-							</Typography>						
+							</Typography>
 							<Typography color="textPrimary">
 								{props.service.tutorInfo.description}
 							</Typography>

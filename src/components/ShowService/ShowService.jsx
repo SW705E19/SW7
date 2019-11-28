@@ -22,12 +22,12 @@ class ShowService extends Component {
 	}
 
 	componentDidMount() {
-		fetch(serviceService.getDetailedById(this.props.match.params.id)
+		serviceService.getDetailedById(this.props.match.params.id)
 			.then((data) => {
 				this.setState({ 
 					service: data
 				});
-			}))
+			})
 			.catch(() => {
 				toast.error(this.props.t('showservicefail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
