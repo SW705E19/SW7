@@ -1,11 +1,13 @@
 import React from 'react';
 import { categoryService } from '../../services/category/category.service';
 import { withStyles } from '@material-ui/core/styles';
-import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input} from '@material-ui/core';
+import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogActions} from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 import { serviceService } from '../../services/service/service.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 const styles = () => ({
 	formControl: {
@@ -29,24 +31,38 @@ class EditService extends React.Component {
 		super(props);
 
 		this.state = {
-			service: {
-				description: '',
-				name: '',
-				tutorInfo: {
-					id: ''
-				},
-				categories: []
-			},
+			service: null,
 			categories: [],
 			chosenCategoryNames: [],
 			redirectSuccess: false,
 			redirectFail: false,
+			redirectOwnUser: false,
+			openAlert: false
+
 		};
 		
 		this.handleOnChange = this.handleOnChange.bind(this);
 		this.handleOnChangeCategories = this.handleOnChangeCategories.bind(this);
 		this.submit = this.submit.bind(this);
+		this.deleteService = this.deleteService.bind(this);
+		this.handleClickCancel = this.handleClickCancel.bind(this);
+		this.handleClickDelete = this.handleClickDelete.bind(this);
+		this.handleClickOpen = this.handleClickOpen.bind(this);
 	}
+
+	handleClickOpen() {
+		this.setState({openAlert: true});
+	}
+
+	handleClickCancel(){
+		this.setState({openAlert: false});
+	}
+
+	handleClickDelete() {
+		this.setState({openAlert: false});
+		this.deleteService();
+	}
+
     
 	componentDidMount() {
 		categoryService.getAll()
@@ -68,6 +84,14 @@ class EditService extends React.Component {
 					chosenCategoryNames.push(category.name);
 				});
 				this.setState({chosenCategoryNames: chosenCategoryNames});
+
+				// Checks if the creator of the service is the user that is logged in
+				if(authenticationService.getCurrentUserId() !== this.state.service.tutorInfo.user.id) {
+					toast.error(this.props.t('unauthorized'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+					this.setState({redirectFail: true});
+				}
 			}, () => {
 				toast.error(this.props.t('getservicenotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
@@ -101,7 +125,20 @@ class EditService extends React.Component {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
 			});
-			
+	}
+
+	deleteService() {
+		serviceService.deleteService(this.props.match.params.id)
+			.then(() => {
+				toast.success(this.props.t('deleteservicenotifysuccess'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({redirectOwnUser: true});
+			}, () => {
+				toast.error(this.props.t('deleteservicenotifyfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			});
 	}
 
 	addChosenCategories() {
@@ -132,9 +169,12 @@ class EditService extends React.Component {
 		else if(this.state.redirectFail) {
 			return <Redirect to={'/login/'}/>;
 		}
+		else if(this.state.redirectOwnUser) {
+			return <Redirect to={'/user/' + authenticationService.getCurrentUserId()}/>;
+		}
 		else
 		{	
-			return (
+			return this.state.service ? (
 				<Container maxWidth="sm">
 					<Typography variant="h4" component="h4" align="center">
 						{t('editservice')}
@@ -195,14 +235,38 @@ class EditService extends React.Component {
 								</FormControl>
 							</Grid>
 							<Grid item xs={12}>
-								<Button type="submit" fullWidth variant="contained" color="inherit" onClick={this.submit}>
+								<Button type="submit" fullWidth variant="contained" color="primary" onClick={this.submit}>
 									{t('save')}
 								</Button>
 							</Grid>
+							<Grid item xs={12}>
+								<Button type="button" fullWidth variant="contained" color="secondary" onClick={this.handleClickOpen}>
+									{t('delete')}
+								</Button>
+							</Grid>
+							<Grid item xs={12}>
+								<Dialog
+									open={this.state.openAlert}
+									onClose={this.handleClickCancel}
+									aria-labelledby="alert-dialog-title"
+									aria-describedby="alert-dialog-description"
+								>
+									<DialogTitle id="alert-dialog-title">{t('deleteservicealerttitle')}</DialogTitle>
+									<DialogActions>
+										<Button onClick={this.handleClickCancel} color="primary" variant="contained">
+											{t('cancel')}
+										</Button>
+										<Button onClick={this.handleClickDelete} color="secondary" autoFocus variant="contained">
+											{t('delete')}
+										</Button>
+									</DialogActions>
+								</Dialog>
+							</Grid>
+							
 						</Grid>
 					</FormControl>	
 				</Container>
-			);
+			) : null;
 		}								
 	}
 }

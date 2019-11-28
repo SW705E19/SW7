@@ -1,9 +1,9 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
 import EditService from './EditService';
-import { TextField, Button, Grid, Link } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 
 configure({adapter: new Adapter()});
 
@@ -47,7 +47,7 @@ describe('<EditService />', () => {
 
 	const props = {
 		match: {
-            
+
 		}
 	};
 

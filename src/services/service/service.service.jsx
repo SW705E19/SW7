@@ -6,7 +6,8 @@ export const serviceService = {
 	getById,
 	getDetailedById,
 	create,
-	edit
+	edit,
+	deleteService
 };
 
 
@@ -47,8 +48,7 @@ function create(service) {
 		.then(handleResponse)
 		.then(service => {
 			return JSON.parse(service);
-		});
-		
+		});	
 }
 
 function edit(service) {
@@ -57,5 +57,11 @@ function edit(service) {
 		headers: authHeader(),
 		body: jsonService};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${service.id}`, requestOptions)
+		.then(handleResponse);
+}
+
+function deleteService(serviceId) {
+	const requestOptions = { method: 'DELETE', headers: authHeader() };
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${serviceId}`, requestOptions)
 		.then(handleResponse);
 }

@@ -49,5 +49,12 @@
   "saveservicenotifysuccess": "Service saved",
   "saveservicenotifyfail": "Could not save service",
   "editservice": "Edit service",
-  "editservicename": "Name"
+  "editservicename": "Name",
+  "deleteservice": "Delete service",
+  "unauthorized": "Unauthorized",
+  "deleteservicenotifysuccess": "Service deleted",
+  "deleteservicenotifyfail": "Service could not be deleted",
+  "deleteservicealerttitle": "Are you sure you want to delete the service?",
+  "cancel": "Cancel",
+  "delete": "Delete"
 }
