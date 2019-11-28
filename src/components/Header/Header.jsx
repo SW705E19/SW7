@@ -8,9 +8,12 @@ import {
 	List,
 	ListItem,
 	ListItemIcon,
+	Select,
+	MenuItem,
 	ListItemText
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import {useTranslation} from 'react-i18next';
 import {
 	AccountCircle,
 	Menu,
@@ -28,7 +31,10 @@ const styles = {
 	}
 };
 
-function Header({ classes }) {
+function Header(props) {
+	const classes = props.classes;
+	const { t } = useTranslation();
+
 	const [state, setState] = React.useState({
 		isMenuOpen: false
 	});
@@ -89,7 +95,6 @@ function Header({ classes }) {
 			</List>
 		</div>
 	);
-
 	return (
 		<AppBar position="sticky">
 			<Toolbar>
@@ -106,6 +111,19 @@ function Header({ classes }) {
 						<img src={logo_transparent} alt="" height="45" width="45" />
 					</IconButton>
 
+
+
+
+					<Select
+						onChange={props.changeLanguage}
+						value="default"
+					>
+						<MenuItem value="default" disabled>
+							{t('languages')}
+						</MenuItem>
+						<MenuItem value={'en'}>{t('english')}</MenuItem>
+						<MenuItem value={'da'}>{t('danish')}</MenuItem>
+					</Select>
 					<div className={classes.toolbarButtons}>
 						<IconButton>
 							<Mail fontSize="large" />
