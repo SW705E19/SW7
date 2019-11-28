@@ -56,5 +56,8 @@
   "deleteservicenotifyfail": "Service could not be deleted",
   "deleteservicealerttitle": "Are you sure you want to delete the service?",
   "cancel": "Cancel",
-  "delete": "Delete"
+  "delete": "Delete",
+  "showservicefail": "Could not find the service!",
+  "showuserfail": "Could not find the user!"
 }
+

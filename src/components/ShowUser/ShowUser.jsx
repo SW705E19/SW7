@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RenderUser from '../ShowUser/RenderUser/RenderUser';
+import { userService } from '../../services/user/user.service';
+import { toast } from 'react-toastify';
 
 class ShowUser extends Component {
 	constructor(props) {
@@ -10,12 +12,15 @@ class ShowUser extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${this.props.match.params.id}`)
-			.then(res => res.json())
+		userService.getById(this.props.match.params.id)
 			.then((data) => {
 				this.setState({ user: data });
 			})
-			.catch(console.log);
+			.catch(() => {
+				toast.error(this.props.t('showuserfail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			});
 	}
 	render() {
 		return (<RenderUser user={this.state.user} />);

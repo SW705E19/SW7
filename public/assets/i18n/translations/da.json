@@ -56,6 +56,7 @@
   "deleteservicenotifyfail": "Servicen kunne ikke slettes",
   "deleteservicealerttitle": "Er du sikker på at du vil slette servicen?",
   "cancel": "Annuller",
-  "delete": "Slet"
-
+  "delete": "Slet",
+  "showservicefail": "Kunne ikke finde dette service!",
+  "showuserfail": "Kunne ikke finde denne bruger!"
 }
