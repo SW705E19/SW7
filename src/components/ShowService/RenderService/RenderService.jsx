@@ -3,6 +3,7 @@ import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardM
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
+import Rating from '@material-ui/lab/Rating';
 
 function RenderService(props) {
 	const useStyles = makeStyles(theme => ({
@@ -49,7 +50,31 @@ function RenderService(props) {
 						</CardMedia>
 					</Card>
 				</Grid>
-			
+				<Grid className = {classes.item} item md={12}>
+					<Card className={classes.card}>
+						<Rating 
+							style={{justifyContent: 'center'}}
+          					name="service-rating"
+							value={props.ratingValue}
+							size="large"
+          					onChange={(newValue) => {
+            				props.updateRating(newValue);
+          				}}
+        			/>
+						<CardActions style={{justifyContent: 'center'}}>
+							<Button 
+								type="button"
+								variant="contained"
+								color="primary"
+								size="small"
+								onClick={() => props.submitRating()}
+							>
+								{t('submitrating')}
+							</Button>
+						</CardActions>	
+					</Card>
+				</Grid>
+
 				<Grid className = {classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
