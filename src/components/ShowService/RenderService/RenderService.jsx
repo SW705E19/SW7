@@ -54,7 +54,7 @@ function RenderService(props) {
 					</Card>
 				</Grid>
 				<Grid className = {classes.item} item md={12}>
-					<Card className={classes.card}>
+					<Card alignItems="center" justify="center">
 						<Rating
           					name="rating-value"
           					value={ratingValue}
@@ -62,8 +62,8 @@ function RenderService(props) {
             				setRatingValue(newValue);
           				}}
        					 />
-						<CardActions>
-							<Button 
+						<CardActions style={{justifyContent: 'center'}}>
+							<Button
 								type="button"
 								variant="contained"
 								color="primary"
