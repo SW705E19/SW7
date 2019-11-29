@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react';
 import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider} from '@material-ui/core';
 
@@ -37,8 +38,7 @@ function RenderService(props) {
 	const { t } = useTranslation();
 	const classes = useStyles();
 
-	const random = 1 + (Math.random() * (200 - 1));
-	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
+	const randomUrl = 'https://source.unsplash.com/random/800x600';
 
 	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
 	const [ratingValue, setRatingValue] = React.useState(0);
@@ -56,10 +56,10 @@ function RenderService(props) {
 				<Grid className = {classes.item} item md={12}>
 					<Card alignItems="center" justify="center">
 						<Rating
-          					name="rating-value"
-          					value={ratingValue}
-          					onChange={(event, newValue) => {
-            				setRatingValue(newValue);
+							name="rating-value"
+							value={ratingValue}
+							onChange={(event, newValue) => {
+								setRatingValue(newValue);
           				}}
        					 />
 						<CardActions style={{justifyContent: 'center'}}>
