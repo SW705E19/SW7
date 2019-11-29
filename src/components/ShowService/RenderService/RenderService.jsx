@@ -40,6 +40,9 @@ function RenderService(props) {
 	const random = 1 + (Math.random() * (200 - 1));
 	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
 
+	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
+	const [ratingValue, setRatingValue] = React.useState(0);
+
 	return (
 		<>
 			<Grid container className={classes.root} spacing={2}>
@@ -52,22 +55,20 @@ function RenderService(props) {
 				</Grid>
 				<Grid className = {classes.item} item md={12}>
 					<Card className={classes.card}>
-						<Rating 
-							style={{justifyContent: 'center'}}
-          					name="service-rating"
-							value={props.ratingValue}
-							size="large"
-          					onChange={(newValue) => {
-            				props.updateRating(newValue);
+						<Rating
+          					name="rating-value"
+          					value={ratingValue}
+          					onChange={(event, newValue) => {
+            				setRatingValue(newValue);
           				}}
-        			/>
-						<CardActions style={{justifyContent: 'center'}}>
+       					 />
+						<CardActions>
 							<Button 
 								type="button"
 								variant="contained"
 								color="primary"
 								size="small"
-								onClick={() => props.submitRating()}
+								onClick={() => props.submitRating(ratingValue)}
 							>
 								{t('submitrating')}
 							</Button>

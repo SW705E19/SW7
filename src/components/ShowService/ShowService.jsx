@@ -4,6 +4,8 @@ import { serviceService } from '../../services/service/service.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
+import { ratingService } from '../../services/rating/rating.service';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 class ShowService extends Component {
 	constructor(props) {
@@ -11,10 +13,10 @@ class ShowService extends Component {
 		this.state = {
 			service: null,
 			redirectToTutor: false,
-			ratingValue: 0
+			ratingValue: 0,
+			rating: null
 		};
 		this.setRedirect = this.setRedirect.bind(this);
-		this.updateRating = this.updateRating.bind(this);
 		this.submitRating = this.submitRating.bind(this);
 	}
 
@@ -25,14 +27,19 @@ class ShowService extends Component {
 		});
 	}
 
-	updateRating(newValue) {
+
+	submitRating(ratingValue) {
 		this.setState({
-			ratingValue: newValue
-		});
-	}
-
-	submitRating() {
-
+			rating: {
+				rating: ratingValue,
+				user: {
+					id: authenticationService.getCurrentUserId()
+				},
+				service: {
+					id: this.props.match.params.id
+				}
+			}
+		}, () => ratingService.create(this.state.rating));
 	}
 
 	componentDidMount() {
@@ -56,7 +63,7 @@ class ShowService extends Component {
 		}
 		return this.state.service ? 
 			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}
-				setRedirect={this.setRedirect} ratingValue={this.ratingValue} updateRating={this.updateRating}
+				setRedirect={this.setRedirect} ratingValue={this.ratingValue}
 				submitRating={this.submitRating}/> :
 			null; 
 	}
