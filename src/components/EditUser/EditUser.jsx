@@ -8,6 +8,7 @@ import {
   validPassword
 } from "../../helpers/validation-functions";
 import { userService } from "../../services/user/user.service";
+import { toast } from "react-toastify";
 
 // Manglende opgaver:
 // Slet bruger knappen til at slette bruger
@@ -91,8 +92,20 @@ export class EditUser extends Component {
     });
   }
 
-  handleDelete(e) {
-    //kald delete funktionen
+  handleDelete() {
+    userService.deleteUser(this.props.match.params.id).then(
+      () => {
+        toast.success(this.props.t("deleteduser"), {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+        this.setState({ redirectOwnUser: true });
+      },
+      () => {
+        toast.error(this.props.t("deleteuserfailed"), {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      }
+    );
   }
 
   handleChange(e) {
@@ -255,7 +268,7 @@ export class EditUser extends Component {
         roles: this.state.roles,
         avatarUrl: this.state.avatarUrl
       };
-      // Kald edit user
+      userService.editUser(this.props.match.params.id, user);
     } else if (
       this.state.firstName.firstNameValid &&
       this.state.lastName.lastNameValid &&
@@ -278,8 +291,7 @@ export class EditUser extends Component {
         roles: this.state.roles,
         avatarUrl: this.state.avatarUrl
       };
-
-      // kald edituser uden password
+      userService.editUser(this.props.match.params.id, user);
     }
   }
 

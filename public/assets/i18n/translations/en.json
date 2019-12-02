@@ -47,5 +47,9 @@
   "edituser": "Edit user",
   "cancel": "Cancel",
   "deleteuserwarning": "Are you sure that you want to delete your user?",
-  "deleteuserdialog": "If you choose to delete your account, you won't be able to get it back"
+  "deleteuserdialog": "If you choose to delete your account, you won't be able to get it back",
+  "deleteduser": "Brugeren er nu slettet",
+  "deleteuserfailed": "Brugeren blev ikke slettet",
+  "saveeditusernotifysuccess": "Ændringerne er nu gemt",
+  "saveeditusernotifyfail": "Ændringerne blev ikke gemt"
 }

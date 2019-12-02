@@ -47,5 +47,9 @@
   "edituser": "Rediger bruger",
   "cancel": "Annuller",
   "deleteuserwarning": "Er du sikker på at du vil slette din bruger?",
-  "deleteuserdialog": "Hvis du sletter din bruger vil du ikke være i stand til at få den tilbage"
+  "deleteuserdialog": "Hvis du sletter din bruger vil du ikke være i stand til at få den tilbage",
+  "deleteduser": "Brugeren er nu slettet",
+  "deleteuserfailed": "Brugeren blev ikke slettet",
+  "saveeditusernotifysuccess": "The changes was saved",
+  "saveeditusernotifyfail": "The changes have not been saved"
 }

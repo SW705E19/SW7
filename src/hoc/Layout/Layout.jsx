@@ -22,7 +22,7 @@ function Layout() {
         <Route path="/service/create" component={CreateService} />
         <Route path="/service/:id" component={ShowService} />
         <Route path="/register" component={CreateUser} />
-        <Route path="/edituser" component={EditUser} />
+        <Route path="/edituser/:id" component={EditUser} />
         <Route component={NotFound} />
       </Switch>
     </Router>

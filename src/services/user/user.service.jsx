@@ -5,8 +5,30 @@ export const userService = {
   getAll,
   getById,
   getOwnUser,
-  getTutorInfoByUserId
+  getTutorInfoByUserId,
+  editUser,
+  deleteUser
 };
+
+function editUser(id, user) {
+  const requestOptions = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  };
+  return fetch(
+    `http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`,
+    requestOptions
+  ).then(handleResponse);
+}
+
+function deleteUser(id) {
+  const requestOptions = { method: "DELETE", headers: authHeader() };
+  return fetch(
+    `http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`,
+    requestOptions
+  ).then(handleResponse);
+}
 
 function getAll() {
   const requestOptions = { method: "GET", headers: authHeader() };
