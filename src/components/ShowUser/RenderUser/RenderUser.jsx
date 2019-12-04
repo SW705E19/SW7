@@ -86,16 +86,17 @@ function RenderUser(props) {
 				) : null }
 			</CardContent>
 
-			{ props.user.roles != null && props.user.roles.includes('TUTOR') ?
+			{ props.user.tutorInfo != null ?
 				<CardContent>
 					<Typography component="h2" variant="h5">
 						{t('infoabouttutor')}
 					</Typography>
 					<Typography variant="subtitle1" color="textPrimary">
-						{props.user.tutorInfo != null ? props.user.tutorInfo.description : t('unavailable')}
+						{props.user.tutorInfo.description != null ? props.user.tutorInfo.description : t('unavailable')}
 					</Typography>
 				</CardContent> : null 
 			}
+
 		</Card>
 	);
 }
