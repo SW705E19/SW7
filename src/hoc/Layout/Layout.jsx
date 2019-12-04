@@ -19,33 +19,30 @@ function Layout() {
 		i18n.changeLanguage(lng);
 	};
 
-	const routing = (
-		<Router>
-			<Switch>
-				<Route path="/login" component={Login} />
-				<Route path="/admin" component={AdminDashboard} />
-				<Route path="/user/:id" component={ShowUser} />
-				<Route path="/service/create" component={CreateService} />
-				<Route path ="/service/:id" component={ShowService}/>
-				<Route path ="/register" component={CreateUser} />
-				<Route component={NotFound} />
-			</Switch>
-		</Router>
-	);
 
 	const useStyles = makeStyles(theme => ({
 		appBarSpacer: theme.mixins.toolbar
 	}));
-
+	
 	const classes = useStyles();
-
+	
 	return (
 		<>
-			<Header changeLanguage={changeLanguage}/>
-			<div className={classes.appBarSpacer} />
-			<Container component="main" maxWidth="md">
-				{routing}
-			</Container>
+			<Router>
+				<Header changeLanguage={changeLanguage}/>
+				<div className={classes.appBarSpacer} />
+				<Container component="main" maxWidth="md">
+					<Switch>
+						<Route path="/login" component={Login} />
+						<Route path="/admin" component={AdminDashboard} />
+						<Route path="/user/:id" component={ShowUser} />
+						<Route path="/service/create" component={CreateService} />
+						<Route path ="/service/:id" component={ShowService}/>
+						<Route path ="/register" component={CreateUser} />
+						<Route component={NotFound} />
+					</Switch>
+				</Container>
+			</Router>
 		</>
 	);
 }

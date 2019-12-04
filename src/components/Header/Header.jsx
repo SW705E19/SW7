@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
 	AppBar,
 	Toolbar,
@@ -17,10 +18,8 @@ import {useTranslation} from 'react-i18next';
 import {
 	AccountCircle,
 	Menu,
-	Notifications,
 	Home,
-	Event,
-	Mail
+	ViewComfy
 } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import logo_transparent from '../../assets/logo.png';
@@ -49,7 +48,7 @@ function Header(props) {
 
 		setState({ ...state, isMenuOpen: open });
 	};
-
+	
 	const sideList = (
 		<div
 			className={classes.list}
@@ -58,35 +57,20 @@ function Header(props) {
 			onKeyDown={toggleDrawer(false)}
 		>
 			<List>
-				<ListItem button key="Home">
+				<ListItem button component={Link} to="/" key="Home" name="home">
 					<ListItemText primary="Home" />
 					<ListItemIcon>
 						<Home fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
 
-				<ListItem button key="Mail">
-					<ListItemText primary="Inbox" />
+				<ListItem button component={Link} to="/service" key="Services" name="services">
+					<ListItemText primary="Services" />
 					<ListItemIcon>
-						<Mail fontSize="large" />
+						<ViewComfy fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
-
-				<ListItem button key="Event">
-					<ListItemText primary="Calendar" />
-					<ListItemIcon>
-						<Event fontSize="large" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button key="Notifications">
-					<ListItemText primary="Notifications" />
-					<ListItemIcon>
-						<Notifications fontSize="large" />
-					</ListItemIcon>
-				</ListItem>
-
-				<ListItem button key="AccountCircle">
+				<ListItem button key="AccountCircle" name="account">
 					<ListItemText primary="My account" />
 					<ListItemIcon>
 						<AccountCircle fontSize="large" />
@@ -107,7 +91,7 @@ function Header(props) {
 					</Drawer>
 				</Hidden>
 				<Hidden smDown>
-					<IconButton>
+					<IconButton component={Link} to="/">
 						<img src={logo_transparent} alt="" height="45" width="45" />
 					</IconButton>
 
@@ -122,17 +106,11 @@ function Header(props) {
 						<MenuItem value={'da'}>{t('danish')}</MenuItem>
 					</Select>
 					<div className={classes.toolbarButtons}>
-						<IconButton>
-							<Mail fontSize="large" />
+						<IconButton component={Link} to="/service">
+							<ViewComfy fontSize="large" name="services"/>
 						</IconButton>
 						<IconButton>
-							<Event fontSize="large" />
-						</IconButton>
-						<IconButton>
-							<Notifications fontSize="large" />
-						</IconButton>
-						<IconButton>
-							<AccountCircle fontSize="large" />
+							<AccountCircle fontSize="large" name="account"/>
 						</IconButton>
 					</div>
 				</Hidden>
