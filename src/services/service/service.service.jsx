@@ -4,7 +4,6 @@ export const serviceService = {
 	getAll,
 	getById,
 	create,
-	getRandomImage
 };
 
 function getAll() {
@@ -14,11 +13,6 @@ function getAll() {
 		.then(services => {
 			return JSON.parse(services);
 		});
-}
-
-function getRandomImage(){
-	return fetch('https://picsum.photos/200/500')
-		.then( res => res);
 }
 
 function getById(serviceId) {

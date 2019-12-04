@@ -31,5 +31,6 @@
     "loginnotifyfail": "Login failed!",
     "createservicename": "Name",
     "categories": "Categories",
-    "createaservice": "Create a service"
+	"createaservice": "Create a service",
+	"getAllServicesFail": "Failed to get services"
   }

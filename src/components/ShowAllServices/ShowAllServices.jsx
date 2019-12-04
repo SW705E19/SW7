@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {serviceService as serviceAPI} from '../../services/service/service.service';
 import ServiceList from '../../containers/ServiceList/ServiceList';
 import {Redirect} from 'react-router';
+import { toast } from 'react-toastify';
+import { withTranslation } from 'react-i18next';
 
 class ShowAllServices extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			services: [],
+			services: null,
 			redirect: false
 		};
 		this.redirect = this.redirect.bind(this);
@@ -18,19 +20,13 @@ class ShowAllServices extends Component {
 			.then(res => this.setState({
 				services: res
 			}))
-			.catch(error => console.log(error));
-		
-
-	}
-	getPicture(){
-		serviceAPI.getRandomImage()
-			.then(res => {
-				this.setState({
-					image: res.url
+			.catch(() => {
+				toast.error(this.props.t('getAllServicesFail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
 				});
-			})
-			.catch(err => console.log(err));
+			});
 	}
+
 	redirect(serviceId){
 		this.setState({
 			redirect: true,
@@ -50,4 +46,6 @@ class ShowAllServices extends Component {
 	}
 }
 
-export default ShowAllServices;
+export default withTranslation()(ShowAllServices);
+export { ShowAllServices };
+

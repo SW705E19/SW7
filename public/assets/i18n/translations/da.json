@@ -31,5 +31,6 @@
     "loginnotifyfail": "Dit login fejlede!",
     "createservicename": "Navn",
     "categories": "Kategorier",
-    "createaservice": "Opret en service"
+	"createaservice": "Opret en service",
+	"getAllServicesFail": "Kunne ikke hente services"
 }

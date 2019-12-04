@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Card, CardContent, CardMedia, Typography, withStyles, CardActionArea} from '@material-ui/core';
+import {Grid, Card, CardContent, CardMedia, Typography, withStyles} from '@material-ui/core';
 
 const styles = {
 	root: {
@@ -18,41 +18,43 @@ const styles = {
 	}
 };
 
-function ServiceList(props,) {
+function ServiceList(props) {
 	const classes = props.classes;
 	const columnWidth = 12/props.servicesPerLine;
 	return (
 		<> 
 			<Grid container spacing={3} className={classes.root}>
-				{
-					props.services.map( (service, i) => {
-						return <Grid item xs={12} sm={columnWidth} key={i}> 
-							<Card
-								className={classes.card}
-								onClick={() => props.onClick(service.id)}
-							>
-								<CardMedia 
-									className={classes.media}
-									component='img'
-									image='https://picsum.photos/id/840/200/500'
-								/>
-								<CardContent
-									className={classes.cardContent} 
+				{	
+					props.services ? 
+						props.services.map( (service, i) => {
+							return <Grid item xs={12} sm={columnWidth} key={i}> 
+								<Card
+									className={classes.card}
+									onClick={() => props.onClick(service.id)}
 								>
-									<Typography gutterBottom variant='h5' component='h2'>
-										{service.name}
-									</Typography>
-									<Typography
-										variant="body2"
-										component="p"
+									<CardMedia 
+										className={classes.media}
+										component='img'
+										image='https://picsum.photos/id/840/200/500'
+									/>
+									<CardContent
+										className={classes.cardContent} 
 									>
-										{service.tutorInfo.user.firstName + ' ' + service.tutorInfo.user.lastName}
-									</Typography>
-								</CardContent>
+										<Typography gutterBottom variant='h5' component='h2'>
+											{service.name}
+										</Typography>
+										<Typography
+											variant="body2"
+											component="p"
+										>
+											{service.tutorInfo.user.firstName + ' ' + service.tutorInfo.user.lastName}
+										</Typography>
+									</CardContent>
 
-							</Card>
-						</Grid>;
-					})
+								</Card>
+							</Grid>;
+						}):
+						null
 				}
 			</Grid>
 		</>
