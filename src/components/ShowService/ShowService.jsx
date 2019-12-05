@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RenderService from '../ShowService/RenderService/RenderService';
 import { serviceService } from '../../services/service/service.service';
+import { ratingService } from '../../services/rating/rating.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 
@@ -9,7 +10,8 @@ class ShowService extends Component {
 		super(props);
 		this.state = {
 			service: null,
-			redirectToTutor: false
+			redirectToTutor: false,
+			avgRating: null,
 		};
 		this.setRedirect = this.setRedirect.bind(this);
 	}
@@ -22,13 +24,14 @@ class ShowService extends Component {
 	}
 
 	componentDidMount() {
-		serviceService.getDetailedById(this.props.match.params.id)
-			.then((data) => {
-				this.setState({ 
-					service: data
+		Promise.all([serviceService.getDetailedById(this.props.match.params.id), 
+			ratingService.getAverageRating(this.props.match.params.id)])
+			.then(([data, rating]) => {
+				this.setState({
+					service: data,
+					avgRating: rating
 				});
-			})
-			.catch(() => {
+			}).catch(() => {
 				toast.error(this.props.t('showservicefail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
@@ -40,7 +43,7 @@ class ShowService extends Component {
 			return (<Redirect to={'/user/' + this.state.service.tutorInfo.id} />);
 		}
 		return this.state.service ? 
-			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor} setRedirect={this.setRedirect}/> :
+			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}  avgRating={this.state.avgRating} setRedirect={this.setRedirect}/> :
 			null; 
 	}
 }

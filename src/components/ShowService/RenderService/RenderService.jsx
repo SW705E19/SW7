@@ -41,6 +41,9 @@ function RenderService(props) {
 
 	return (
 		<>
+			<Typography color="textPrimary" style={{fontSize: 12}}>
+				{props.avgRating.avg.substring(0, 4)}
+			</Typography>
 			<Grid container className={classes.root} spacing={2}>
 				<Grid className = {classes.item} item md={12}>
 					<Card justify="center"  className={classes.card}>
