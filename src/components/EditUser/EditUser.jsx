@@ -4,15 +4,9 @@ import {
   emailValidation,
   dateOfBirthValidation,
   phoneNumberValidation,
-  notEmptyValidation,
-  validPassword
+  notEmptyValidation
 } from "../../helpers/validation-functions";
 import { userService } from "../../services/user/user.service";
-import { toast } from "react-toastify";
-
-// Manglende opgaver:
-// Slet bruger knappen til at slette bruger
-// Rediger bruger knappen til at redigere bruger
 
 export class EditUser extends Component {
   constructor(props) {
@@ -24,7 +18,6 @@ export class EditUser extends Component {
       email: { email: "", emailValid: true },
       phoneNumber: { phoneNumber: "", phoneNumberValid: true },
       dateOfBirth: { dateOfBirth: "", dateOfBirthValid: true },
-      password: { firstPassword: "", secondPassword: "", passwordValid: true },
       education: "",
       languageValues: null,
       subjectOfInterestValues: null,
@@ -68,14 +61,15 @@ export class EditUser extends Component {
           phoneNumberValid: true
         },
         dateOfBirth: {
-          dateOfBirth: dateOfBirth, // Ret således at tidspunktet fjernes
+          dateOfBirth: dateOfBirth, 
           dateOfBirthValid: true
         },
         education: user.education,
         languageValues: user.languages,
         subjectOfInterestValues: user.subjectsOfInterest,
         roles: user.roles,
-        avatarUrl: user.avatarUrl
+        avatarUrl: user.avatarUrl,
+        id: user.id
       });
     });
   }
@@ -93,27 +87,10 @@ export class EditUser extends Component {
   }
 
   handleDelete() {
-    userService.deleteUser(this.props.match.params.id).then(
-      () => {
-        toast.success(this.props.t("deleteduser"), {
-          position: toast.POSITION.BOTTOM_RIGHT
-        });
-        this.setState({ redirectOwnUser: true });
-      },
-      () => {
-        toast.error(this.props.t("deleteuserfailed"), {
-          position: toast.POSITION.BOTTOM_RIGHT
-        });
-      }
-    );
+    userService.deleteUser(this.props.match.params.id)
   }
 
   handleChange(e) {
-    // let user = {...this.state.user};
-    // let userValid = {...this.state.userValid};
-
-    // user[e.target.name] = e.target.value;
-    // userValid[e.target.name] = true;
     switch (e.target.name) {
       case "firstname": {
         this.setState({
@@ -169,26 +146,6 @@ export class EditUser extends Component {
         });
         break;
       }
-      case "firstPassword": {
-        this.setState({
-          password: {
-            firstPassword: e.target.value,
-            secondPassword: this.state.password.secondPassword,
-            passwordValid: true
-          }
-        });
-        break;
-      }
-      case "secondPassword": {
-        this.setState({
-          password: {
-            firstPassword: this.state.password.firstPassword,
-            secondPassword: e.target.value,
-            passwordValid: true
-          }
-        });
-        break;
-      }
       default: {
         this.setState({ [e.target.name]: e.target.value });
       }
@@ -196,24 +153,6 @@ export class EditUser extends Component {
   }
 
   handleSubmit() {
-    const passwordValid = validPassword(
-      this.state.password.firstPassword,
-      this.state.password.secondPassword
-    );
-    const passwordEmpty =
-      this.state.password.firstPassword === "" ||
-      this.state.password.secondPassword === "";
-
-    if (!passwordEmpty && !passwordValid) {
-      this.setState({
-        password: {
-          firstPassword: this.state.password.firstPassword,
-          secondPassword: this.state.password.secondPassword,
-          passwordValid: false
-        }
-      });
-    }
-
     this.setState({
       firstName: {
         firstName: this.state.firstName.firstName,
@@ -251,32 +190,7 @@ export class EditUser extends Component {
       this.state.phoneNumber.phoneNumberValid &&
       this.state.email.emailValid &&
       this.state.address.addressValid &&
-      this.state.dateOfBirth.dateOfBirthValid &&
-      passwordValid
-    ) {
-      let user = {
-        firstName: this.state.firstName.firstName,
-        lastName: this.state.lastName.lastName,
-        phoneNumber: this.state.phoneNumber.phoneNumber,
-        email: this.state.email.email,
-        address: this.state.address.address,
-        dateOfBirth: this.state.dateOfBirth.dateOfBirth,
-        education: this.state.education,
-        password: this.state.password.firstPassword,
-        languages: this.state.languageValues,
-        subjectsOfInterest: this.state.subjectOfInterestValues,
-        roles: this.state.roles,
-        avatarUrl: this.state.avatarUrl
-      };
-      userService.editUser(this.props.match.params.id, user);
-    } else if (
-      this.state.firstName.firstNameValid &&
-      this.state.lastName.lastNameValid &&
-      this.state.phoneNumber.phoneNumberValid &&
-      this.state.email.emailValid &&
-      this.state.address.addressValid &&
-      this.state.dateOfBirth.dateOfBirthValid &&
-      passwordEmpty
+      this.state.dateOfBirth.dateOfBirthValid
     ) {
       let user = {
         firstName: this.state.firstName.firstName,

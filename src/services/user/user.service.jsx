@@ -13,9 +13,9 @@ export const userService = {
 function editUser(id, user) {
   const requestOptions = {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: authHeader(),
     body: JSON.stringify(user)
-  };
+   };
   return fetch(
     `http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`,
     requestOptions

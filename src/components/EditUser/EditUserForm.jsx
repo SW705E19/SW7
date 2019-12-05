@@ -134,45 +134,6 @@ function EditUserForm(props) {
                 margin="normal"
                 required
                 fullWidth
-                type="password"
-                id={"firstPassword"}
-                label={t("typepassword")}
-                name={"firstPassword"}
-                value={props.password.firstPassword}
-                autoComplete={"firstPassword"}
-                onChange={props.handleChange}
-                error={!props.password.passwordValid}
-                helperText={
-                  props.password.passwordValid ? "" : t("passwordError")
-                }
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                type="password"
-                id={"secondPassword"}
-                label={t("typepasswordagain")}
-                name={"secondPassword"}
-                value={props.password.secondPassword}
-                autoComplete={"secondPassword"}
-                onChange={props.handleChange}
-                error={!props.password.passwordValid}
-                autoFocus
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} direction="row">
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
                 id={"address"}
                 label={t("address")}
                 name={"address"}
