@@ -12,9 +12,16 @@ class ShowUser extends Component {
 	}
 
 	componentDidMount() {
+		let fetchedUser = null;
 		userService.getById(this.props.match.params.id)
-			.then((data) => {
-				this.setState({ user: data });
+			.then(async (data) => {
+				fetchedUser = data;
+				if(data.roles.includes('TUTOR')) {
+					await userService.getTutorInfoByUserId(this.props.match.params.id).then(tutorInfo => {
+						fetchedUser.tutorInfo = tutorInfo;
+					});
+				}
+				this.setState({ user: fetchedUser });
 			})
 			.catch(() => {
 				toast.error(this.props.t('showuserfail'), {
@@ -22,6 +29,7 @@ class ShowUser extends Component {
 				});
 			});
 	}
+
 	render() {
 		return (<RenderUser user={this.state.user} />);
 	}
