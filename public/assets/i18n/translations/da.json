@@ -45,5 +45,6 @@
   "createaservice": "Opret en service",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
-  "getAllServicesFail": "Kunne ikke hente services"
+  "getAllServicesFail": "Kunne ikke hente services",
+  "unavailable": "Ikke tilgængelig"
 }
