@@ -11,6 +11,7 @@ import Header from '../../components/Header/Header';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
 import EditUser from '../../components/EditUser/EditUser';
+import { withTranslation } from 'react-i18next';
 
 function Layout() {
 	const routing = (
