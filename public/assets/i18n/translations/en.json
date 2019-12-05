@@ -45,5 +45,5 @@
   "createaservice": "Create a service",
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
-	"getAllServicesFail": "Failed to get services"
+  "getAllServicesFail": "Failed to get services"
 }

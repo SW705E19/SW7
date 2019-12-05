@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {serviceService as serviceAPI} from '../../services/service/service.service';
+import { serviceService } from '../../services/service/service.service';
 import ServiceList from '../../containers/ServiceList/ServiceList';
-import {Redirect} from 'react-router';
+import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
 
@@ -16,31 +16,40 @@ class ShowAllServices extends Component {
 	}
 
 	componentDidMount(){
-		serviceAPI.getAll()
-			.then(res => this.setState({
-				services: res
-			}))
+		serviceService.getAll()
+			.then( res => {
+				this.setState({
+					services: res
+				});
+			})
 			.catch(() => {
 				toast.error(this.props.t('getAllServicesFail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
+				this.setState({
+					redirect: true,
+					redirectTo: '/'
+				});
 			});
+
+
 	}
 
 	redirect(serviceId){
+		const redirectTo = '/service/' + serviceId;
 		this.setState({
 			redirect: true,
-			redirectTo: serviceId
+			redirectTo: redirectTo
 		});
 	}
 
 	render(){
 		if(this.state.redirect){
-			return (<Redirect to={`/service/${this.state.redirectTo}`} />);
+			return (<Redirect to={this.state.redirectTo} />);
 		}
 		
 		return this.state.services ? 
-			<ServiceList services={this.state.services} onClick={this.redirect} servicesPerLine={4} /> :
+			<ServiceList services={this.state.services} onClick={this.redirect} /> :
 			null;
 	
 	}

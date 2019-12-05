@@ -29,7 +29,6 @@ describe('<ServiceList />', () => {
 
 	it('should render correctly', () => {
 		wrapper.setProps({
-			servicesPerLine: 4,
 			services: services
 		});
 		expect(wrapper.debug()).toMatchSnapshot();
@@ -38,7 +37,6 @@ describe('<ServiceList />', () => {
 	it('should render five Card components', () => {
 		wrapper.setProps({
 			services: services,
-			servicesPerLine: 4
 		});
 		expect(wrapper.find(Card)).toHaveLength(5);
 	});
@@ -51,7 +49,6 @@ describe('<ServiceList />', () => {
 		const mockCallBack = jest.fn();
 		wrapper.setProps({
 			services: [service],
-			servicesPerLine: 1,
 			onClick: mockCallBack
 
 		});
@@ -63,11 +60,9 @@ describe('<ServiceList />', () => {
 		const mockCallBack = jest.fn();
 		wrapper.setProps({
 			services: [service],
-			servicesPerLine: 1,
 			onClick: mockCallBack
 		});
-		const serviceId = service.id;
 		wrapper.find(Card).prop('onClick')();
-		expect(mockCallBack).toHaveBeenCalledWith(serviceId);
+		expect(mockCallBack).toHaveBeenCalledWith(service.id);
 	});
 });
