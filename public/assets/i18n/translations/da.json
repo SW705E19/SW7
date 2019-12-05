@@ -51,7 +51,7 @@
   "deleteduser": "Brugeren er nu slettet",
   "deleteuserfailed": "Brugeren blev ikke slettet",
   "saveeditusernotifysuccess": "The changes was saved",
-  "saveeditusernotifyfail": "The changes have not been saved"
+  "saveeditusernotifyfail": "The changes have not been saved",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
   "unavailable": "Ikke tilgængelig"
