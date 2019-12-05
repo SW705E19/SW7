@@ -96,7 +96,6 @@ function RenderUser(props) {
 					</Typography>
 				</CardContent> : null 
 			}
-
 		</Card>
 	);
 }
