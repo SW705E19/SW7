@@ -1,8 +1,7 @@
 import React from 'react';
 import { categoryService } from '../../services/category/category.service';
 import { withStyles } from '@material-ui/core/styles';
-import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input } from '@material-ui/core';
-import { Dialog, DialogTitle, DialogActions} from '@material-ui/core';
+import { Container, Select, MenuItem, Button, Grid, Typography, FormControl, TextField, InputLabel, Input, Dialog, DialogTitle, DialogActions } from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 import { serviceService } from '../../services/service/service.service';
 import { Redirect } from 'react-router';
@@ -34,8 +33,7 @@ class EditService extends React.Component {
 			service: null,
 			categories: [],
 			chosenCategoryNames: [],
-			redirectSuccess: false,
-			redirectFail: false,
+			redirectService: false,
 			redirectOwnUser: false,
 			openAlert: false
 
@@ -72,7 +70,7 @@ class EditService extends React.Component {
 				toast.error(this.props.t('getcategoriesnotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				this.setState({redirectFail: true});
+				this.setState({redirectService: true});
 			});
             
 		// Gets the tutorInfo Id so it can be connected to the service
@@ -90,13 +88,13 @@ class EditService extends React.Component {
 					toast.error(this.props.t('unauthorized'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
-					this.setState({redirectFail: true});
+					this.setState({redirectService: true});
 				}
 			}, () => {
 				toast.error(this.props.t('getservicenotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				this.setState({redirectFail: true});
+				this.setState({redirectService: true});
 			});
 	}
     
@@ -119,7 +117,7 @@ class EditService extends React.Component {
 				toast.success(this.props.t('saveservicenotifysuccess'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				this.setState({redirectSuccess: true});
+				this.setState({redirectService: true});
 			}, () => {
 				toast.error(this.props.t('saveservicenotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
@@ -163,11 +161,8 @@ class EditService extends React.Component {
 	render() {
 		const{classes, t} = this.props;
 
-		if(this.state.redirectSuccess) {
+		if(this.state.redirectService) {
 			return <Redirect to={'/service/' + this.state.service.id}/>;
-		}
-		else if(this.state.redirectFail) {
-			return <Redirect to={'/login/'}/>;
 		}
 		else if(this.state.redirectOwnUser) {
 			return <Redirect to={'/user/' + authenticationService.getCurrentUserId()}/>;
@@ -262,7 +257,6 @@ class EditService extends React.Component {
 									</DialogActions>
 								</Dialog>
 							</Grid>
-							
 						</Grid>
 					</FormControl>	
 				</Container>
@@ -270,5 +264,4 @@ class EditService extends React.Component {
 		}								
 	}
 }
-
 export default withTranslation()(withStyles(styles)(EditService));

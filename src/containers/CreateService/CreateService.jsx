@@ -52,27 +52,25 @@ class CreateService extends React.Component {
 
 	componentDidMount() {
 		categoryService.getAll()
-			.catch(() => {
+			.then(data => {
+				this.setState({categories: data});
+			}, () => {
 				toast.error(this.props.t('getcategoriesnotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				return;
-			})
-			.then(data => {
-				this.setState({categories: data});
+				this.setState({redirectFail: true});
 			});
 		let service = this.state.service;
 
 		// Gets the tutorInfo Id so it can be connected to the service
 		userService.getTutorInfoByUserId(authenticationService.getCurrentUserId())
-			.catch(() => {
+			.then(tutorInfo => {
+				service.tutorInfo.id = tutorInfo.id;
+			}, () => {
 				toast.error(this.props.t('gettutorinfonotifyfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
-				return;
-			})
-			.then(tutorInfo => {
-				service.tutorInfo.id = tutorInfo.id;
+				this.setState({redirectFail: true});
 			});
 		
 		this.setState({service: service});
@@ -134,7 +132,7 @@ class CreateService extends React.Component {
 			return <Redirect to={'/service/' + this.state.service.id} />;
 		}
 		else if(this.state.redirectFail) {
-			return <Redirect to={'/login/'} />;
+			return <Redirect to={'/user/' + authenticationService.getCurrentUserId()} />;
 		}
 		else
 		{	
