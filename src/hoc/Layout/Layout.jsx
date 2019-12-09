@@ -38,7 +38,7 @@ function Layout() {
 						<Route path="/user/:id" component={ShowUser} />
 						<Route path="/service/create" component={CreateService} />
 						<Route path="/service/:id" component={ShowService}/>
-            <Route path="/service/" component={ShowAllServices} />
+						<Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
 						<Route component={NotFound} />
