@@ -112,6 +112,12 @@ class EditService extends React.Component {
 
 	submit() {
 		this.addChosenCategories();
+		if(this.state.service.categories === undefined || this.state.service.categories.length === 0) {
+			toast.error(this.props.t('saveservicenotifyfail'), {
+				position: toast.POSITION.BOTTOM_RIGHT
+			});
+			return;
+		}
 		serviceService.edit(this.state.service)
 			.then(() => {
 				toast.success(this.props.t('saveservicenotifysuccess'), {
