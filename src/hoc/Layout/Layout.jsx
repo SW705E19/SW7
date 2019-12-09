@@ -11,14 +11,14 @@ import Header from '../../components/Header/Header';
 import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
+import EditUser from '../../components/EditUser/EditUser';
 import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import authHeader from '../../helpers/auth-header';
 
-
 function Layout() {
-	const changeLanguage = (e) => {
+	const changeLanguage = e => {
 		const lng = e.target.value;
 		i18n.changeLanguage(lng);
 	};
@@ -30,24 +30,25 @@ function Layout() {
 	const classes = useStyles();
 
 	return (
-		<Router>
-			<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
-			<div className={classes.appBarSpacer} />
-			<Container component="main" maxWidth="md">
-				<Switch>
-					<Route path="/login" component={Login} />
-					<Route path="/admin" component={AdminDashboard} />
-					<Route path="/user/:id" component={ShowUser} />
-					<Route path="/service/create" component={CreateService} />
-					<Route path="/service/:id" component={ShowService} />
-					<Route path="/service/edit/:id" component={EditService} />
-					<Route path="/service/" component={ShowAllServices} />
-					<Route path="/register" component={CreateUser} />
-					<Route path="/account" component={ShowUser} />
-					<Route component={NotFound} />
-				</Switch>
-			</Container>
-		</Router>
+			<Router>
+				<Header changeLanguage={changeLanguage} />
+				<div className={classes.appBarSpacer} />
+				<Container component="main" maxWidth="md">
+					<Switch>
+						<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
+						<Route path="/admin" component={AdminDashboard} />
+						<Route path="/user/:id" component={ShowUser} />
+						<Route path="/service/create" component={CreateService} />
+						<Route path="/service/:id" component={ShowService} />
+						<Route path="/service/edit/:id" component={EditService} />
+						<Route path="/service/" component={ShowAllServices} />
+						<Route path="/register" component={CreateUser} />
+						<Route path="/account" component={ShowUser} />
+						<Route path="/user/edit/:id" component={EditUser} />
+						<Route component={NotFound} />
+					</Switch>
+				</Container>
+			</Router>
 	);
 }
 
