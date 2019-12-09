@@ -50,7 +50,6 @@ class ShowService extends Component {
 				});
 			})
 			.catch(error => {
-				console.log(error);
 				toast.error(this.props.t('showservicefail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
