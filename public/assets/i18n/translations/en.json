@@ -62,6 +62,8 @@
   "getAllServicesFail": "Failed to get services",
   "unavailable": "Unavailable",
   "showAllServicesTitle": "Services",
-  "unavailable": "Unavailable",
-  "choosecategories": "Choose at least one category"
+  "choosecategories": "Choose at least one category",
+  "acceptedpayments": "Accepted payments",
+  "services": "Services",
+  "learnmore": "Learn more"
 }

@@ -62,6 +62,8 @@
   "unavailable": "Ikke tilgængelig",
   "choosecategories": "Vælg mindst en kategori",
   "getAllServicesFail": "Kunne ikke hente services",
-  "unavailable": "Ikke tilgængelig",
-  "showAllServicesTitle": "Services"
+  "showAllServicesTitle": "Services",
+  "acceptedpayments": "Betalingsformer",
+  "services": "Services",
+  "learnmore": "Læs mere"
 }
