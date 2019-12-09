@@ -59,6 +59,8 @@
   "delete": "Slet",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
+  "submitrating": "Afgiv vurdering!",
+  "ratingsubmitted": "Din vurdering er modtaget",
   "unavailable": "Ikke tilgængelig",
   "choosecategories": "Vælg mindst en kategori",
   "getAllServicesFail": "Kunne ikke hente services",
