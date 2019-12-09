@@ -43,7 +43,7 @@ function RenderUser(props) {
 				) : null}
 				{props.user.dateOfBirth != null ? (
 					<Typography variant="body2" component="p">
-						{t('dateOfBirth')}: {props.user.dateOfBirth}
+						{t('dateOfBirth')}: {new Date(props.user.dateOfBirth).toLocaleDateString()}
 					</Typography>
 				) : null}
 				{props.user.languages != null ? (
@@ -58,7 +58,7 @@ function RenderUser(props) {
 				) : null}
 				{props.user.subjectsOfInterest != null ? (
 					<Typography variant="body2" component="p">
-						{t('subjectofinterest')}: {props.user.subjectsOfInterest}
+						{t('subjectofinterest')}: {props.user.subjectsOfInterest.map(interest => interest ).join(', ')}
 					</Typography>
 				) : null}
 			</CardContent>
@@ -101,7 +101,7 @@ function RenderUser(props) {
 										<Card className={classes.card}>
 											<CardContent>
 												<Typography className={classes.title} color="textSecondary" gutterBottom>
-													{x.name} {x.id}
+													{x.name}
 												</Typography>
 												<Typography variant="h5" component="h2">
 
