@@ -11,8 +11,16 @@ import Header from '../../components/Header/Header';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
 import EditService from '../../containers/EditService/EditService';
+import { withTranslation } from 'react-i18next';
+import i18n from '../../i18n';
+
 
 function Layout() {
+	const changeLanguage = (e) => {
+		const lng = e.target.value;
+		i18n.changeLanguage(lng);
+	};
+
 	const routing = (
 		<Router>
 			<Switch>
@@ -36,7 +44,7 @@ function Layout() {
 
 	return (
 		<>
-			<Header />
+			<Header changeLanguage={changeLanguage}/>
 			<div className={classes.appBarSpacer} />
 			<Container component="main" maxWidth="md">
 				{routing}
@@ -45,4 +53,4 @@ function Layout() {
 	);
 }
 
-export default Layout;
+export default withTranslation()(Layout);

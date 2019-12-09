@@ -58,6 +58,7 @@
   "cancel": "Cancel",
   "delete": "Delete",
   "showservicefail": "Could not find the service!",
-  "showuserfail": "Could not find the user!"
+  "showuserfail": "Could not find the user!",
+  "unavailable": "Unavailable"
 }
 
