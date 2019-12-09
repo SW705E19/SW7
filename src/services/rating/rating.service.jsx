@@ -3,7 +3,7 @@ import { authHeader, handleResponse } from '../../helpers';
 export const ratingService = {
 	getAll,
 	create,
-  getAverageRating,
+	getAverageRating,
 };
 
 function create(rating) {

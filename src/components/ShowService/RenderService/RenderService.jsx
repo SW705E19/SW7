@@ -45,9 +45,6 @@ function RenderService(props) {
 
 	return (
 		<>
-			<Typography color="textPrimary" style={{fontSize: 12}}>
-				{props.avgRating.avg.substring(0, 4)}
-			</Typography>
 			<Grid container className={classes.root} spacing={2}>
 				<Grid className = {classes.item} item md={12}>
 					<Card justify="center"  className={classes.card}>
@@ -58,13 +55,17 @@ function RenderService(props) {
 				</Grid>
 				<Grid className = {classes.item} item md={12}>
 					<Card justify="center">
+						<Typography color="textPrimary" style={{fontSize: 12}}>
+						  {t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+					  </Typography>
 						<Rating
 							name="rating-value"
 							value={ratingValue}
 							onChange={(event, newValue) => {
 								setRatingValue(newValue);
-          				}}
+						  }}
        					 />
+
 						<CardActions style={{justifyContent: 'center'}}>
 							<Button
 								type="button"
