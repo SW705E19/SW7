@@ -21,7 +21,6 @@ class ShowService extends Component {
 		this.submitRating = this.submitRating.bind(this);
 	}
 
-	
 	setRedirect () {
 		this.setState({
 			redirectToTutor: true
