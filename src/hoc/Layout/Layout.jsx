@@ -44,7 +44,7 @@ function Layout() {
 						<Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
-						<Route path="/edituser/:id" component={EditUser} />
+						<Route path="/user/edit/:id" component={EditUser} />
 						<Route component={NotFound} />
 					</Switch>
 				</Container>
