@@ -46,5 +46,6 @@
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
   "getAllServicesFail": "Failed to get services",
-  "unavailable": "Unavailable"
+  "unavailable": "Unavailable",
+  "showAllServicesTitle": "Services"
 }

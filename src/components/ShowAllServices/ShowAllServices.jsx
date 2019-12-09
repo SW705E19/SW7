@@ -4,6 +4,7 @@ import ServiceList from '../../containers/ServiceList/ServiceList';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
+import { Typography } from '@material-ui/core';
 
 class ShowAllServices extends Component {
 	constructor(props){
@@ -49,7 +50,15 @@ class ShowAllServices extends Component {
 		}
 		
 		return this.state.services ? 
-			<ServiceList services={this.state.services} onClick={this.redirect} /> :
+			<>
+				<Typography 
+					align="center"
+					variant="h2"
+				>
+					{this.props.t('showAllServicesTitle')}
+				</Typography>
+				<ServiceList services={this.state.services} onClick={this.redirect} />
+			</>:
 			null;
 	
 	}

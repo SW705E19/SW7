@@ -4,6 +4,7 @@ import {Grid, Card, CardContent, CardMedia, Typography, withStyles} from '@mater
 const styles = {
 	root: {
 		width: '100%',
+		marginTop: '1em'
 	},
 	card: {
 		height: '20em',
