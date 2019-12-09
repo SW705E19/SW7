@@ -46,5 +46,6 @@
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
   "submitrating": "Submit rating!",
-  "ratingsubmitted": "Your rating was submitted"
+  "ratingsubmitted": "Your rating was submitted",
+  "unavailable": "Unavailable"
 }

@@ -46,5 +46,6 @@
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
   "submitrating": "Afgiv vurdering!",
-  "ratingsubmitted": "Din vurdering er modtaget"
+  "ratingsubmitted": "Din vurdering er modtaget",
+  "unavailable": "Ikke tilgængelig"
 }
