@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import { userService } from '../../services/user/user.service';
 import RenderService from './GiveTutorRoleForm';
 import { toast } from 'react-toastify';
+import { withTranslation } from 'react-i18next';
 
 class ShowEditTutorRole extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			service: null,
+			users: [],
 		};
-	
 	}
+
 	componentDidMount() {
 		userService.getAll()
-			.then(data => {
+			.then(async (data) => {
 				console.log(data);
 				this.setState({	
-					service: data
+					users: data
 				});
 			})
 			.catch(() => {
@@ -27,10 +28,8 @@ class ShowEditTutorRole extends Component {
 	}
 
 	render() {
-		return this.state.service ? 
-		<RenderService service={this.state.service}/> :
-			null; 
+		return (<RenderService users={this.state.users}/>);
 	}
 }
 
-export default ShowEditTutorRole;
+export default withTranslation()(ShowEditTutorRole);

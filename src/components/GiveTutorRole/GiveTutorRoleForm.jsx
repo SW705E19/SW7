@@ -40,7 +40,7 @@ function RenderService(props) {
 					<TableBody>
 						<TableRow>
 						<TableCell component="th" scope="row">
-								{props.service}
+								{props.users}
 								</TableCell>
 						</TableRow>
 						{/* {props.service.map(row => (

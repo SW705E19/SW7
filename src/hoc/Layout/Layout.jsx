@@ -10,12 +10,10 @@ import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
-<<<<<<< HEAD
 import GiveTutorRole from '../../components/GiveTutorRole/GiveTutorGetUsers';
-=======
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
->>>>>>> develop
+
 
 function Layout() {
 	const changeLanguage = (e) => {

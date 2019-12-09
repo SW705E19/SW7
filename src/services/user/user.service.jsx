@@ -10,7 +10,10 @@ export const userService = {
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader() };
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/`, requestOptions)
-		.then(handleResponse);
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
 }
 
 function getById(id) {
