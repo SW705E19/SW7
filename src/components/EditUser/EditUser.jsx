@@ -9,6 +9,7 @@ import {
 import { userService } from "../../services/user/user.service";
 import { toast } from "react-toastify";
 import { withTranslation } from "react-i18next";
+import { Redirect } from "react-router";
 
 export class EditUser extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ export class EditUser extends Component {
       delete: false,
       deleteDialogOpen: false,
       roles: [],
-      avatarUrl: ""
+      avatarUrl: "",
+      redirectToUser: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -97,6 +99,7 @@ export class EditUser extends Component {
 
   handleDelete() {
     userService.deleteUser(this.props.match.params.id);
+    // TODO: Redirect til landingpage
   }
 
   handleChange(e) {
@@ -190,7 +193,8 @@ export class EditUser extends Component {
         dateOfBirthValid: dateOfBirthValidation(
           this.state.dateOfBirth.dateOfBirth
         )
-      }
+      },
+      redirectToUser: true
     });
 
     if (
@@ -230,6 +234,9 @@ export class EditUser extends Component {
   }
 
   render() {
+    if (this.state.redirectToUser) {
+      return <Redirect to={"/user/" + this.props.match.params.id} />;
+    }
     return this.state.languageValues || this.state.subjectOfInterestValues ? (
       <EditUserForm
         firstName={this.state.firstName}
