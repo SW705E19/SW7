@@ -45,5 +45,6 @@
   "createaservice": "Opret en service",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
-  "submitrating": "Afgiv vurdering!"
+  "submitrating": "Afgiv vurdering!",
+  "ratingsubmitted": "Din vurdering er modtaget"
 }

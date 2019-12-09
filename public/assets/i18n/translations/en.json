@@ -45,5 +45,6 @@
   "createaservice": "Create a service",
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
-  "submitrating": "Submit rating!"
+  "submitrating": "Submit rating!",
+  "ratingsubmitted": "Your rating was submitted"
 }

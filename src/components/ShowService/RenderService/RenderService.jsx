@@ -54,7 +54,7 @@ function RenderService(props) {
 					</Card>
 				</Grid>
 				<Grid className = {classes.item} item md={12}>
-					<Card alignItems="center" justify="center">
+					<Card justify="center">
 						<Rating
 							name="rating-value"
 							value={ratingValue}

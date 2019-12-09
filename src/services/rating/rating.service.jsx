@@ -12,10 +12,7 @@ function create(rating) {
 		headers: authHeader(),
 		body: rating};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/ratings/`, requestOptions)
-		.then(handleResponse)
-		.then(rating => {
-			return JSON.parse(rating);
-		});
+		.then(handleResponse);
 }
 
 

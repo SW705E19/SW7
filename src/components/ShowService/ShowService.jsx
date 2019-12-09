@@ -39,7 +39,11 @@ class ShowService extends Component {
 					id: this.props.match.params.id
 				}
 			}
-		}, () => ratingService.create(this.state.rating));
+		}, () => ratingService.create(this.state.rating).then(
+			toast.success(this.props.t('ratingsubmitted'), {
+				position: toast.POSITION.BOTTOM_RIGHT
+			}
+			)));
 	}
 
 	componentDidMount() {
@@ -49,7 +53,7 @@ class ShowService extends Component {
 					service: data
 				});
 			})
-			.catch(error => {
+			.catch(() => {
 				toast.error(this.props.t('showservicefail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
