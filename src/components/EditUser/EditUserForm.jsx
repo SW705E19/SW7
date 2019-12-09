@@ -192,7 +192,6 @@ function EditUserForm(props) {
 					/>
 					<Grid container spacing={2} direction="row">
 						<Grid className={classes.buttonWrapper}>
-							{/* TODO: Her skal redirectes ens brugerside*/}
 							<Button
 								type="submit"
 								fullWidth
