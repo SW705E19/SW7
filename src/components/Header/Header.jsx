@@ -70,7 +70,7 @@ function Header(props) {
 						<ViewComfy fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
-				<ListItem button key="AccountCircle" name="account">
+				<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
 					<ListItemText primary="My account" />
 					<ListItemIcon>
 						<AccountCircle fontSize="large" />
@@ -109,7 +109,7 @@ function Header(props) {
 						<IconButton component={Link} to="/service">
 							<ViewComfy fontSize="large" name="services"/>
 						</IconButton>
-						<IconButton>
+						<IconButton component={Link} to="/account">
 							<AccountCircle fontSize="large" name="account"/>
 						</IconButton>
 					</div>

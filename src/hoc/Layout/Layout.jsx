@@ -37,8 +37,9 @@ function Layout() {
 						<Route path="/admin" component={AdminDashboard} />
 						<Route path="/user/:id" component={ShowUser} />
 						<Route path="/service/create" component={CreateService} />
-						<Route path ="/service/:id" component={ShowService}/>
-						<Route path ="/register" component={CreateUser} />
+						<Route path="/service/:id" component={ShowService}/>
+						<Route path="/register" component={CreateUser} />
+						<Route path="/account" component={ShowUser} />
 						<Route component={NotFound} />
 					</Switch>
 				</Container>
