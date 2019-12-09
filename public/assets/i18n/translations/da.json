@@ -47,5 +47,8 @@
   "showuserfail": "Kunne ikke finde denne bruger!",
   "submitrating": "Afgiv vurdering!",
   "ratingsubmitted": "Din vurdering er modtaget",
-  "unavailable": "Ikke tilgængelig"
+  "unavailable": "Ikke tilgængelig",
+  "getAllServicesFail": "Kunne ikke hente services",
+  "unavailable": "Ikke tilgængelig",
+  "showAllServicesTitle": "Services"
 }

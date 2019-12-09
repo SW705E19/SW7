@@ -72,4 +72,4 @@ class ShowService extends Component {
 	}
 }
 
-export default withTranslation() (ShowService);
+export default withTranslation()(ShowService);
