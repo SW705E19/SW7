@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import RenderUser from '../ShowUser/RenderUser/RenderUser';
 import { userService } from '../../services/user/user.service';
+import { authenticationService } from '../../services/authentication/authentication.service';
 import { toast } from 'react-toastify';
+import { withTranslation } from 'react-i18next';
 
 class ShowUser extends Component {
 	constructor(props) {
@@ -13,17 +15,19 @@ class ShowUser extends Component {
 
 	componentDidMount() {
 		let fetchedUser = null;
-		userService.getById(this.props.match.params.id)
+		const id = this.props.match.params.id ? this.props.match.params.id : authenticationService.getCurrentUserId();
+		userService.getById(id)
 			.then(async (data) => {
 				fetchedUser = data;
 				if(data.roles.includes('TUTOR')) {
-					await userService.getTutorInfoByUserId(this.props.match.params.id).then(tutorInfo => {
+					await userService.getTutorInfoByUserId(id).then(tutorInfo => {
 						fetchedUser.tutorInfo = tutorInfo;
 					});
 				}
 				this.setState({ user: fetchedUser });
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.log(err);
 				toast.error(this.props.t('showuserfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
@@ -35,4 +39,4 @@ class ShowUser extends Component {
 	}
 }
 
-export default ShowUser;
+export default withTranslation()(ShowUser);
