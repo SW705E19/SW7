@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-
 import RenderService from './RenderService/RenderService';
 import { Button, Grid, Card, CardContent, CardActions, Typography, Avatar, CardMedia, Divider, Box } from '@material-ui/core';
 
