@@ -35,24 +35,24 @@ describe('<RenderService />', () => {
 		testinstance  = wrapper.root;
 	});
 
-	it('should render both <Buttons />', () => {
-		expect(testinstance.findAllByType(Button)).toHaveLength(2);
+	it('should render all <Buttons />', () => {
+		expect(testinstance.findAllByType(Button)).toHaveLength(3);
 	});
 
 	it('should render all <Card />s', () => {
-		expect(testinstance.findAllByType(Card)).toHaveLength(3);
+		expect(testinstance.findAllByType(Card)).toHaveLength(4);
 	});
     
 	it('should render both <CardContent />s', () => {
 		expect(testinstance.findAllByType(CardContent)).toHaveLength(2);
 	});
     
-	it('should render both <CardAction />s', () => {
-		expect(testinstance.findAllByType(CardActions)).toHaveLength(2);
+	it('should render all <CardAction />s', () => {
+		expect(testinstance.findAllByType(CardActions)).toHaveLength(3);
 	});
 
 	it('should render all the necessary <Grid />s', () => {
-		expect(testinstance.findAllByType(Grid)).toHaveLength(5);
+		expect(testinstance.findAllByType(Grid)).toHaveLength(6);
 	});
 
 	it('should render all the necessary <Typography />s', () => {

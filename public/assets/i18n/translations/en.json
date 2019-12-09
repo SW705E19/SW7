@@ -59,11 +59,11 @@
   "delete": "Delete",
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
+  "submitrating": "Submit rating!",
+  "ratingsubmitted": "Your rating was submitted",
+  "unavailable": "Unavailable",
   "getAllServicesFail": "Failed to get services",
   "unavailable": "Unavailable",
   "showAllServicesTitle": "Services",
-  "choosecategories": "Choose at least one category",
-  "acceptedpayments": "Accepted payments",
-  "services": "Services",
-  "learnmore": "Learn more"
+  "choosecategories": "Choose at least one category"
 }
