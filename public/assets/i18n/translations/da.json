@@ -72,5 +72,6 @@
   "choosecategories": "Vælg mindst en kategori",
   "getAllServicesFail": "Kunne ikke hente services",
   "unavailable": "Ikke tilgængelig",
-  "showAllServicesTitle": "Services"
+  "showAllServicesTitle": "Services",
+  "averagerating": "Gennemsnitlig vurdering"
 }
