@@ -59,5 +59,6 @@
   "delete": "Slet",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
-  "unavailable": "Ikke tilgængelig"
+  "unavailable": "Ikke tilgængelig",
+  "choosecategories": "Vælg mindst en kategori"
 }
