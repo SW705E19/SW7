@@ -8,6 +8,7 @@ import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
+import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
 import { withTranslation } from 'react-i18next';
@@ -18,7 +19,6 @@ function Layout() {
 		const lng = e.target.value;
 		i18n.changeLanguage(lng);
 	};
-
 
 	const useStyles = makeStyles(theme => ({
 		appBarSpacer: theme.mixins.toolbar
@@ -38,6 +38,7 @@ function Layout() {
 						<Route path="/user/:id" component={ShowUser} />
 						<Route path="/service/create" component={CreateService} />
 						<Route path="/service/:id" component={ShowService}/>
+            <Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
 						<Route component={NotFound} />
