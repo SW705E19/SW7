@@ -11,8 +11,10 @@ import Header from '../../components/Header/Header';
 import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
+import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
+
 
 function Layout() {
 	const changeLanguage = (e) => {
@@ -38,6 +40,7 @@ function Layout() {
 						<Route path="/user/:id" component={ShowUser} />
 						<Route path="/service/create" component={CreateService} />
 						<Route path="/service/:id" component={ShowService}/>
+						<Route path="/service/edit/:id" component={EditService} />
 						<Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
