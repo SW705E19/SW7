@@ -50,8 +50,8 @@
   "deleteuserdialog": "Hvis du sletter din bruger vil du ikke være i stand til at få den tilbage",
   "deleteduser": "Brugeren er nu slettet",
   "deleteuserfailed": "Brugeren blev ikke slettet",
-  "saveeditusernotifysuccess": "The changes was saved",
-  "saveeditusernotifyfail": "The changes have not been saved",
+  "saveeditusernotifysuccess": "Ændringerne er blevet gemt",
+  "saveeditusernotifyfail": "Ændringerne er ikke blevet gemt",
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
   "unavailable": "Ikke tilgængelig"
