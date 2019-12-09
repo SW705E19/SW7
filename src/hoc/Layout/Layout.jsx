@@ -16,23 +16,22 @@ import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 
-
 function Layout() {
-	const changeLanguage = (e) => {	
-		const lng = e.target.value;	
-		i18n.changeLanguage(lng);	
+	const changeLanguage = e => {
+		const lng = e.target.value;
+		i18n.changeLanguage(lng);
 	};
 
 	const useStyles = makeStyles(theme => ({
 		appBarSpacer: theme.mixins.toolbar
 	}));
-	
+
 	const classes = useStyles();
-	
+
 	return (
 		<>
 			<Router>
-				<Header changeLanguage={changeLanguage}/>
+				<Header changeLanguage={changeLanguage} />
 				<div className={classes.appBarSpacer} />
 				<Container component="main" maxWidth="md">
 					<Switch>
@@ -40,12 +39,12 @@ function Layout() {
 						<Route path="/admin" component={AdminDashboard} />
 						<Route path="/user/:id" component={ShowUser} />
 						<Route path="/service/create" component={CreateService} />
-						<Route path="/service/:id" component={ShowService}/>
+						<Route path="/service/:id" component={ShowService} />
 						<Route path="/service/edit/:id" component={EditService} />
 						<Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
-				    <Route path="/edituser/:id" component={EditUser} />
+						<Route path="/edituser/:id" component={EditUser} />
 						<Route component={NotFound} />
 					</Switch>
 				</Container>
