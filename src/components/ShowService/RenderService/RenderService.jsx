@@ -1,8 +1,10 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react';
 import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider} from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
+import Rating from '@material-ui/lab/Rating';
 
 function RenderService(props) {
 	const useStyles = makeStyles(theme => ({
@@ -36,8 +38,10 @@ function RenderService(props) {
 	const { t } = useTranslation();
 	const classes = useStyles();
 
-	const random = 1 + (Math.random() * (200 - 1));
-	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
+	const randomUrl = 'https://source.unsplash.com/random/800x600';
+
+	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
+	const [ratingValue, setRatingValue] = React.useState(0);
 
 	return (
 		<>
@@ -52,7 +56,29 @@ function RenderService(props) {
 						</CardMedia>
 					</Card>
 				</Grid>
-			
+				<Grid className = {classes.item} item md={12}>
+					<Card justify="center">
+						<Rating
+							name="rating-value"
+							value={ratingValue}
+							onChange={(event, newValue) => {
+								setRatingValue(newValue);
+          				}}
+       					 />
+						<CardActions style={{justifyContent: 'center'}}>
+							<Button
+								type="button"
+								variant="contained"
+								color="primary"
+								size="small"
+								onClick={() => props.submitRating(ratingValue)}
+							>
+								{t('submitrating')}
+							</Button>
+						</CardActions>	
+					</Card>
+				</Grid>
+
 				<Grid className = {classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
