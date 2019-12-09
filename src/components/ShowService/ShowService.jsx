@@ -3,6 +3,7 @@ import RenderService from '../ShowService/RenderService/RenderService';
 import { serviceService } from '../../services/service/service.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
+import { withTranslation } from 'react-i18next';
 
 class ShowService extends Component {
 	constructor(props) {
@@ -45,4 +46,4 @@ class ShowService extends Component {
 	}
 }
 
-export default ShowService;
+export default withTranslation()(ShowService);
