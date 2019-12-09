@@ -21,12 +21,12 @@ describe('<ShowAllServices />', () => {
 	const services = Array(5).fill(service);
 	
 	it('rendered component', () => {
-		const wrapper = shallow(<ShowAllServices />);
+		const wrapper = shallow(<ShowAllServices t={key => key} />);
 		expect(wrapper.exists()).toBe(true);
 	});
 
 	it('renders ServiceList if it has services in state', () => {
-		const wrapper = shallow(<ShowAllServices />);
+		const wrapper = shallow(<ShowAllServices t={key => key} />);
 		wrapper.setState({
 			services: services
 		});
@@ -35,13 +35,13 @@ describe('<ShowAllServices />', () => {
 	});
 
 	it('does not render ServiceList if no services in state', () => {
-		const wrapper = shallow(<ShowAllServices />);
+		const wrapper = shallow(<ShowAllServices t={key => key} />);
 
 		expect(wrapper.find(ServiceList)).toHaveLength(0);
 	});
 
 	it('renders Redirect if redirect function is called', () => {
-		const wrapper = shallow(<ShowAllServices />);
+		const wrapper = shallow(<ShowAllServices t={key => key} />);
 
 		wrapper.instance().redirect(service.id);
 		expect(wrapper.find(Redirect)).toHaveLength(1);
