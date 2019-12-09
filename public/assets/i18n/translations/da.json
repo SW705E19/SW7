@@ -60,5 +60,8 @@
   "showservicefail": "Kunne ikke finde dette service!",
   "showuserfail": "Kunne ikke finde denne bruger!",
   "unavailable": "Ikke tilgængelig",
-  "choosecategories": "Vælg mindst en kategori"
+  "choosecategories": "Vælg mindst en kategori",
+  "getAllServicesFail": "Kunne ikke hente services",
+  "unavailable": "Ikke tilgængelig",
+  "showAllServicesTitle": "Services"
 }

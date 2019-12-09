@@ -59,6 +59,9 @@
   "delete": "Delete",
   "showservicefail": "Could not find the service!",
   "showuserfail": "Could not find the user!",
+  "getAllServicesFail": "Failed to get services",
+  "unavailable": "Unavailable",
+  "showAllServicesTitle": "Services",
   "unavailable": "Unavailable",
   "choosecategories": "Choose atleast one category"
 }
