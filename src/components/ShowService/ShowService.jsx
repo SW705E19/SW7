@@ -5,7 +5,6 @@ import { ratingService } from '../../services/rating/rating.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
-import { ratingService } from '../../services/rating/rating.service';
 import { authenticationService } from '../../services/authentication/authentication.service';
 
 class ShowService extends Component {
@@ -28,7 +27,6 @@ class ShowService extends Component {
 			redirectToTutor: true
 		});
 	}
-
 
 	submitRating(ratingValue) {
 		this.setState({
