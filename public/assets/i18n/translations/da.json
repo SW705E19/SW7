@@ -65,5 +65,6 @@
   "choosecategories": "Vælg mindst en kategori",
   "getAllServicesFail": "Kunne ikke hente services",
   "unavailable": "Ikke tilgængelig",
-  "showAllServicesTitle": "Services"
+  "showAllServicesTitle": "Services",
+  "showlandingpagefail": "Kunne ikke hente data"
 }

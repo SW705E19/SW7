@@ -12,6 +12,7 @@ import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
 import EditService from '../../containers/EditService/EditService';
+import LandingPage from '../../components/LandingPage/LandingPage';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 
@@ -44,6 +45,7 @@ function Layout() {
 						<Route path="/service/" component={ShowAllServices} />
 						<Route path="/register" component={CreateUser} />
 						<Route path="/account" component={ShowUser} />
+						<Route path="/" component={LandingPage} />
 						<Route component={NotFound} />
 					</Switch>
 				</Container>
