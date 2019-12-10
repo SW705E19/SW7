@@ -14,12 +14,13 @@ import {
 	ListItemText
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
 	AccountCircle,
 	Menu,
 	Home,
-	ViewComfy
+	ViewComfy,
+	ExitToApp
 } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import logo_transparent from '../../assets/logo.png';
@@ -32,6 +33,7 @@ const styles = {
 
 function Header(props) {
 	const classes = props.classes;
+	const loggedIn = props.loggedIn;
 	const { t } = useTranslation();
 
 	const [state, setState] = React.useState({
@@ -41,14 +43,14 @@ function Header(props) {
 	const toggleDrawer = open => event => {
 		if (
 			event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+			(event.key === 'Tab' || event.key === 'Shift')
 		) {
 			return;
 		}
 
 		setState({ ...state, isMenuOpen: open });
 	};
-	
+
 	const sideList = (
 		<div
 			className={classes.list}
@@ -70,12 +72,22 @@ function Header(props) {
 						<ViewComfy fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
-				<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
-					<ListItemText primary="My account" />
-					<ListItemIcon>
-						<AccountCircle fontSize="large" />
-					</ListItemIcon>
-				</ListItem>
+				{
+					loggedIn ?
+						<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
+							<ListItemText primary="My account" />
+							<ListItemIcon>
+								<AccountCircle fontSize="large" />
+							</ListItemIcon>
+						</ListItem>
+						:
+						<ListItem button component={Link} to="/login" key="LoginCircle" name="login">
+							<ListItemText primary="Login" />
+							<ListItemIcon>
+								<ExitToApp fontSize="large" />
+							</ListItemIcon>
+						</ListItem>
+				}
 			</List>
 		</div>
 	);
@@ -107,11 +119,18 @@ function Header(props) {
 					</Select>
 					<div className={classes.toolbarButtons}>
 						<IconButton component={Link} to="/service">
-							<ViewComfy fontSize="large" name="services"/>
+							<ViewComfy fontSize="large" name="services" />
 						</IconButton>
-						<IconButton component={Link} to="/account">
-							<AccountCircle fontSize="large" name="account"/>
-						</IconButton>
+						{
+							loggedIn ?
+								<IconButton component={Link} to="/account">
+									<AccountCircle fontSize="large" name="account" />
+								</IconButton>
+								:
+								<IconButton component={Link} to="/login">
+									<ExitToApp fontSize="large" name="login" />
+								</IconButton>
+						}
 					</div>
 				</Hidden>
 			</Toolbar>
