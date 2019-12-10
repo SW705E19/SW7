@@ -30,8 +30,12 @@ describe('<RenderService />', () => {
 		],
 	};
 
+	const avgRating = {
+		avg: '2.5'
+	};
+
 	beforeEach(() => {
-		wrapper = renderer.create(<RenderService service={service}/>);
+		wrapper = renderer.create(<RenderService service={service} ratingValue={3} avgRating={avgRating}/>);
 		testinstance  = wrapper.root;
 	});
 
@@ -56,7 +60,7 @@ describe('<RenderService />', () => {
 	});
 
 	it('should render all the necessary <Typography />s', () => {
-		expect(testinstance.findAllByType(Typography)).toHaveLength(5);
+		expect(testinstance.findAllByType(Typography)).toHaveLength(6);
 	});
 
 	it('should render <Avatar />', () => {

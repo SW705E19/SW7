@@ -70,7 +70,10 @@
   "submitrating": "Submit rating!",
   "ratingsubmitted": "Your rating was submitted",
   "getAllServicesFail": "Failed to get services",
-  "unavailable": "Unavailable",
   "showAllServicesTitle": "Services",
-  "choosecategories": "Choose at least one category"
+  "choosecategories": "Choose at least one category",
+  "acceptedpayments": "Accepted payments",
+  "services": "Services",
+  "learnmore": "Learn more",
+  "averagerating": "Average rating"
 }
