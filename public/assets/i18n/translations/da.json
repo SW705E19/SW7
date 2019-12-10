@@ -71,6 +71,10 @@
   "ratingsubmitted": "Din vurdering er modtaget",
   "choosecategories": "Vælg mindst en kategori",
   "getAllServicesFail": "Kunne ikke hente services",
+  "showAllServicesTitle": "Services",
+  "acceptedpayments": "Betalingsformer",
+  "services": "Services",
+  "learnmore": "Læs mere",
   "unavailable": "Ikke tilgængelig",
   "showAllServicesTitle": "Services",
   "averagerating": "Gennemsnitlig vurdering"
