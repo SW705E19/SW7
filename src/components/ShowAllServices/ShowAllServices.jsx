@@ -4,23 +4,28 @@ import ServiceList from '../../containers/ServiceList/ServiceList';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
-import { Typography } from '@material-ui/core';
+import { Typography, TextField } from '@material-ui/core';
 
 class ShowAllServices extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			filter: '',
+			filteredServices: null,
 			services: null,
 			redirect: false
 		};
 		this.redirect = this.redirect.bind(this);
+		this.handleFilterChange = this.handleFilterChange.bind(this);
 	}
 
 	componentDidMount(){
 		serviceService.getAll()
 			.then( res => {
+				console.log(res);
 				this.setState({
-					services: res
+					services: res,
+					filteredServices: res
 				});
 			})
 			.catch(() => {
@@ -44,6 +49,19 @@ class ShowAllServices extends Component {
 		});
 	}
 
+	handleFilterChange(event) {
+		this.setState({ filter: event.target.value});
+		const lowercasedFilter = this.state.filter.toLowerCase();
+		const filteredServices = this.state.services.filter(service => {
+			return Object.keys(service).some(key => {
+				service[key].toLowerCase().includes(lowercasedFilter);
+			});
+		});
+		this.setState({filteredServices: filteredServices});
+	}
+
+
+
 	render(){
 		if(this.state.redirect){
 			return (<Redirect to={this.state.redirectTo} />);
@@ -57,7 +75,8 @@ class ShowAllServices extends Component {
 				>
 					{this.props.t('showAllServicesTitle')}
 				</Typography>
-				<ServiceList services={this.state.services} onClick={this.redirect} />
+				<TextField onChange={this.handleFilterChange} label="Outlined" variant="outlined" />
+				<ServiceList services={this.state.filteredServices} onClick={this.redirect} />
 			</>:
 			null;
 	
