@@ -12,10 +12,11 @@ class ShowEditTutorRole extends Component {
 		};
 	}
 
+	
+
 	componentDidMount() {
 		userService.getAll()
 			.then(async (data) => {
-				console.log(data);
 				this.setState({	
 					users: data
 				});

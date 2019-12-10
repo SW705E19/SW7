@@ -33,34 +33,27 @@ function RenderService(props) {
 					<TableHead>
 						<TableRow>
 							<TableCell>Users E-mail</TableCell>
-							<TableCell>asd{props.service}</TableCell>
 							<TableCell align="right">Add / remove tutor role</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						<TableRow>
-						<TableCell component="th" scope="row">
-								{props.users}
-								</TableCell>
-						</TableRow>
-						{/* {props.service.map(row => (
-							<TableRow key={row.name}>
+						{props.users.map(row => (
+							<TableRow key={row.email}>
 								<TableCell component="th" scope="row">
-									{row.name}
+									{row.email}
 								</TableCell>
 								<TableCell align="right">
 									<ToggleButton
 										value="check"
 										selected={row.roles.includes('TUTOR')}
 										onChange={() => {
-							
 										}}
 									>
-										<CheckIcon />
+									<CheckIcon/>
 									</ToggleButton>
 								</TableCell>
 							</TableRow>
-						))} */}
+						))}
 					</TableBody>
 				</Table>
 			</Paper>
