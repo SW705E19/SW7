@@ -31,11 +31,10 @@ function Layout() {
 
 	return (
 		<Router>
-			<Header changeLanguage={changeLanguage} />
+			<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
 			<div className={classes.appBarSpacer} />
 			<Container component="main" maxWidth="md">
 				<Switch>
-					<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
 					<Route path="/admin" component={AdminDashboard} />
 					<Route path="/user/:id" component={ShowUser} />
 					<Route path="/service/create" component={CreateService} />
