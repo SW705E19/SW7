@@ -50,14 +50,33 @@ class ShowAllServices extends Component {
 	}
 
 	handleFilterChange(event) {
-		this.setState({ filter: event.target.value});
-		const lowercasedFilter = this.state.filter.toLowerCase();
-		const filteredServices = this.state.services.filter(service => {
-			return Object.keys(service).some(key => {
-				service[key].toLowerCase().includes(lowercasedFilter);
+		this.setState({ filter: event.target.value} ,() => {
+			const lowercasedFilter = this.state.filter.toLowerCase();
+			const filteredServices = this.state.services.filter(service => {
+				if(service.name.includes(lowercasedFilter)) {
+					return true;
+				} else if (service.description.includes(lowercasedFilter)){
+					return true;
+				} else if(service.categories) {
+					return service.categories.some(category => {
+						if(category.name.includes(lowercasedFilter)) {
+							return true;
+						} else if (category.description.includes(lowercasedFilter)){
+							return true;
+						}
+						return false;
+					});
+				} else if(service.tutorInfo) {
+					if(service.tutorInfo.firstName.includes(lowercasedFilter)) {
+						return true;
+					} else if (service.tutorInfo.lastName.includes(lowercasedFilter)){
+						return true;
+					}
+				}
+				return false; 
 			});
+			this.setState({filteredServices: filteredServices});
 		});
-		this.setState({filteredServices: filteredServices});
 	}
 
 
@@ -75,7 +94,7 @@ class ShowAllServices extends Component {
 				>
 					{this.props.t('showAllServicesTitle')}
 				</Typography>
-				<TextField onChange={this.handleFilterChange} label="Outlined" variant="outlined" />
+				<TextField onChange={this.handleFilterChange} label="Search" variant="outlined" fullWidth/>
 				<ServiceList services={this.state.filteredServices} onClick={this.redirect} />
 			</>:
 			null;
