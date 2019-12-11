@@ -22,7 +22,6 @@ class ShowAllServices extends Component {
 	componentDidMount(){
 		serviceService.getAll()
 			.then( res => {
-				console.log(res);
 				this.setState({
 					services: res,
 					filteredServices: res
