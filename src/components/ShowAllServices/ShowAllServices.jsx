@@ -101,7 +101,7 @@ class ShowAllServices extends Component {
 				>
 					{this.props.t('showAllServicesTitle')}
 				</Typography>
-				<TextField onChange={this.handleFilterChange} label="Search" variant="outlined" fullWidth/>
+				<TextField onChange={this.handleFilterChange} label={this.props.t('searchservices')} variant="outlined" fullWidth/>
 				<ServiceList services={this.state.filteredServices} onClick={this.redirect} />
 			</>:
 			null;
