@@ -54,22 +54,30 @@ class ShowAllServices extends Component {
 			const filteredServices = this.state.services.filter(service => {
 				if(service.name.includes(lowercasedFilter)) {
 					return true;
-				} else if (service.description.includes(lowercasedFilter)){
+				} 
+				if (service.description.includes(lowercasedFilter)){
 					return true;
-				} else if(service.categories) {
-					return service.categories.some(category => {
+				} 
+				if(service.categories) {
+					if(service.categories.some(category => {
 						if(category.name.includes(lowercasedFilter)) {
 							return true;
-						} else if (category.description.includes(lowercasedFilter)){
+						} 
+						if(category.description.includes(lowercasedFilter)){
 							return true;
 						}
-						return false;
-					});
-				} else if(service.tutorInfo) {
-					if(service.tutorInfo.firstName.includes(lowercasedFilter)) {
+					})) {
 						return true;
-					} else if (service.tutorInfo.lastName.includes(lowercasedFilter)){
-						return true;
+					}
+				} 
+				if(service.tutorInfo) {
+					if(service.tutorInfo.user) {
+						if(service.tutorInfo.user.firstName.includes(lowercasedFilter)) {
+							return true;
+						}
+						if (service.tutorInfo.user.lastName.includes(lowercasedFilter)){
+							return true;
+						}
 					}
 				}
 				return false; 
