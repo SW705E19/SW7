@@ -8,33 +8,22 @@ import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
 import ShowService from '../../components/ShowService/ShowService';
 import Header from '../../components/Header/Header';
+import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
 import GiveTutorRole from '../../components/GiveTutorRole/GiveTutorGetUsers';
+import EditUser from '../../components/EditUser/EditUser';
+import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
+import authHeader from '../../helpers/auth-header';
 
 
 function Layout() {
-	const changeLanguage = (e) => {
+	const changeLanguage = e => {
 		const lng = e.target.value;
 		i18n.changeLanguage(lng);
 	};
-
-	const routing = (
-		<Router>
-			<Switch>
-				<Route path="/login" component={Login} />
-				<Route path="/admin" component={AdminDashboard} />
-				<Route path="/user/:id" component={ShowUser} />
-				<Route path="/service/create" component={CreateService} />
-				<Route path ="/service/:id" component={ShowService}/>
-				<Route path ="/register" component={CreateUser} />
-				<Route path ="/tutorRole" component={GiveTutorRole}/>
-				<Route component={NotFound} />
-			</Switch>
-		</Router>
-	);
 
 	const useStyles = makeStyles(theme => ({
 		appBarSpacer: theme.mixins.toolbar
@@ -43,13 +32,26 @@ function Layout() {
 	const classes = useStyles();
 
 	return (
-		<>
-			<Header changeLanguage={changeLanguage}/>
+		<Router>
+			<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
 			<div className={classes.appBarSpacer} />
 			<Container component="main" maxWidth="md">
-				{routing}
+				<Switch>
+					<Route path="/admin" component={AdminDashboard} />
+					<Route path="/user/:id" component={ShowUser} />
+					<Route path="/service/create" component={CreateService} />
+					<Route path="/service/:id" component={ShowService} />
+					<Route path="/service/edit/:id" component={EditService} />
+					<Route path="/service/" component={ShowAllServices} />
+					<Route path="/register" component={CreateUser} />
+					<Route path="/account" component={ShowUser} />
+					<Route path="/user/edit/:id" component={EditUser} />
+					<Route path="/login" component={Login} />
+					<Route path= "/tutorRole" component={GiveTutorRole}/>
+					<Route component={NotFound} />
+				</Switch>
 			</Container>
-		</>
+		</Router>
 	);
 }
 

@@ -1,8 +1,10 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react';
-import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider} from '@material-ui/core';
+import { Card, Avatar, Grid, Typography, CardContent, Button, CardActions, CardMedia, Box, Divider } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
+import Rating from '@material-ui/lab/Rating';
 
 function RenderService(props) {
 	const useStyles = makeStyles(theme => ({
@@ -13,7 +15,7 @@ function RenderService(props) {
 			height: 0,
 			paddingTop: '56.25%',
 		},
-		servicepicture:  {
+		servicepicture: {
 			height: 350,
 			width: 350,
 		},
@@ -36,21 +38,49 @@ function RenderService(props) {
 	const { t } = useTranslation();
 	const classes = useStyles();
 
-	const random = 1 + (Math.random() * (200 - 1));
-	const randomUrl = `https://api.adorable.io/avatars/140/${random}@adorable.png`;
+	const randomUrl = 'https://source.unsplash.com/random/800x600';
+
+	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
+	const [ratingValue, setRatingValue] = React.useState(0);
 
 	return (
 		<>
 			<Grid container className={classes.root} spacing={2}>
-				<Grid className = {classes.item} item md={12}>
-					<Card justify="center"  className={classes.card}>
+				<Grid className={classes.item} item md={12}>
+					<Card justify="center" className={classes.card}>
 						<CardMedia className={classes.media}
-							image={randomUrl}>					
+							image={randomUrl}>
 						</CardMedia>
 					</Card>
 				</Grid>
-			
-				<Grid className = {classes.item} item md={6}>
+				<Grid className={classes.item} item md={12}>
+					<Card justify="center">
+						<Typography color="textPrimary" style={{ fontSize: 12 }}>
+							{t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+						</Typography>
+						<Rating
+							name="rating-value"
+							value={ratingValue}
+							onChange={(event, newValue) => {
+								setRatingValue(newValue);
+							}}
+						/>
+
+						<CardActions style={{ justifyContent: 'center' }}>
+							<Button
+								type="button"
+								variant="contained"
+								color="primary"
+								size="small"
+								onClick={() => props.submitRating(ratingValue)}
+							>
+								{t('submitrating')}
+							</Button>
+						</CardActions>
+					</Card>
+				</Grid>
+
+				<Grid className={classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
@@ -78,15 +108,15 @@ function RenderService(props) {
 						</CardActions>
 					</Card>
 				</Grid>
-				<Grid className = {classes.item} item md={6}>
+				<Grid className={classes.item} item md={6}>
 					<Card className={classes.card}>
 						<CardContent>
 							<Typography component="h2" variant="h5">
 								{props.service.name}
 								<Divider orientation="horizontal" />
 								<Box fontStyle="italic" >
-									<Typography color="textPrimary" style={{fontSize: 12}}>
-										{'Categories: ' + props.service.categories.map((category, index) =>  category.name + (index ? '.' : ', ')).join('')}
+									<Typography color="textPrimary" style={{ fontSize: 12 }}>
+										{'Categories: ' + props.service.categories.map((category, index) => category.name + (index ? '.' : ', ')).join('')}
 									</Typography>
 								</Box>
 								<Divider orientation="horizontal" />

@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-
 import RenderService from './RenderService/RenderService';
 import { Button, Grid, Card, CardContent, CardActions, Typography, Avatar, CardMedia, Divider, Box } from '@material-ui/core';
 
@@ -32,33 +30,37 @@ describe('<RenderService />', () => {
 		],
 	};
 
+	const avgRating = {
+		avg: '2.5'
+	};
+
 	beforeEach(() => {
-		wrapper = renderer.create(<RenderService service={service}/>);
+		wrapper = renderer.create(<RenderService service={service} ratingValue={3} avgRating={avgRating}/>);
 		testinstance  = wrapper.root;
 	});
 
-	it('should render both <Buttons />', () => {
-		expect(testinstance.findAllByType(Button)).toHaveLength(2);
+	it('should render all <Buttons />', () => {
+		expect(testinstance.findAllByType(Button)).toHaveLength(3);
 	});
 
 	it('should render all <Card />s', () => {
-		expect(testinstance.findAllByType(Card)).toHaveLength(3);
+		expect(testinstance.findAllByType(Card)).toHaveLength(4);
 	});
     
 	it('should render both <CardContent />s', () => {
 		expect(testinstance.findAllByType(CardContent)).toHaveLength(2);
 	});
     
-	it('should render both <CardAction />s', () => {
-		expect(testinstance.findAllByType(CardActions)).toHaveLength(2);
+	it('should render all <CardAction />s', () => {
+		expect(testinstance.findAllByType(CardActions)).toHaveLength(3);
 	});
 
 	it('should render all the necessary <Grid />s', () => {
-		expect(testinstance.findAllByType(Grid)).toHaveLength(5);
+		expect(testinstance.findAllByType(Grid)).toHaveLength(6);
 	});
 
 	it('should render all the necessary <Typography />s', () => {
-		expect(testinstance.findAllByType(Typography)).toHaveLength(5);
+		expect(testinstance.findAllByType(Typography)).toHaveLength(6);
 	});
 
 	it('should render <Avatar />', () => {

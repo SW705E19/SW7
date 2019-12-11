@@ -1,6 +1,6 @@
 import { authenticationService } from '../services/authentication/authentication.service';
 
-export function authHeader() {
+export default function authHeader() {
 	// returns authorization of logged in user, or empty object if not logged in.
 	const token = authenticationService.currentUserValue;
 	if (token) {
@@ -9,6 +9,6 @@ export function authHeader() {
 			'Content-Type': 'application/json' 
 		};
 	} else {
-		return {};
+		return null;
 	}
 } 

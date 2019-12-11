@@ -44,12 +44,15 @@ function RenderService(props) {
 								</TableCell>
 								<TableCell align="right">
 									<ToggleButton
+										name={row.id}
 										value="check"
-										selected={row.roles.includes('TUTOR')}
-										onChange={() => {
+										selected={row.selected}
+										onChange={e => {
+											e.index = row.index;
+											props.handleOnChange(e);
 										}}
 									>
-									<CheckIcon/>
+										<CheckIcon/>
 									</ToggleButton>
 								</TableCell>
 							</TableRow>
