@@ -34,7 +34,7 @@ function Layout() {
 
 	const changeLoggedInState = () => {
 		setState({...state, loggedIn: authenticationService.loggedIn()});
-	}
+	};
 	return (
 		<Router>
 			<Header changeLanguage={changeLanguage} loggedIn={state.loggedIn} changeLoggedInState={changeLoggedInState} />
