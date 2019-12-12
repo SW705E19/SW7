@@ -77,5 +77,6 @@
   "learnmore": "Læs mere",
   "unavailable": "Ikke tilgængelig",
   "averagerating": "Gennemsnitlig vurdering",
-  "searchservices": "Søg efter services"
+  "searchservices": "Søg efter services",
+  "logoutsuccess": "Du har logget ud!"
 }

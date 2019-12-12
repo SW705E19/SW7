@@ -76,5 +76,6 @@
   "services": "Services",
   "learnmore": "Learn more",
   "averagerating": "Average rating",
-  "searchservices": "Search for services"
+  "searchservices": "Search for services",
+  "logoutsuccess": "Logged out successfully!"
 }
