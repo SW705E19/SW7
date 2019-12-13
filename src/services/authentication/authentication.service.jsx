@@ -10,7 +10,8 @@ export const authenticationService = {
 	createUser,
 	currentUser: currentUserSubject.asObservable(),
 	get currentUserValue () { return currentUserSubject.value; },
-	getCurrentUserId
+	getCurrentUserId,
+	loggedIn
 };
 
 function login(email, password) {
@@ -57,4 +58,11 @@ function logout() {
 function getCurrentUserId() {
 	const decodedToken = jwt.decode(localStorage.getItem('currentUser'));
 	return decodedToken.userId;
+}
+
+function loggedIn() {
+	if(currentUserSubject && currentUserSubject.value) {
+		return true;
+	}
+	return false;
 }

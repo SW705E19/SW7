@@ -80,4 +80,6 @@
   "averagerating": "Gennemsnitlig vurdering",
   "getusersfail": "Kunne ikke hente brugere",
   "addremoverole": "Tilføj eller fjern tutor rolle"
+  "searchservices": "Søg efter services",
+  "logoutsuccess": "Du har logget ud"
 }

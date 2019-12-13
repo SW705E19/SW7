@@ -78,4 +78,6 @@
   "averagerating": "Average rating",
   "getusersfail": "Could not get users",
   "addremoverole": "Add or remove tutor role"
+  "searchservices": "Search for services",
+  "logoutsuccess": "Logged out successfully"
 }

@@ -16,7 +16,7 @@ import EditUser from '../../components/EditUser/EditUser';
 import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
-import authHeader from '../../helpers/auth-header';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 
 function Layout() {
@@ -29,11 +29,17 @@ function Layout() {
 		appBarSpacer: theme.mixins.toolbar
 	}));
 
+	const [state, setState] = React.useState({
+		loggedIn: authenticationService.loggedIn()
+	});
 	const classes = useStyles();
 
+	const changeLoggedInState = () => {
+		setState({...state, loggedIn: authenticationService.loggedIn()});
+	};
 	return (
 		<Router>
-			<Header changeLanguage={changeLanguage} loggedIn={authHeader()} />
+			<Header changeLanguage={changeLanguage} loggedIn={state.loggedIn} changeLoggedInState={changeLoggedInState} />
 			<div className={classes.appBarSpacer} />
 			<Container component="main" maxWidth="md">
 				<Switch>
@@ -46,8 +52,10 @@ function Layout() {
 					<Route path="/register" component={CreateUser} />
 					<Route path="/account" component={ShowUser} />
 					<Route path="/user/edit/:id" component={EditUser} />
-					<Route path="/login" component={Login} />
 					<Route path= "/tutorRole" component={GiveTutorRole}/>
+					<Route path="/login">
+						<Login changeLoggedInState={changeLoggedInState}/>
+					</Route>
 					<Route component={NotFound} />
 				</Switch>
 			</Container>

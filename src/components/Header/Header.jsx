@@ -20,10 +20,13 @@ import {
 	Menu,
 	Home,
 	ViewComfy,
-	ExitToApp
+	ExitToApp,
+	MeetingRoom
 } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import logo_transparent from '../../assets/logo.png';
+import { authenticationService } from '../../services/authentication/authentication.service';
+import { toast } from 'react-toastify';
 
 const styles = {
 	toolbarButtons: {
@@ -33,8 +36,15 @@ const styles = {
 
 function Header(props) {
 	const classes = props.classes;
-	const loggedIn = props.loggedIn;
 	const { t } = useTranslation();
+
+	const logout = () => {
+		authenticationService.logout();
+		toast.success(t('logoutsuccess'), {
+			position: toast.POSITION.BOTTOM_RIGHT
+		});
+		props.changeLoggedInState();
+	};
 
 	const [state, setState] = React.useState({
 		isMenuOpen: false
@@ -73,13 +83,21 @@ function Header(props) {
 					</ListItemIcon>
 				</ListItem>
 				{
-					loggedIn ?
-						<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
-							<ListItemText primary="My account" />
-							<ListItemIcon>
-								<AccountCircle fontSize="large" />
-							</ListItemIcon>
-						</ListItem>
+					props.loggedIn ?
+						<>
+							<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
+								<ListItemText primary="My account" />
+								<ListItemIcon>
+									<AccountCircle fontSize="large" />
+								</ListItemIcon>
+							</ListItem>
+							<ListItem button component={Link} to="/login" key="MeetingRoom" onClick={logout}>
+								<ListItemText primary="Logout" />
+								<ListItemIcon>
+									<MeetingRoom fontSize="large" />
+								</ListItemIcon>
+							</ListItem>
+						</>
 						:
 						<ListItem button component={Link} to="/login" key="LoginCircle" name="login">
 							<ListItemText primary="Login" />
@@ -122,10 +140,15 @@ function Header(props) {
 							<ViewComfy fontSize="large" name="services" />
 						</IconButton>
 						{
-							loggedIn ?
-								<IconButton component={Link} to="/account">
-									<AccountCircle fontSize="large" name="account" />
-								</IconButton>
+							props.loggedIn ?
+								<>
+									<IconButton component={Link} to="/account">
+										<AccountCircle fontSize="large" name="account" />
+									</IconButton>
+									<IconButton component={Link} to="/login" onClick={logout}>
+										<MeetingRoom fontSize="large" name="logout" />
+									</IconButton>
+								</>
 								:
 								<IconButton component={Link} to="/login">
 									<ExitToApp fontSize="large" name="login" />
