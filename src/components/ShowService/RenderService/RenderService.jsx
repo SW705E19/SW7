@@ -40,7 +40,7 @@ function RenderService(props) {
 	const { t } = useTranslation();
 	const classes = useStyles();
 
-	const randomUrl = 'https://source.unsplash.com/random/800x600';
+	const randomUrl = `https://picsum.photos/seed/${props.service.id}/1300/700`;
 
 	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
 	const [ratingValue, setRatingValue] = React.useState(0);
