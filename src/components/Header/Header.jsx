@@ -104,7 +104,7 @@ function Header(props) {
 							<ListItemIcon>
 								<ExitToApp fontSize="large" />
 							</ListItemIcon>
-						</ListItem>	
+						</ListItem>
 				}
 			</List>
 		</div>
