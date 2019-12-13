@@ -21,7 +21,8 @@ import {
 	Home,
 	ViewComfy,
 	ExitToApp,
-	MeetingRoom
+	MeetingRoom,
+	SupervisorAccount
 } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import logo_transparent from '../../assets/logo.png';
@@ -97,6 +98,16 @@ function Header(props) {
 									<MeetingRoom fontSize="large" />
 								</ListItemIcon>
 							</ListItem>
+							{
+								authenticationService.getUserRoles().includes('ADMIN') ?							
+									<ListItem button component={Link} to="/admin" key="SupervisorAccount">
+										<ListItemText primary="Admin" />
+										<ListItemIcon>
+											<SupervisorAccount fontSize="large" />
+										</ListItemIcon>
+									</ListItem>
+									: null
+							}
 						</>
 						:
 						<ListItem button component={Link} to="/login" key="LoginCircle" name="login">
@@ -148,6 +159,13 @@ function Header(props) {
 									<IconButton component={Link} to="/login" onClick={logout}>
 										<MeetingRoom fontSize="large" name="logout" />
 									</IconButton>
+									{
+										authenticationService.getUserRoles().includes('ADMIN') ?	
+											<IconButton component={Link} to="/admin" >
+												<SupervisorAccount fontSize="large" name="logout" />
+											</IconButton>						
+											: null
+									}
 								</>
 								:
 								<IconButton component={Link} to="/login">
