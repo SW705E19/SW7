@@ -64,7 +64,5 @@ function loggedIn() {
 	if(currentUserSubject && currentUserSubject.value) {
 		return true;
 	}
-	else {
-		return false;
-	}
+	return false;
 }
