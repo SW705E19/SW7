@@ -49,7 +49,6 @@ function Header(props) {
 	const [state, setState] = React.useState({
 		isMenuOpen: false
 	});
-	
 
 	const toggleDrawer = open => event => {
 		if (
