@@ -50,6 +50,14 @@ function RenderService(props) {
 			<>
 				<Grid container className={classes.root} spacing={2}>
 					<Grid className={classes.item} item md={12}>
+						<Typography 
+							align="center"
+							variant="h2"
+						>
+							{props.service.name}
+						</Typography>
+					</Grid>
+					<Grid className={classes.item} item md={12}>
 						<Card justify="center" className={classes.card}>
 							<CardMedia className={classes.media}
 								image={randomUrl}>
