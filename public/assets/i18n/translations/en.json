@@ -75,5 +75,7 @@
   "acceptedpayments": "Accepted payments",
   "services": "Services",
   "learnmore": "Learn more",
-  "averagerating": "Average rating"
+  "averagerating": "Average rating",
+  "getusersfail": "Could not get users",
+  "addremoverole": "Add or remove tutor role"
 }

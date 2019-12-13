@@ -16,24 +16,34 @@ class ShowEditTutorRole extends Component {
 	handleOnChange(e) {
 		this.setState(state => {
 			let users = state.users;
-			users[e.index].selected = !users[e.index].selected;
-
-			let roles = users[e.index].roles;
-			if( users[e.index].selected ){
-				roles.push('TUTOR');
-			}
-			else{
-				for(let i = 0; i < roles.length; i++){
-					if(roles[i] === 'TUTOR'){
-						roles.splice(i,1);
-					}
+			this.changeRole(users, e);
+			userService.editTutorRole(users[e.index].id, users[e.index].roles)
+				.then(() => {
+					toast.success(this.props.t('saveeditusernotifysuccess'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+				})
+				.catch(() => {
+					this.changeRole(users, e);
+					toast.error(this.props.t('saveeditusernotifyfail'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+				});
+			return {users,};
+		});	
+	}
+	changeRole(users, e) {
+		console.log(users[e.index].roles);
+		if( !users[e.index].roles.includes('TUTOR') ){
+			users[e.index].roles.push('TUTOR');
+		}
+		else{
+			for(let i = 0; i < users[e.index].roles.length; i++){
+				if(users[e.index].roles[i] === 'TUTOR'){
+					users[e.index].roles.splice(i,1);
 				}
 			}
-			users[e.index].roles = roles;
-			userService.editTutorRole(users[e.index].id, roles);
-			return {users,};
-		});
-		
+		}
 	}
 
 	componentDidMount() {
@@ -43,14 +53,13 @@ class ShowEditTutorRole extends Component {
 				data.map(user => {
 					user.index = i;
 					i++;
-					user.roles.includes('TUTOR') ? user.selected = true : user.selected = false;
 				});
 				this.setState({	
 					users: data
 				});
 			})
 			.catch(() => {
-				toast.error(this.props.t('showservicefail'), {
+				toast.error(this.props.t('getusersfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
 			});

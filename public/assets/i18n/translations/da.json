@@ -77,5 +77,7 @@
   "learnmore": "Læs mere",
   "unavailable": "Ikke tilgængelig",
   "showAllServicesTitle": "Services",
-  "averagerating": "Gennemsnitlig vurdering"
+  "averagerating": "Gennemsnitlig vurdering",
+  "getusersfail": "Kunne ikke hente brugere",
+  "addremoverole": "Tilføj eller fjern tutor rolle"
 }

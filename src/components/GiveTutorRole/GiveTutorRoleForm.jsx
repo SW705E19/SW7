@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import CheckIcon from '@material-ui/icons/Check';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -32,8 +33,16 @@ function RenderService(props) {
 				<Table className={classes.table} size="small" aria-label="a dense table">
 					<TableHead>
 						<TableRow>
-							<TableCell>Users E-mail</TableCell>
-							<TableCell align="right">Add / remove tutor role</TableCell>
+							<TableCell>
+								<Typography align="left" variant="h5">
+									{t('email')}
+								</Typography>
+							</TableCell>
+							<TableCell align="right">
+								<Typography align="right" variant="h5">
+									{t('addremoverole')}
+								</Typography>
+							</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -46,7 +55,7 @@ function RenderService(props) {
 									<ToggleButton
 										name={row.id}
 										value="check"
-										selected={row.selected}
+										selected={row.roles.includes('TUTOR')}
 										onChange={e => {
 											e.index = row.index;
 											props.handleOnChange(e);
