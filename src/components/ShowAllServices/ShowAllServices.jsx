@@ -66,6 +66,7 @@ class ShowAllServices extends Component {
 						if(category.description.includes(lowercasedFilter)){
 							return true;
 						}
+						return false;
 					})) {
 						return true;
 					}
