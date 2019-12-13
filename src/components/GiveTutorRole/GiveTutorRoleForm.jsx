@@ -21,7 +21,7 @@ function RenderService(props) {
 			overflowX: 'auto',
 		},
 		table: {
-			minWidth: 450,
+			minWidth: 50,
 		},
 	});
 	
