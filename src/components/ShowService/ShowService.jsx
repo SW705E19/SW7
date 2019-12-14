@@ -77,7 +77,6 @@ class ShowService extends Component {
 			ratingService.getByUserIdServiceId(id,this.props.match.params.id)
 				.then(rating => {
 					const value = rating.rating;
-					console.log(value);
 					this.setState({
 						ratingValue: value
 					});
