@@ -9,13 +9,12 @@ export const ratingService = {
 
 function create(rating) {
 	rating = JSON.stringify(rating);
-	const requestOptions = { method: 'POST', 
+	const requestOptions = { method: 'PUT', 
 		headers: authHeader(),
 		body: rating};
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/ratings/`, requestOptions)
 		.then(handleResponse);
 }
-
 
 function getAll() {
 	const requestOptions = { method: 'GET', headers: authHeader()};

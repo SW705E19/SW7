@@ -57,7 +57,7 @@ function logout() {
 
 function getCurrentUserId() {
 	const decodedToken = jwt.decode(localStorage.getItem('currentUser'));
-	if(decodedToken == undefined){
+	if(decodedToken === undefined){
 		return undefined;
 	}
 	return decodedToken.userId;

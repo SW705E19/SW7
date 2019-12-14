@@ -78,5 +78,6 @@
   "averagerating": "Average rating",
   "searchservices": "Search for services",
   "logoutsuccess": "Logged out successfully",
-  "failgettingyourrating": "Kunne ikke hente din rating"
+  "failgettingyourrating": "Kunne ikke hente din rating",
+  "norating": "None"
 }

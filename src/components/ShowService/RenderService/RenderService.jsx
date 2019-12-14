@@ -56,7 +56,7 @@ function RenderService(props) {
 				<Grid className={classes.item} item md={12}>
 					<Card justify="center">
 						<Typography color="textPrimary" style={{ fontSize: 12 }}>
-							{t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+							{t('averagerating')}: {props.avgRating.avg}
 						</Typography>
 						<Rating
 							name="rating-value"

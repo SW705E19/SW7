@@ -57,6 +57,12 @@ class ShowService extends Component {
 		Promise.all([serviceService.getDetailedById(this.props.match.params.id), 
 			ratingService.getAverageRating(this.props.match.params.id)])
 			.then(([data, rating]) => {
+				if(rating.avg === null){
+					rating.avg = this.props.t('norating');
+				}
+				else{
+					rating.avg = rating.avg.substring(0,4);
+				}
 				this.setState({
 					service: data,
 					avgRating: rating
@@ -67,9 +73,9 @@ class ShowService extends Component {
 				});
 			});
 		const id = authenticationService.getCurrentUserId();
-		if (id != undefined){
-			ratingService.getByUserIdServiceId(id,this.props.match.params.id).
-				then(rating => {
+		if (id !== undefined) {
+			ratingService.getByUserIdServiceId(id,this.props.match.params.id)
+				.then(rating => {
 					const value = rating.rating;
 					console.log(value);
 					this.setState({
