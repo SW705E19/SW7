@@ -25,9 +25,7 @@ function RenderUser(props) {
 
 	const randomUrl = `https://api.adorable.io/avatars/140/${props.user.id}@adorable.png`;
 
-	// TODO: This should be refactored once the user is correctly fetched from the API
 	return (
-		
 		<Card className={classes.card}>
 			<Grid container justify="center" alignItems="center">
 				<Avatar src={randomUrl} className={classes.avatar} />
@@ -65,7 +63,7 @@ function RenderUser(props) {
 				) : null}
 			</CardContent>
 
-			{props.user.tutorInfo != null ?
+			{props.user.tutorInfo != null && props.user.roles.includes('TUTOR') ?
 				<CardContent>
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={6}>
@@ -155,7 +153,7 @@ function RenderUser(props) {
 				</CardContent> : props.user.id === authenticationService.getCurrentUserId() ?
 					<CardContent>
 						<Grid container spacing={2} justify="center">
-							<Grid item xs={3}>
+							<Grid item sm={6} xs={12}>
 								<Button
 									component={Link}
 									to={`/user/edit/${props.user.id}`}
@@ -167,6 +165,20 @@ function RenderUser(props) {
 									{t('edituser')}
 								</Button>
 							</Grid>
+							{props.user.roles.includes('TUTOR') ?
+								<Grid item sm={6} xs={12}>
+									<Button
+										component={Link}
+										// TODO: link to page for creating tutor info
+										type="button"
+										variant="contained"
+										color="primary"
+										fullWidth
+									>
+										{t('createtutorinfo')}
+									</Button>
+								</Grid> : // TODO: Button to apply for becoming tutor
+								null} 
 						</Grid> 
 					</CardContent>: null
 			}
