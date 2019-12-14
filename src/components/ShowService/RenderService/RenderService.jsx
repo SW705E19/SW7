@@ -193,8 +193,8 @@ function RenderService(props) {
 						</Typography>
 					</CardContent>
 					<CardActions>
-						<Grid container className={classes.root} spacing={1}>
-							<Grid className={classes.item} item md={12}>
+						<Grid container className={classes.root} spacing={1} justify="center">
+							<Grid className={classes.item} item md={3}>
 								<Button
 									component={Link}
 									to={`/service/edit/${props.service.id}`}

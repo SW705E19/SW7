@@ -152,7 +152,23 @@ function RenderUser(props) {
 							}
 						</Grid>
 					</Grid>
-				</CardContent> : null
+				</CardContent> : props.user.id === authenticationService.getCurrentUserId() ?
+					<CardContent>
+						<Grid container spacing={2} justify="center">
+							<Grid item xs={3}>
+								<Button
+									component={Link}
+									to={`/user/edit/${props.user.id}`}
+									type="button"
+									variant="contained"
+									color="primary"
+									fullWidth
+								>
+									{t('edituser')}
+								</Button>
+							</Grid>
+						</Grid> 
+					</CardContent>: null
 			}
 		</Card>
 	);
