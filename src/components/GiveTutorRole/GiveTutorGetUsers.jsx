@@ -29,11 +29,10 @@ class ShowEditTutorRole extends Component {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
 				});
-			return {users,};
+			return {users};
 		});	
 	}
 	changeRole(users, e) {
-		console.log(users[e.index].roles);
 		if( !users[e.index].roles.includes('TUTOR') ){
 			users[e.index].roles.push('TUTOR');
 		}

@@ -30,7 +30,7 @@ function RenderService(props) {
 	return (
 		<div className={classes.root}>
 			<Paper className={classes.paper}>
-				<Table className={classes.table} size="small" aria-label="a dense table">
+				<Table className={classes.table} size="small">
 					<TableHead>
 						<TableRow>
 							<TableCell>
