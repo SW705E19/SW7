@@ -77,6 +77,8 @@
   "learnmore": "Læs mere",
   "unavailable": "Ikke tilgængelig",
   "averagerating": "Gennemsnitlig vurdering",
+  "getusersfail": "Kunne ikke hente brugere",
+  "addremoverole": "Tutor?",
   "searchservices": "Søg efter services",
   "logoutsuccess": "Du har logget ud"
 }
