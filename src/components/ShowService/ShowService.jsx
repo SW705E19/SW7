@@ -15,15 +15,23 @@ class ShowService extends Component {
 			redirectToTutor: false,
 			avgRating: null,
 			ratingValue: 0,
-			rating: null
+			rating: null,
+			myRatingValue: 0,
+			myRating: null
 		};
 		this.setRedirect = this.setRedirect.bind(this);
 		this.submitRating = this.submitRating.bind(this);
+		this.setRatingValue = this.setRatingValue.bind(this);
 	}
 
 	setRedirect () {
 		this.setState({
 			redirectToTutor: true
+		});
+	}
+	setRatingValue(value) {
+		this.setState({
+			ratingValue: value
 		});
 	}
 
@@ -58,6 +66,22 @@ class ShowService extends Component {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
 			});
+		const id = authenticationService.getCurrentUserId();
+		if (id != undefined){
+			ratingService.getByUserIdServiceId(id,this.props.match.params.id).
+				then(rating => {
+					const value = rating.rating;
+					console.log(value);
+					this.setState({
+						ratingValue: value
+					});
+				}).catch(() => {
+					toast.error(this.props.t('failgettingyourrating'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+				});
+		}
+		
 	}
 
 	render() {
@@ -66,8 +90,9 @@ class ShowService extends Component {
 		}
 		return this.state.service ? 
 			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}
-				setRedirect={this.setRedirect} ratingValue={this.ratingValue}
-				submitRating={this.submitRating} avgRating={this.state.avgRating} /> :
+				setRedirect={this.setRedirect} ratingValue={this.state.ratingValue}
+				submitRating={this.submitRating} avgRating={this.state.avgRating}
+				setRatingValue={this.setRatingValue}  /> :
 			null; 
 	}
 }

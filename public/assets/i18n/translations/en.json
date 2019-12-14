@@ -77,5 +77,6 @@
   "learnmore": "Learn more",
   "averagerating": "Average rating",
   "searchservices": "Search for services",
-  "logoutsuccess": "Logged out successfully"
+  "logoutsuccess": "Logged out successfully",
+  "failgettingyourrating": "Kunne ikke hente din rating"
 }

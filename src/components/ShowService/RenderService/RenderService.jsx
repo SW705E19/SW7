@@ -41,7 +41,7 @@ function RenderService(props) {
 	const randomUrl = `https://picsum.photos/seed/${props.service.id}/1300/700`;
 
 	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
-	const [ratingValue, setRatingValue] = React.useState(0);
+	//const [ratingValue, setRatingValue] = React.useState(0);
 
 	return (
 		<>
@@ -60,9 +60,9 @@ function RenderService(props) {
 						</Typography>
 						<Rating
 							name="rating-value"
-							value={ratingValue}
+							value={props.ratingValue}
 							onChange={(event, newValue) => {
-								setRatingValue(newValue);
+								props.setRatingValue(newValue);
 							}}
 						/>
 
@@ -72,7 +72,7 @@ function RenderService(props) {
 								variant="contained"
 								color="primary"
 								size="small"
-								onClick={() => props.submitRating(ratingValue)}
+								onClick={() => props.submitRating(props.ratingValue)}
 							>
 								{t('submitrating')}
 							</Button>
