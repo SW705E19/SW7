@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Button, TextField, Link, Grid, Typography } from '@material-ui/core';
+import { Container, Button, TextField, Link, Grid, Typography} from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 import { authenticationService } from '../../services/authentication/authentication.service';
 import { withStyles } from '@material-ui/core/styles';
+import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,7 +23,8 @@ class Login extends Component {
 
 		this.state = {
 			username: '',
-			password: ''
+			password: '',
+			redirect: false
 		};
 
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -65,6 +67,7 @@ class Login extends Component {
 					if (localStorage.length !== 0 ) {
 						notifysuccess();
 						this.props.changeLoggedInState();
+						this.setState({redirect: true});
 					}
 				});
 		};
@@ -76,7 +79,10 @@ class Login extends Component {
 			}	
 		};
 
-		//TODO: Add redirect to button and the two links. Button goes to all services through handleOnClick. Signup link to craete user, forgotten password to somewhere.
+		if(this.state.redirect){
+			return <Redirect to={'/service/'}/>;
+		}
+
 		return (
 			<Container maxWidth="sm">
 				<div className={classes.paper}>
