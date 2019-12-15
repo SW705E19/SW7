@@ -72,7 +72,7 @@ function Header(props) {
 	};
 
 	const handleClickClose = () => {
-		setState({openAlert: false });
+		setState({ openAlert: false });
 	};
 	
 
