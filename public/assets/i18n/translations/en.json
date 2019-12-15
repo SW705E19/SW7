@@ -71,7 +71,6 @@
   "ratingsubmitted": "Your rating was submitted",
   "getAllServicesFail": "Failed to get services",
   "showAllServicesTitle": "Services",
-  "showlandingpagefail": "Failed to get data",
   "acceptedpayments": "Accepted payments",
   "services": "Services",
   "learnmore": "Learn more",
@@ -83,5 +82,13 @@
   "createtutorinfo": "Create tutor information",
   "unavailable": "Unavailable",
   "logout": "Logout",
-  "logoutconfirmation": "Are you sure you want to logout?"
+  "logoutconfirmation": "Are you sure you want to logout?",
+  "landingPageTitle": "Find a tutor",
+  "landingPageIntro": "Are you ready to find the tutor for your new passion? We provide the connection between tutors and students!",
+  "landingPageSearchTitle": "Find your next course!",
+  "landingPageTopRated": "Top rated services",
+  "landingPageRecommended": "Top recomended services",
+  "landingPageTutors": "Our awesome tutors",
+  "LandingPageServiceFail": "Failed to get services",
+  "landingPageTutorsFail": "Failed to get tutors"
 }

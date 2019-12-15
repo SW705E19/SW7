@@ -2,7 +2,6 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import NotFound from '../../containers/NotFound/NotFound';
 import Login from '../../components/Login/Login';
 import AdminDashboard from '../../containers/AdminDashboard/AdminDashboard';
 import ShowUser from '../../components/ShowUser/ShowUser';
@@ -18,7 +17,6 @@ import LandingPage from '../../components/LandingPage/LandingPage';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { authenticationService } from '../../services/authentication/authentication.service';
-import background from '../../assets/background.png'; 
 
 
 function Layout() {
@@ -56,7 +54,9 @@ function Layout() {
 					<Route path="/service/create" component={CreateService} />
 					<Route path="/service/edit/:id" component={EditService} />
 					<Route path="/service/:id" component={ShowService} />
-					<Route path="/service/" component={ShowAllServices} />
+					<Route path="/service/">
+						<ShowAllServices searchInput={state.searchInput}/>
+					</Route>
 					<Route path="/register" component={CreateUser} />
 					<Route path="/account" component={ShowUser} />
 					<Route path= "/tutorRole" component={GiveTutorRole}/>

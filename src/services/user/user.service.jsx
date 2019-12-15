@@ -7,7 +7,8 @@ export const userService = {
 	getTutorInfoByUserId,
 	editUser,
 	editTutorRole,
-	deleteUser
+	deleteUser,
+	getAllTutors
 };
 
 function editUser(userId ,user) {
@@ -80,6 +81,17 @@ function getTutorInfoByUserId(userId) {
 	const requestOptions = { method: 'GET', headers: authHeader() };
 	return fetch(
 		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/tutorInfo/${userId}`,
+		requestOptions
+	)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
+}
+function getAllTutors(){
+	const requestOptions = { method: 'GET', headers: authHeader() };
+	return fetch(
+		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/tutors`,
 		requestOptions
 	)
 		.then(handleResponse)

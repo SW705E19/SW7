@@ -4,11 +4,11 @@ import { withTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { ratingService } from '../../services/rating/rating.service';
 import { serviceService } from '../../services/service/service.service';
+import { userService } from '../../services/user/user.service';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton } from '@material-ui/core';
+import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton, Grid } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Redirect } from 'react-router';
-import background from '../../assets/background.png';
 
 const styles = theme => ({
 	root: {
@@ -16,11 +16,7 @@ const styles = theme => ({
 		// maxWidth:'80%',
 	},
 	introductionContainer: {
-		widt: '100vh',
-		backgroundColor: '#b3e5fc',
-		backgroundImage:
-			'repeating-linear-gradient(120deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(60deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px), linear-gradient(60deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1)),linear-gradient(120deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1))',
-		backgroundSize: '70px 120px'
+		backgroundColor: '#80d8ff'
 	},
 	searchbarContainer: {
 		padding: '2px 4px',
@@ -45,7 +41,8 @@ const styles = theme => ({
 		cursor:'pointer'
 	},
 	title: {
-		padding: '0.5em',
+		paddingTop: '2em',
+		paddingBottom: '1em',
 		width: '100%'
 	},
 	CardContent: {
@@ -78,11 +75,10 @@ class LandingPage extends Component {
 						topAverageService: servicesRes
 					});
 				})
-				.catch((error) => {
-					toast.error(this.props.t('showlandingpagefail'), {
+				.catch(() => {
+					toast.error(this.props.t('landingServiceFail'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
-					console.log(error);
 				});
 		}else {
 			serviceService.getTopRecomenderServices()
@@ -91,13 +87,33 @@ class LandingPage extends Component {
 						recommendations: recommendationsRes
 					});
 				})
-				.catch((error) => {
-					toast.error(this.props.t('showlandingpagefail'), {
+				.catch(() => {
+					toast.error(this.props.t('landingPageServiceFail'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
-					console.log(error);
 				});
 		}
+		userService.getAllTutors()
+			.then(tutorRes => {
+				let n = tutorRes.length;
+				while(n--) {
+					let i = Math.floor(n * Math.random());
+					let tmp = tutorRes[i];
+					tutorRes[i] = tutorRes[n];
+					tutorRes[n] = tmp;
+				}
+				if(tutorRes.length > 4){
+					tutorRes = tutorRes.slice(0, 4);
+				}
+				this.setState({
+					tutors: tutorRes
+				});
+			})
+			.catch(() => {
+				toast.error(this.props.t('landingPageTutorsFail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+			});
 	}
 
 	handleChange(e){
@@ -114,7 +130,14 @@ class LandingPage extends Component {
 		});
 	}
 
-	getRatingComponent(classes){
+	handleOnClick(url){
+		this.setState({
+			redirect: true,
+			redirectTo: url
+		});
+	}
+
+	getRatingComponent(classes, t){
 		return this.state.topAverageService ?
 			<div>
 				<Typography
@@ -122,7 +145,7 @@ class LandingPage extends Component {
 					align="center"
 					variant="h4"
 				>
-					Top rated services
+					{t('landingPageTopRated')}
 				</Typography>
 				<Carousel
 					autoPlay={true}
@@ -132,8 +155,8 @@ class LandingPage extends Component {
 						this.state.topAverageService.map((service, index) => {
 							return <Card
 								className={classes.card}
-								onClick={() => {}}
 								key={index}
+								onClick={() => { this.handleOnClick(`/service/${service.serviceid}`); }}
 							>
 								<CardMedia 
 									className={classes.media}
@@ -162,7 +185,7 @@ class LandingPage extends Component {
 			null;
 	}
 
-	getRecomendedServices(classes){
+	getRecomendedComponent(classes, t){
 		return this.state.recommendations ?
 			<div>
 				<Typography
@@ -170,7 +193,7 @@ class LandingPage extends Component {
 					align="center"
 					variant="h4"
 				>
-					Top recomended services
+					{t('landingPageRecommended')}
 				</Typography>
 				<Carousel
 					autoPlay={true}
@@ -180,7 +203,7 @@ class LandingPage extends Component {
 						this.state.recommendations.map((recommendation, index) => {
 							return <Card
 								className={classes.card}
-								onClick={() => {}}
+								onClick={() => { this.handleOnClick(`/service/${recommendation.service.id}`); }}
 								key={index}
 							>
 								<CardMedia 
@@ -210,29 +233,78 @@ class LandingPage extends Component {
 			null;
 	}
 
-
-	render(){
-		const classes = this.props.classes;
-		if(this.state.redirect){
-			return (<Redirect to={this.state.redirectTo} />);
-		}
-		return <div>
-			<Paper
-				className={classes.introductionContainer}
-			>
-				<Typography
-					align="center"
-					variant="h6"
-				>
-					Welcome to Find a tutor. Here you can find a tutor for any subject that you would like to learn. You can also become a tutor and teach any subject that you are an expert in.
-				</Typography>
-			</Paper>
+	getTutorsComponent(classes, t){
+		return <>
 			<Typography
 				className={classes.title}
 				align="center"
 				variant="h4"
 			>
-				Find your next course!
+				{t('landingPageTutors')}
+			</Typography>
+			<Grid container spacing={3}>
+				{
+					this.state.tutors.map((tutor, i) => {
+						return <Grid item xs={3} key={i}>
+							<Card
+								className={classes.card}
+								onClick={() => { this.handleOnClick(`/user/${tutor.user.id}`); }}
+							>
+								<CardMedia 
+									className={classes.media}
+									component='img'
+									image={`https://api.adorable.io/avatars/140/${tutor.user.id}@adorable.png`}
+								/>
+								<CardContent
+									className={classes.cardContent} 
+								>
+									<Typography 
+										variant='h6'
+									>
+										{tutor.user.firstName + ' ' + tutor.user.lastName}
+									</Typography>
+								</CardContent>
+							</Card>
+						</Grid>;
+					})
+				}
+			</Grid>
+		</>;
+	}
+
+
+	render(){
+		const classes = this.props.classes;
+		const t = this.props.t;
+		if(this.state.redirect){
+			return (<Redirect to={this.state.redirectTo} />);
+		}
+		return <div>
+			<Card
+				className={classes.introductionContainer}
+			>
+				<CardContent>
+					<Typography
+						align="center"
+						variant="h2"
+					>
+						{t('landingPageSearchTitle')}
+					</Typography>
+					<Typography
+						align="center"
+						variant="body1"
+					>
+						{t('landingPageIntro')}
+					</Typography>
+
+				</CardContent>
+			</Card>
+			<Typography
+				className={classes.title}
+				align="center"
+				variant="h4"
+			>
+				{t('landingPageSearchTitle')}
 			</Typography>
 			<Paper 
 				component="form" 
@@ -253,8 +325,13 @@ class LandingPage extends Component {
 			</Paper>
 			{
 				this.props.loggedIn?
-					this.getRecomendedServices(classes):
-					this.getRatingComponent(classes)
+					this.getRecomendedComponent(classes, t):
+					this.getRatingComponent(classes, t)
+			}
+			{
+				this.state.tutors ? 
+					this.getTutorsComponent(classes, t):
+					null
 			}
 		</div>;
 	}
