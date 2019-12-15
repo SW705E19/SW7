@@ -68,11 +68,11 @@ function Header(props) {
 	};
 
 	const handleClickOpen = () => {
-		setState({openAlert: true });
+		setState({ openAlert: true });
 	};
 
 	const handleClickClose = () => {
-		setState({openAlert: false });
+		setState({ openAlert: false });
 	};
 	
 
@@ -108,7 +108,7 @@ function Header(props) {
 								</ListItemIcon>
 							</ListItem>
 							{
-								authenticationService.getUserRoles().includes('ADMIN') ?							
+								authenticationService.getUserRoles().includes('ADMIN') ?
 									<ListItem button component={Link} to="/admin" key="SupervisorAccount">
 										<ListItemText primary="Admin" />
 										<ListItemIcon>

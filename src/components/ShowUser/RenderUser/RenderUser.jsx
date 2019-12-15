@@ -63,7 +63,7 @@ function RenderUser(props) {
 				) : null}
 			</CardContent>
 
-			{props.user.tutorInfo != null && props.user.roles.includes('TUTOR') ?
+			{props.user.tutorInfo !== null && props.user.roles.includes('TUTOR') ?
 				<CardContent>
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={6}>
