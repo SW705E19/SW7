@@ -81,5 +81,7 @@
   "addremoverole": "Tutor?",
   "searchservices": "Søg efter services",
   "logoutsuccess": "Du har logget ud",
-  "createtutorinfo": "Opret tutor information"
+  "createtutorinfo": "Opret tutor information",
+  "logout": "Log ud",
+  "logoutconfirmation": "Er du sikker på du vil logge ud?"
 }

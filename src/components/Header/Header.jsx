@@ -11,7 +11,10 @@ import {
 	ListItemIcon,
 	Select,
 	MenuItem,
-	ListItemText
+	ListItemText,
+	Dialog,
+	DialogTitle,
+	DialogActions
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
@@ -45,10 +48,12 @@ function Header(props) {
 			position: toast.POSITION.BOTTOM_RIGHT
 		});
 		props.changeLoggedInState();
+		setState({openAlert: false});
 	};
 
 	const [state, setState] = React.useState({
-		isMenuOpen: false
+		isMenuOpen: false,
+		openAlert: false
 	});
 
 	const toggleDrawer = open => event => {
@@ -61,6 +66,16 @@ function Header(props) {
 
 		setState({ ...state, isMenuOpen: open });
 	};
+
+	const handleClickOpen = () => {
+		setState({openAlert: true });
+	};
+
+	const handleClickClose = () => {
+		setState({openAlert: false });
+	};
+	
+
 
 	const sideList = (
 		<div
@@ -92,12 +107,6 @@ function Header(props) {
 									<AccountCircle fontSize="large" />
 								</ListItemIcon>
 							</ListItem>
-							<ListItem button component={Link} to="/login" key="MeetingRoom" onClick={logout}>
-								<ListItemText primary="Logout" />
-								<ListItemIcon>
-									<MeetingRoom fontSize="large" />
-								</ListItemIcon>
-							</ListItem>
 							{
 								authenticationService.getUserRoles().includes('ADMIN') ?							
 									<ListItem button component={Link} to="/admin" key="SupervisorAccount">
@@ -108,6 +117,12 @@ function Header(props) {
 									</ListItem>
 									: null
 							}
+							<ListItem button component={Link} to="/login" key="MeetingRoom" onClick={logout}>
+								<ListItemText primary="Logout" />
+								<ListItemIcon>
+									<MeetingRoom fontSize="large" />
+								</ListItemIcon>
+							</ListItem>
 						</>
 						:
 						<ListItem button component={Link} to="/login" key="LoginCircle" name="login">
@@ -156,16 +171,32 @@ function Header(props) {
 									<IconButton component={Link} to="/account">
 										<AccountCircle fontSize="large" name="account" />
 									</IconButton>
-									<IconButton component={Link} to="/login" onClick={logout}>
-										<MeetingRoom fontSize="large" name="logout" />
-									</IconButton>
 									{
 										authenticationService.getUserRoles().includes('ADMIN') ?	
 											<IconButton component={Link} to="/admin" >
-												<SupervisorAccount fontSize="large" name="logout" />
+												<SupervisorAccount fontSize="large" name="admin" />
 											</IconButton>						
 											: null
 									}
+									<IconButton onClick={handleClickOpen}>
+										<MeetingRoom fontSize="large" name="logout" />
+									</IconButton>
+									<Dialog
+										open={state.openAlert}
+										onClose={handleClickClose}
+										aria-labelledby="alert-dialog-title"
+										aria-describedby="alert-dialog-description"
+									>
+										<DialogTitle id="alert-dialog-title">{t('logoutconfirmation')}</DialogTitle>
+										<DialogActions>
+											<Button onClick={handleClickClose} color="primary" variant="contained">
+												{t('cancel')}
+											</Button>
+											<Button onClick={logout}  component={Link} to="/login" color="secondary" autoFocus variant="contained">
+												{t('logout')}
+											</Button>
+										</DialogActions>
+									</Dialog>
 								</>
 								:
 								<IconButton component={Link} to="/login">
