@@ -56,11 +56,11 @@ describe('<RenderService />', () => {
 	});
 
 	it('should render all the necessary <Grid />s', () => {
-		expect(testinstance.findAllByType(Grid)).toHaveLength(6);
+		expect(testinstance.findAllByType(Grid)).toHaveLength(7);
 	});
 
 	it('should render all the necessary <Typography />s', () => {
-		expect(testinstance.findAllByType(Typography)).toHaveLength(6);
+		expect(testinstance.findAllByType(Typography)).toHaveLength(7);
 	});
 
 	it('should render <Avatar />', () => {

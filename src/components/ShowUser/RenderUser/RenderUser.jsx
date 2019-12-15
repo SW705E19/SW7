@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import PaymentIcon from 'react-payment-icons';
 import { Link } from 'react-router-dom';
+import { authenticationService } from '../../../services/authentication/authentication.service';
 
 function RenderUser(props) {
 	const useStyles = makeStyles(theme => ({
@@ -24,7 +25,6 @@ function RenderUser(props) {
 
 	const randomUrl = `https://api.adorable.io/avatars/140/${props.user.id}@adorable.png`;
 
-	// TODO: This should be refactored once the user is correctly fetched from the API
 	return (
 		<Card className={classes.card}>
 			<Grid container justify="center" alignItems="center">
@@ -63,7 +63,7 @@ function RenderUser(props) {
 				) : null}
 			</CardContent>
 
-			{props.user.tutorInfo != null ?
+			{props.user.tutorInfo !== null && props.user.roles.includes('TUTOR') ?
 				<CardContent>
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={6}>
@@ -91,9 +91,40 @@ function RenderUser(props) {
 								}
 							</Typography>
 						</Grid>
-						<Typography component="h2" variant="h5">
-							{t('services')}
-						</Typography>
+						{props.user.id === authenticationService.getCurrentUserId() ?
+							<>
+								<Grid item xs={6}>
+									<Button
+										component={Link}
+										to={`/user/edit/${props.user.id}`}
+										type="button"
+										variant="contained"
+										color="primary"
+										fullWidth
+									>
+										{t('edituser')}
+									</Button>
+								</Grid>
+								<Grid item xs={6}>
+									<Button
+										component={Link}
+										to={'/service/create'}
+										type="button"
+										variant="contained"
+										color="primary"
+										fullWidth
+									>
+										{t('createaservice')}
+									</Button>
+								</Grid>
+							</>
+							: null
+						}
+						<Grid item >
+							<Typography component="h2" variant="h5">
+								{t('services')}
+							</Typography>
+						</Grid>
 						<Grid container spacing={2}>
 							{
 								props.user.tutorInfo.services.map((x, i) => {
@@ -119,7 +150,37 @@ function RenderUser(props) {
 							}
 						</Grid>
 					</Grid>
-				</CardContent> : null
+				</CardContent> : props.user.id === authenticationService.getCurrentUserId() ?
+					<CardContent>
+						<Grid container spacing={2} justify="center">
+							<Grid item sm={6} xs={12}>
+								<Button
+									component={Link}
+									to={`/user/edit/${props.user.id}`}
+									type="button"
+									variant="contained"
+									color="primary"
+									fullWidth
+								>
+									{t('edituser')}
+								</Button>
+							</Grid>
+							{props.user.roles.includes('TUTOR') ?
+								<Grid item sm={6} xs={12}>
+									<Button
+										component={Link}
+										// TODO: link to page for creating tutor info
+										type="button"
+										variant="contained"
+										color="primary"
+										fullWidth
+									>
+										{t('createtutorinfo')}
+									</Button>
+								</Grid> : // TODO: Button to apply for becoming tutor
+								null} 
+						</Grid> 
+					</CardContent>: null
 			}
 		</Card>
 	);
