@@ -108,7 +108,7 @@ function Header(props) {
 								</ListItemIcon>
 							</ListItem>
 							{
-								authenticationService.getUserRoles().includes('ADMIN') ?							
+								authenticationService.getUserRoles().includes('ADMIN') ?
 									<ListItem button component={Link} to="/admin" key="SupervisorAccount">
 										<ListItemText primary="Admin" />
 										<ListItemIcon>
