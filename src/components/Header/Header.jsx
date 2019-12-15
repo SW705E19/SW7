@@ -14,15 +14,19 @@ import {
 	ListItemText
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
 	AccountCircle,
 	Menu,
 	Home,
-	ViewComfy
+	ViewComfy,
+	ExitToApp,
+	MeetingRoom
 } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import logo_transparent from '../../assets/logo.png';
+import { authenticationService } from '../../services/authentication/authentication.service';
+import { toast } from 'react-toastify';
 
 const styles = {
 	toolbarButtons: {
@@ -34,6 +38,14 @@ function Header(props) {
 	const classes = props.classes;
 	const { t } = useTranslation();
 
+	const logout = () => {
+		authenticationService.logout();
+		toast.success(t('logoutsuccess'), {
+			position: toast.POSITION.BOTTOM_RIGHT
+		});
+		props.changeLoggedInState();
+	};
+
 	const [state, setState] = React.useState({
 		isMenuOpen: false
 	});
@@ -41,14 +53,14 @@ function Header(props) {
 	const toggleDrawer = open => event => {
 		if (
 			event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+			(event.key === 'Tab' || event.key === 'Shift')
 		) {
 			return;
 		}
 
 		setState({ ...state, isMenuOpen: open });
 	};
-	
+
 	const sideList = (
 		<div
 			className={classes.list}
@@ -70,12 +82,30 @@ function Header(props) {
 						<ViewComfy fontSize="large" />
 					</ListItemIcon>
 				</ListItem>
-				<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
-					<ListItemText primary="My account" />
-					<ListItemIcon>
-						<AccountCircle fontSize="large" />
-					</ListItemIcon>
-				</ListItem>
+				{
+					props.loggedIn ?
+						<>
+							<ListItem button component={Link} to="/account" key="AccountCircle" name="account">
+								<ListItemText primary="My account" />
+								<ListItemIcon>
+									<AccountCircle fontSize="large" />
+								</ListItemIcon>
+							</ListItem>
+							<ListItem button component={Link} to="/login" key="MeetingRoom" onClick={logout}>
+								<ListItemText primary="Logout" />
+								<ListItemIcon>
+									<MeetingRoom fontSize="large" />
+								</ListItemIcon>
+							</ListItem>
+						</>
+						:
+						<ListItem button component={Link} to="/login" key="LoginCircle" name="login">
+							<ListItemText primary="Login" />
+							<ListItemIcon>
+								<ExitToApp fontSize="large" />
+							</ListItemIcon>
+						</ListItem>
+				}
 			</List>
 		</div>
 	);
@@ -107,11 +137,23 @@ function Header(props) {
 					</Select>
 					<div className={classes.toolbarButtons}>
 						<IconButton component={Link} to="/service">
-							<ViewComfy fontSize="large" name="services"/>
+							<ViewComfy fontSize="large" name="services" />
 						</IconButton>
-						<IconButton component={Link} to="/account">
-							<AccountCircle fontSize="large" name="account"/>
-						</IconButton>
+						{
+							props.loggedIn ?
+								<>
+									<IconButton component={Link} to="/account">
+										<AccountCircle fontSize="large" name="account" />
+									</IconButton>
+									<IconButton component={Link} to="/login" onClick={logout}>
+										<MeetingRoom fontSize="large" name="logout" />
+									</IconButton>
+								</>
+								:
+								<IconButton component={Link} to="/login">
+									<ExitToApp fontSize="large" name="login" />
+								</IconButton>
+						}
 					</div>
 				</Hidden>
 			</Toolbar>

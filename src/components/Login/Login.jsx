@@ -64,6 +64,7 @@ class Login extends Component {
 				.then (() => {
 					if (localStorage.length !== 0 ) {
 						notifysuccess();
+						this.props.changeLoggedInState();
 					}
 				});
 		};

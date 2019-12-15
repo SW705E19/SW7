@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import RenderService from '../ShowService/RenderService/RenderService';
 import { serviceService } from '../../services/service/service.service';
+import { ratingService } from '../../services/rating/rating.service';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
-import { ratingService } from '../../services/rating/rating.service';
 import { authenticationService } from '../../services/authentication/authentication.service';
 
 class ShowService extends Component {
@@ -13,19 +13,18 @@ class ShowService extends Component {
 		this.state = {
 			service: null,
 			redirectToTutor: false,
+			avgRating: null,
 			ratingValue: 0,
 			rating: null
 		};
 		this.setRedirect = this.setRedirect.bind(this);
 		this.submitRating = this.submitRating.bind(this);
 	}
-	
 	setRedirect () {
 		this.setState({
 			redirectToTutor: true
 		});
 	}
-
 
 	submitRating(ratingValue) {
 		this.setState({
@@ -46,13 +45,14 @@ class ShowService extends Component {
 	}
 
 	componentDidMount() {
-		serviceService.getDetailedById(this.props.match.params.id)
-			.then((data) => {
-				this.setState({ 
-					service: data
+		Promise.all([serviceService.getDetailedById(this.props.match.params.id), 
+			ratingService.getAverageRating(this.props.match.params.id)])
+			.then(([data, rating]) => {
+				this.setState({
+					service: data,
+					avgRating: rating
 				});
-			})
-			.catch(() => {
+			}).catch(() => {
 				toast.error(this.props.t('showservicefail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
@@ -66,7 +66,7 @@ class ShowService extends Component {
 		return this.state.service ? 
 			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}
 				setRedirect={this.setRedirect} ratingValue={this.ratingValue}
-				submitRating={this.submitRating}/> :
+				submitRating={this.submitRating} avgRating={this.state.avgRating} /> :
 			null; 
 	}
 }

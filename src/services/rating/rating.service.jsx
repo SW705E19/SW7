@@ -4,7 +4,7 @@ export const ratingService = {
 	getAll,
 	create,
 	getAverageRating,
-	GetTopAverageServices,
+	GetTopAverageServices
 };
 
 function create(rating) {
