@@ -68,7 +68,7 @@ function Header(props) {
 	};
 
 	const handleClickOpen = () => {
-		setState({openAlert: true });
+		setState({ openAlert: true });
 	};
 
 	const handleClickClose = () => {
