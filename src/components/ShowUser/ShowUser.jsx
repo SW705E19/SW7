@@ -9,7 +9,7 @@ class ShowUser extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			user: []
+			user: null
 		};
 	}
 
@@ -36,7 +36,7 @@ class ShowUser extends Component {
 	}
 
 	render() {
-		return (<RenderUser user={this.state.user} />);
+		return this.state.user ?  <RenderUser user={this.state.user} /> : null;
 	}
 }
 
