@@ -34,8 +34,8 @@ function getAverageRating(serviceId) {
 		});
 }
 
-function GetTopAverageServices(){
+function GetTopAverageServices(amount){
 	const requestOptions = { method: 'GET', headers: authHeader() };
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/ratings/avg`, requestOptions)
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/ratings/top/${amount}`, requestOptions)
 		.then(handleResponse).then(services => JSON.parse(services));
 }

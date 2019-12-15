@@ -9,8 +9,9 @@ import { Typography, TextField } from '@material-ui/core';
 class ShowAllServices extends Component {
 	constructor(props){
 		super(props);
+		const filter = this.props.searchInput ? this.props.searchInput : '';
 		this.state = {
-			filter: '',
+			filter: filter,
 			filteredServices: null,
 			services: null,
 			redirect: false
@@ -26,6 +27,9 @@ class ShowAllServices extends Component {
 					services: res,
 					filteredServices: res
 				});
+				if(this.state.filter.length > 0){
+					this.handleFilterChange();
+				}
 			})
 			.catch(() => {
 				toast.error(this.props.t('getAllServicesFail'), {
@@ -36,8 +40,6 @@ class ShowAllServices extends Component {
 					redirectTo: '/'
 				});
 			});
-
-
 	}
 
 	redirect(serviceId){
@@ -49,7 +51,8 @@ class ShowAllServices extends Component {
 	}
 
 	handleFilterChange(event) {
-		this.setState({ filter: event.target.value} ,() => {
+		const filter = event ? event.target.value : this.state.filter;
+		this.setState({ filter: filter} ,() => {
 			const lowercasedFilter = this.state.filter.toLowerCase();
 			const filteredServices = this.state.services.filter(service => {
 				if(service.name.includes(lowercasedFilter)) {
@@ -102,7 +105,7 @@ class ShowAllServices extends Component {
 				>
 					{this.props.t('showAllServicesTitle')}
 				</Typography>
-				<TextField onChange={this.handleFilterChange} label={this.props.t('searchservices')} variant="outlined" fullWidth/>
+				<TextField onChange={this.handleFilterChange} label={this.props.t('searchservices')} variant="outlined" value={this.state.filter} fullWidth/>
 				<ServiceList services={this.state.filteredServices} onClick={this.redirect} />
 			</>:
 			null;

@@ -18,6 +18,7 @@ import LandingPage from '../../components/LandingPage/LandingPage';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { authenticationService } from '../../services/authentication/authentication.service';
+import background from '../../assets/background.png'; 
 
 
 function Layout() {
@@ -31,12 +32,17 @@ function Layout() {
 	}));
 
 	const [state, setState] = React.useState({
-		loggedIn: authenticationService.loggedIn()
+		loggedIn: authenticationService.loggedIn(),
+		searchInput: null
 	});
 	const classes = useStyles();
 
 	const changeLoggedInState = () => {
 		setState({...state, loggedIn: authenticationService.loggedIn()});
+	};
+
+	const searchForService = (input) => {
+		setState({...state, searchInput: input});
 	};
 	return (
 		<Router>
@@ -49,7 +55,9 @@ function Layout() {
 					<Route path="/service/create" component={CreateService} />
 					<Route path="/service/:id" component={ShowService} />
 					<Route path="/service/edit/:id" component={EditService} />
-					<Route path="/service/" component={ShowAllServices} />
+					<Route path="/service/">
+						<ShowAllServices searchInput={state.searchInput} />
+					</Route>
 					<Route path="/register" component={CreateUser} />
 					<Route path="/account" component={ShowUser} />
 					<Route path="/user/edit/:id" component={EditUser} />
@@ -57,7 +65,9 @@ function Layout() {
 					<Route path="/login">
 						<Login changeLoggedInState={changeLoggedInState}/>
 					</Route>
-					<Route path="/" component={LandingPage} />
+					<Route path="/">
+						<LandingPage loggedIn={state.loggedIn} searchForService={searchForService}/>
+					</Route>
 				</Switch>
 			</Container>
 		</Router>

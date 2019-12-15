@@ -66,5 +66,9 @@ function deleteService(serviceId) {
 
 function getTopRecomenderServices(){
 	const requestOptions = { method: 'GET', headers: authHeader()};
-	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/recommendations/`, requestOptions);
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/recommendations/own/top`, requestOptions)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
 }
