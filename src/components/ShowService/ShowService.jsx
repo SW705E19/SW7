@@ -73,7 +73,7 @@ class ShowService extends Component {
 				});
 			});
 		const id = authenticationService.getCurrentUserId();
-		if (id !== undefined) {
+		if (id !== null) {
 			ratingService.getByUserIdServiceId(id,this.props.match.params.id)
 				.then(rating => {
 					const value = rating.rating;

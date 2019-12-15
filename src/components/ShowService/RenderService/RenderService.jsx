@@ -42,16 +42,11 @@ function RenderService(props) {
 
 	const randomUrl = `https://picsum.photos/seed/${props.service.id}/1300/700`;
 
-<<<<<<< HEAD
-	return (
-		<>
-=======
 	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
 	//const [ratingValue, setRatingValue] = React.useState(0);
 
 	if(props.service.tutorInfo.userId !== authenticationService.getCurrentUserId()) {
 		return (
->>>>>>> develop
 			<Grid container className={classes.root} spacing={2}>
 				<Grid className={classes.item} item md={12}>
 					<Typography 
