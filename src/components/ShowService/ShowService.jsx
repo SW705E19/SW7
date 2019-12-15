@@ -80,10 +80,6 @@ class ShowService extends Component {
 					this.setState({
 						ratingValue: value
 					});
-				}).catch(() => {
-					toast.error(this.props.t('failgettingyourrating'), {
-						position: toast.POSITION.BOTTOM_RIGHT
-					});
 				});
 		}
 		
