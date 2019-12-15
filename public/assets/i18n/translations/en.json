@@ -49,8 +49,8 @@
   "deleteuserdialog": "If you choose to delete your account, you won't be able to get it back",
   "deleteduser": "The user has been deleted",
   "deleteuserfailed": "The user has not been deleted",
-  "saveeditusernotifysuccess": "The changes has been saved",
-  "saveeditusernotifyfail": "The changes was not saved",
+  "saveeditusernotifysuccess": "The changes were saved",
+  "saveeditusernotifyfail": "The changes were not saved",
   "gettutorinfonotifyfail": "Could not get tutor info",
   "getcategoriesnotifyfail": "Could not get categories",
   "getservicenotifyfail": "Could not get service",
@@ -76,7 +76,16 @@
   "services": "Services",
   "learnmore": "Learn more",
   "averagerating": "Average rating",
+  "getusersfail": "Could not get users",
+  "addremoverole": "Tutor?",
   "searchservices": "Search for services",
   "logoutsuccess": "Logged out successfully",
+<<<<<<< HEAD
   "failgettingyourrating": "Kunne ikke hente din rating"
+=======
+  "createtutorinfo": "Create tutor information",
+  "unavailable": "Unavailable",
+  "logout": "Logout",
+  "logoutconfirmation": "Are you sure you want to logout?"
+>>>>>>> e74a0aa4b858799ec57fc0b5a002785805393560
 }

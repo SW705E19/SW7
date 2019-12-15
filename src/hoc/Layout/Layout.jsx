@@ -11,11 +11,13 @@ import Header from '../../components/Header/Header';
 import ShowAllServices from '../../components/ShowAllServices/ShowAllServices';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import CreateService from '../../containers/CreateService/CreateService';
+import GiveTutorRole from '../../components/GiveTutorRole/GiveTutorGetUsers';
 import EditUser from '../../components/EditUser/EditUser';
 import EditService from '../../containers/EditService/EditService';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { authenticationService } from '../../services/authentication/authentication.service';
+
 
 function Layout() {
 	const changeLanguage = e => {
@@ -42,14 +44,15 @@ function Layout() {
 			<Container component="main" maxWidth="md">
 				<Switch>
 					<Route path="/admin" component={AdminDashboard} />
+					<Route path="/user/edit/:id" component={EditUser} />
 					<Route path="/user/:id" component={ShowUser} />
 					<Route path="/service/create" component={CreateService} />
-					<Route path="/service/:id" component={ShowService} />
 					<Route path="/service/edit/:id" component={EditService} />
+					<Route path="/service/:id" component={ShowService} />
 					<Route path="/service/" component={ShowAllServices} />
 					<Route path="/register" component={CreateUser} />
 					<Route path="/account" component={ShowUser} />
-					<Route path="/user/edit/:id" component={EditUser} />
+					<Route path= "/tutorRole" component={GiveTutorRole}/>
 					<Route path="/login">
 						<Login changeLoggedInState={changeLoggedInState}/>
 					</Route>

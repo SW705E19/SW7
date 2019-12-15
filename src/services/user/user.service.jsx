@@ -6,19 +6,30 @@ export const userService = {
 	getOwnUser,
 	getTutorInfoByUserId,
 	editUser,
+	editTutorRole,
 	deleteUser
 };
 
-function editUser(id, user) {
+function editUser(userId ,user) {
 	const requestOptions = {
 		method: 'PATCH',
 		headers: authHeader(),
 		body: JSON.stringify(user)
 	};
 	return fetch(
-		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`,
+		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${userId}`,
 		requestOptions
 	).then(handleResponse);
+}
+
+function editTutorRole(id, roles) {
+	const jsonService = JSON.stringify(roles);
+
+	const requestOptions = { method: 'PATCH', 
+		headers: authHeader(),
+		body: jsonService};
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/tutor/${id}`, requestOptions)
+		.then(handleResponse);
 }
 
 function deleteUser(id) {
@@ -34,7 +45,11 @@ function getAll() {
 	return fetch(
 		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/`,
 		requestOptions
-	).then(handleResponse);
+	)
+		.then(handleResponse)
+		.then(data => {
+			return JSON.parse(data);
+		});
 }
 
 function getById(id) {

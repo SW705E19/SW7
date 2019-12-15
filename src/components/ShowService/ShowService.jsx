@@ -86,7 +86,7 @@ class ShowService extends Component {
 
 	render() {
 		if(this.state.redirectToTutor) {
-			return (<Redirect to={'/user/' + this.state.service.tutorInfo.id} />);
+			return (<Redirect to={'/user/' + this.state.service.tutorInfo.userId} />);
 		}
 		return this.state.service ? 
 			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}

@@ -22,12 +22,13 @@ class ShowUser extends Component {
 				if(data.roles.includes('TUTOR')) {
 					await userService.getTutorInfoByUserId(id).then(tutorInfo => {
 						fetchedUser.tutorInfo = tutorInfo;
+					}).catch(() => {
+						// If the tutor has no tutorinfo created we do nothing
 					});
 				}
 				this.setState({ user: fetchedUser });
 			})
-			.catch((err) => {
-				console.log(err);
+			.catch(() => {
 				toast.error(this.props.t('showuserfail'), {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});

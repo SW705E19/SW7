@@ -9,6 +9,6 @@ export default function authHeader() {
 			'Content-Type': 'application/json' 
 		};
 	} else {
-		return null;
+		return {'Content-Type': 'application/json'};
 	}
 } 
