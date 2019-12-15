@@ -10,14 +10,14 @@ export const userService = {
 	deleteUser
 };
 
-function editUser(id, user) {
+function editUser(userId ,user) {
 	const requestOptions = {
 		method: 'PATCH',
 		headers: authHeader(),
 		body: JSON.stringify(user)
 	};
 	return fetch(
-		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${id}`,
+		`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/users/${userId}`,
 		requestOptions
 	).then(handleResponse);
 }
