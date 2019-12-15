@@ -11,10 +11,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Redirect } from 'react-router';
 
 const styles = theme => ({
-	root: {
-		// height: '100%',
-		// maxWidth:'80%',
-	},
 	introductionContainer: {
 		backgroundColor: '#80d8ff'
 	},
@@ -65,6 +61,7 @@ class LandingPage extends Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleOnClick = this.handleOnClick.bind(this);
 	}
 
 	componentDidMount(){
@@ -139,7 +136,7 @@ class LandingPage extends Component {
 
 	getRatingComponent(classes, t){
 		return this.state.topAverageService ?
-			<div>
+			<>
 				<Typography
 					className={classes.title}
 					align="center"
@@ -181,13 +178,13 @@ class LandingPage extends Component {
 						})
 					}
 				</Carousel>
-			</div>:
+			</>:
 			null;
 	}
 
 	getRecomendedComponent(classes, t){
 		return this.state.recommendations ?
-			<div>
+			<>
 				<Typography
 					className={classes.title}
 					align="center"
@@ -229,7 +226,7 @@ class LandingPage extends Component {
 						})
 					}
 				</Carousel>
-			</div>:
+			</>:
 			null;
 	}
 
@@ -279,7 +276,7 @@ class LandingPage extends Component {
 		if(this.state.redirect){
 			return (<Redirect to={this.state.redirectTo} />);
 		}
-		return <div>
+		return <>
 			<Card
 				className={classes.introductionContainer}
 			>
@@ -333,7 +330,7 @@ class LandingPage extends Component {
 					this.getTutorsComponent(classes, t):
 					null
 			}
-		</div>;
+		</>;
 	}
 }
 
