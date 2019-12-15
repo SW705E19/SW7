@@ -6,7 +6,8 @@ export const serviceService = {
 	getDetailedById,
 	create,
 	edit,
-	deleteService
+	deleteService,
+	getTopRecomenderServices
 };
 
 function getAll() {
@@ -61,4 +62,9 @@ function deleteService(serviceId) {
 	const requestOptions = { method: 'DELETE', headers: authHeader() };
 	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/services/${serviceId}`, requestOptions)
 		.then(handleResponse);
+}
+
+function getTopRecomenderServices(){
+	const requestOptions = { method: 'GET', headers: authHeader()};
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/recommendations/`, requestOptions);
 }
