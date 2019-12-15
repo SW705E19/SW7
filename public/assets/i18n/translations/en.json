@@ -79,5 +79,9 @@
   "getusersfail": "Could not get users",
   "addremoverole": "Tutor?",
   "searchservices": "Search for services",
-  "logoutsuccess": "Logged out successfully"
+  "logoutsuccess": "Logged out successfully",
+  "createtutorinfo": "Create tutor information",
+  "unavailable": "Unavailable",
+  "logout": "Logout",
+  "logoutconfirmation": "Are you sure you want to logout?"
 }

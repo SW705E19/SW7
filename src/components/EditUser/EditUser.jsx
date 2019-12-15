@@ -98,7 +98,7 @@ export class EditUser extends Component {
 	}
 
 	handleDelete() {
-		userService.deleteUser(this.props.match.params.id);
+		userService.deleteUser(this.state.id);
 		// TODO: Redirect til landingpage
 	}
 
@@ -219,7 +219,7 @@ export class EditUser extends Component {
 				avatarUrl: this.state.avatarUrl
 			};
 			userService
-				.editUser(this.props.match.params.id, user)
+				.editUser(this.state.id, user)
 				.then(() => {
 					toast.success(this.props.t('saveeditusernotifysuccess'), {
 						position: toast.POSITION.BOTTOM_RIGHT
@@ -235,7 +235,7 @@ export class EditUser extends Component {
 
 	render() {
 		if (this.state.redirectToUser) {
-			return <Redirect to={'/user/' + this.props.match.params.id} />;
+			return <Redirect to={'/user/' + this.state.id} />;
 		}
 		return this.state.languageValues || this.state.subjectOfInterestValues ? (
 			<EditUserForm

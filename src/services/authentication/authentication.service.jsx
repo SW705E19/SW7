@@ -11,7 +11,8 @@ export const authenticationService = {
 	currentUser: currentUserSubject.asObservable(),
 	get currentUserValue () { return currentUserSubject.value; },
 	getCurrentUserId,
-	loggedIn
+	loggedIn,
+	getUserRoles
 };
 
 function login(email, password) {
@@ -57,7 +58,18 @@ function logout() {
 
 function getCurrentUserId() {
 	const decodedToken = jwt.decode(localStorage.getItem('currentUser'));
-	return decodedToken.userId;
+	if(decodedToken) {
+		return decodedToken.userId;
+	}
+	return null;
+}
+
+function getUserRoles() {
+	const decodedToken = jwt.decode(localStorage.getItem('currentUser'));
+	if(decodedToken) {
+		return decodedToken.roles;
+	}
+	return null;
 }
 
 function loggedIn() {
