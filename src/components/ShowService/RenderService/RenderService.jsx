@@ -123,7 +123,7 @@ function RenderService(props) {
 								<Divider orientation="horizontal" />
 								<Box fontStyle="italic" >
 									<Typography color="textPrimary" style={{ fontSize: 12 }}>
-										{'Categories: ' + props.service.categories.map((category, index) => category.name + (index == props.service.categories.length-1 ? '.': '')).join(', ')}
+										{'Categories: ' + props.service.categories.map((category, index) => category.name + (props.service.categories.length-1 === index ? '.' : ', ')).join('')}
 									</Typography>
 								</Box>
 								<Divider orientation="horizontal" />
@@ -177,7 +177,7 @@ function RenderService(props) {
 							<Divider orientation="horizontal" />
 							<Box fontStyle="italic" >
 								<Typography color="textPrimary" style={{ fontSize: 12 }}>
-									{'Categories: ' + props.service.categories.map((category, index) => category.name + (index ? '.' : ', ')).join('')}
+									{'Categories: ' + props.service.categories.map((category, index) => category.name + (props.service.categories.length-1 === index ? '.' : ', ')).join('')}
 								</Typography>
 							</Box>
 							<Divider orientation="horizontal" />
