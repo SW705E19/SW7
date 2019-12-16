@@ -95,8 +95,10 @@
   "landingPageTopRated": "Højest bedømte kurser",
   "landingPageRecommended": "Dine rekommenderede kurser",
   "landingPageTutors": "Vores fantastiske tutorer!",
-  "LandingPageServiceFail": "Kunne ikke hente services",
+  "landingPageServiceFail": "Kunne ikke hente services",
   "landingPageTutorsFail": "Kunne ikke hente tutorer",
   "createUserFail": "Kunne ikke oprette bruger",
-  "createUserSuccess": "Bruger oprettet"
+  "createUserSuccess": "Bruger oprettet",
+  "deleteUserFail": "Kunne ikke slette brugeren",
+  "deleteUserSuccess": "Bruger slettet"
 }

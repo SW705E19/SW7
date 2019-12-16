@@ -83,7 +83,7 @@ class LandingPage extends Component {
 					});
 				})
 				.catch(() => {
-					toast.error(this.props.t('landingServiceFail'), {
+					toast.error(this.props.t('landingPageServiceFail'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
 				});
@@ -228,7 +228,7 @@ class LandingPage extends Component {
 										variant="body2"
 										component="p"
 									>
-										{recommendation.service.tutorInfo.user.firstName + ' ' + recommendation.service.lastName}
+										{recommendation.service.tutorInfo.user.firstName + ' ' + recommendation.service.tutorInfo.user.lastName}
 									</Typography>
 								</CardContent>
 							</Card>;
