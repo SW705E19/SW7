@@ -83,5 +83,8 @@
   "createtutorinfo": "Create tutor information",
   "unavailable": "Unavailable",
   "logout": "Logout",
-  "logoutconfirmation": "Are you sure you want to logout?"
+  "logoutconfirmation": "Are you sure you want to logout?",
+  "createcategorysuccess": "Category created",
+  "createcategoryfail": "Could not create category",
+  "getcategoriesfail": "Could not get categories"
 }
