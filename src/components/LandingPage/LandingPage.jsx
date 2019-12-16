@@ -9,7 +9,6 @@ import Carousel from 'react-material-ui-carousel';
 import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton, Grid, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 
 const styles = theme => ({
 	introductionContainer: {
