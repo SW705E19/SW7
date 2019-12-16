@@ -96,5 +96,7 @@
   "landingPageRecommended": "Top recommended services",
   "landingPageTutors": "Our awesome tutors",
   "LandingPageServiceFail": "Failed to get services",
-  "landingPageTutorsFail": "Failed to get tutors"
+  "landingPageTutorsFail": "Failed to get tutors",
+  "createUserFail": "User could not be created",
+  "createUserSuccess": "User created"
 }

@@ -8,6 +8,9 @@ import {
 	validPassword
 } from '../../helpers/validation-functions';
 import { authenticationService } from '../../services/authentication/authentication.service';
+import { toast } from 'react-toastify';
+import { withTranslation } from 'react-i18next';
+import { Redirect } from 'react-router';
 
 export class CreateUser extends Component {
 	constructor(props) {
@@ -22,7 +25,8 @@ export class CreateUser extends Component {
 			password: { firstPassword: '', secondPassword: '', passwordValid: true },
 			education: '',
 			languageValues: [],
-			subjectOfInterestValues: []
+			subjectOfInterestValues: [],
+			redirect: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -169,11 +173,27 @@ export class CreateUser extends Component {
 				subjectsOfInterest : this.state.subjectOfInterestValues,
 				roles : [],
 				avatarUrl: ''};
-			authenticationService.createUser(user);
+			authenticationService.createUser(user)
+				.then(() => {
+					toast.success(this.props.t('createUserSuccess'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+					this.setState({
+						redirect: true
+					});
+				}).catch(() => {
+					toast.error(this.props.t('createUserFail'), {
+						position: toast.POSITION.BOTTOM_RIGHT
+					});
+				});
 		}
 	}
 
 	render() {
+		if(this.state.redirect){
+			return <Redirect to={'/'}/>;
+
+		}
 		return (
 			<UserForm
 				firstName={this.state.firstName}
@@ -192,4 +212,4 @@ export class CreateUser extends Component {
 	}
 }
 
-export default CreateUser;
+export default withTranslation()(CreateUser);
