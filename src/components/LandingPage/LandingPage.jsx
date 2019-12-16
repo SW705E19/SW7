@@ -83,7 +83,7 @@ class LandingPage extends Component {
 					});
 				})
 				.catch(() => {
-					toast.error(this.props.t('landingServiceFail'), {
+					toast.error(this.props.t('landingPageServiceFail'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
 				});
