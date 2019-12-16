@@ -192,7 +192,6 @@ export class CreateUser extends Component {
 	render() {
 		if(this.state.redirect){
 			return <Redirect to={'/'}/>;
-
 		}
 		return (
 			<UserForm
