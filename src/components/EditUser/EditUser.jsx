@@ -7,6 +7,7 @@ import {
 	notEmptyValidation
 } from '../../helpers/validation-functions';
 import { userService } from '../../services/user/user.service';
+import { authenticationService } from '../../services/authentication/authentication.service';
 import { toast } from 'react-toastify';
 import { withTranslation } from 'react-i18next';
 import { Redirect } from 'react-router';
@@ -28,7 +29,7 @@ export class EditUser extends Component {
 			deleteDialogOpen: false,
 			roles: [],
 			avatarUrl: '',
-			redirectToUser: false
+			redirect: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -98,8 +99,26 @@ export class EditUser extends Component {
 	}
 
 	handleDelete() {
-		userService.deleteUser(this.state.id);
-		// TODO: Redirect til landingpage
+		userService.deleteUser(this.state.id)
+			.then(() => {
+				toast.success(this.props.t('deleteUserSuccess'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				authenticationService.logout();
+				this.props.changeLoggedInState();
+				this.setState({
+					redirect: true,
+					redirectTo:'/',
+					deleteDialogOpen: false,
+				});
+			}).catch(() => {
+				toast.error(this.props.t('deleteUserFail'), {
+					position: toast.POSITION.BOTTOM_RIGHT
+				});
+				this.setState({
+					deleteDialogOpen: false,
+				});
+			});
 	}
 
 	handleChange(e) {
@@ -194,7 +213,8 @@ export class EditUser extends Component {
 					this.state.dateOfBirth.dateOfBirth
 				)
 			},
-			redirectToUser: true
+			redirect: true,
+			redirectTo: '/user/' + this.state.id
 		});
 
 		if (
@@ -224,6 +244,7 @@ export class EditUser extends Component {
 					toast.success(this.props.t('saveeditusernotifysuccess'), {
 						position: toast.POSITION.BOTTOM_RIGHT
 					});
+
 				})
 				.catch(() => {
 					toast.error(this.props.t('saveeditusernotifyfail'), {
@@ -234,8 +255,8 @@ export class EditUser extends Component {
 	}
 
 	render() {
-		if (this.state.redirectToUser) {
-			return <Redirect to={'/user/' + this.state.id} />;
+		if (this.state.redirect) {
+			return <Redirect to={this.state.redirectTo} />;
 		}
 		return this.state.languageValues || this.state.subjectOfInterestValues ? (
 			<EditUserForm

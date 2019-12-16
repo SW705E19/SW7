@@ -228,7 +228,7 @@ class LandingPage extends Component {
 										variant="body2"
 										component="p"
 									>
-										{recommendation.service.tutorInfo.user.firstName + ' ' + recommendation.service.lastName}
+										{recommendation.service.tutorInfo.user.firstName + ' ' + recommendation.service.tutorInfo.user.lastName}
 									</Typography>
 								</CardContent>
 							</Card>;
