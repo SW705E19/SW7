@@ -81,7 +81,10 @@
   "addremoverole": "Tutor?",
   "searchservices": "Søg efter services",
   "logoutsuccess": "Du har logget ud",
+  "norating": "Ingen gennemsnitlig rating",
+  "failgettingyourrating": "Kunne ikke hente din rating",
   "createtutorinfo": "Opret tutor information",
   "logout": "Log ud",
   "logoutconfirmation": "Er du sikker på du vil logge ud?"
+
 }
