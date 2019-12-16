@@ -4,6 +4,8 @@ import { List, TextField, ListItem, ListItemText, Grid, Button, Container } from
 import { withStyles } from '@material-ui/core/styles';
 import { categoryService } from '../../../services/category/category.service';
 import { withTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+
 
 
 const styles = () => ({
@@ -35,6 +37,10 @@ class RenderCategories extends React.Component {
 	componentDidMount() {
 		categoryService.getAll().then(data => {
 			this.setState({categories: data});
+		}).catch(() => {
+			toast.error(this.props.t('getcategoriesfail'), {
+				position: toast.POSITION.BOTTOM_RIGHT
+			});
 		});
 	}
 
@@ -49,6 +55,13 @@ class RenderCategories extends React.Component {
 			this.state.category).then(data => {
 			const newCategories = this.state.categories.concat(data);
 			this.setState({categories: newCategories});
+			toast.success(this.props.t('createcategorysuccess'), {
+				position: toast.POSITION.BOTTOM_RIGHT
+			});
+		}).catch(() => {
+			toast.error(this.props.t('createcategoryfail'), {
+				position: toast.POSITION.BOTTOM_RIGHT
+			});
 		});
 	}
 
