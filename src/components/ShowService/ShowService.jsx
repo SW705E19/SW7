@@ -15,15 +15,22 @@ class ShowService extends Component {
 			redirectToTutor: false,
 			avgRating: null,
 			ratingValue: 0,
-			rating: null
+			rating: null,
+			myRatingValue: 0,
+			myRating: null
 		};
 		this.setRedirect = this.setRedirect.bind(this);
 		this.submitRating = this.submitRating.bind(this);
+		this.setRatingValue = this.setRatingValue.bind(this);
 	}
-
 	setRedirect () {
 		this.setState({
 			redirectToTutor: true
+		});
+	}
+	setRatingValue(value) {
+		this.setState({
+			ratingValue: value
 		});
 	}
 
@@ -49,6 +56,12 @@ class ShowService extends Component {
 		Promise.all([serviceService.getDetailedById(this.props.match.params.id), 
 			ratingService.getAverageRating(this.props.match.params.id)])
 			.then(([data, rating]) => {
+				if(rating.avg === null){
+					rating.avg = this.props.t('norating');
+				}
+				else{
+					rating.avg = rating.avg.substring(0,4);
+				}
 				this.setState({
 					service: data,
 					avgRating: rating
@@ -58,6 +71,17 @@ class ShowService extends Component {
 					position: toast.POSITION.BOTTOM_RIGHT
 				});
 			});
+		const id = authenticationService.getCurrentUserId();
+		if (id !== null) {
+			ratingService.getByUserIdServiceId(id,this.props.match.params.id)
+				.then(rating => {
+					const value = rating.rating;
+					this.setState({
+						ratingValue: value
+					});
+				});
+		}
+		
 	}
 
 	render() {
@@ -66,8 +90,9 @@ class ShowService extends Component {
 		}
 		return this.state.service ? 
 			<RenderService service={this.state.service} redirectToTutor={this.state.redirectToTutor}
-				setRedirect={this.setRedirect} ratingValue={this.ratingValue}
-				submitRating={this.submitRating} avgRating={this.state.avgRating} /> :
+				setRedirect={this.setRedirect} ratingValue={this.state.ratingValue}
+				submitRating={this.submitRating} avgRating={this.state.avgRating}
+				setRatingValue={this.setRatingValue}  /> :
 			null; 
 	}
 }

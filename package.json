@@ -15,6 +15,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-material-ui-carousel": "^1.0.0",
     "react-i18next": "^11.2.5",
     "react-payment-icons": "^1.2.6",
     "react-router-dom": "^5.1.2",

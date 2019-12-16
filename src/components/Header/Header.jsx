@@ -117,7 +117,7 @@ function Header(props) {
 									</ListItem>
 									: null
 							}
-							<ListItem button component={Link} to="/login" key="MeetingRoom" onClick={logout}>
+							<ListItem button component={Link} to="/" key="MeetingRoom" onClick={logout}>
 								<ListItemText primary="Logout" />
 								<ListItemIcon>
 									<MeetingRoom fontSize="large" />
@@ -192,7 +192,7 @@ function Header(props) {
 											<Button onClick={handleClickClose} color="primary" variant="contained">
 												{t('cancel')}
 											</Button>
-											<Button onClick={logout}  component={Link} to="/login" color="secondary" autoFocus variant="contained">
+											<Button onClick={logout}  component={Link} to="/" color="secondary" autoFocus variant="contained">
 												{t('logout')}
 											</Button>
 										</DialogActions>
