@@ -85,6 +85,13 @@
   "createtutorinfo": "Create tutor information",
   "unavailable": "Unavailable",
   "logout": "Logout",
-  "logoutconfirmation": "Are you sure you want to logout?"
-
+  "logoutconfirmation": "Are you sure you want to logout?",
+  "landingPageTitle": "Find a tutor",
+  "landingPageIntro": "Are you ready to find the tutor for your new passion? We provide the connection between tutors and students!",
+  "landingPageSearchTitle": "Find your next course!",
+  "landingPageTopRated": "Top rated services",
+  "landingPageRecommended": "Top recommended services",
+  "landingPageTutors": "Our awesome tutors",
+  "LandingPageServiceFail": "Failed to get services",
+  "landingPageTutorsFail": "Failed to get tutors"
 }

@@ -23,7 +23,6 @@ class ShowService extends Component {
 		this.submitRating = this.submitRating.bind(this);
 		this.setRatingValue = this.setRatingValue.bind(this);
 	}
-
 	setRedirect () {
 		this.setState({
 			redirectToTutor: true

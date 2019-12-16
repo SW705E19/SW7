@@ -85,6 +85,13 @@
   "failgettingyourrating": "Kunne ikke hente din rating",
   "createtutorinfo": "Opret tutor information",
   "logout": "Log ud",
-  "logoutconfirmation": "Er du sikker på du vil logge ud?"
-
+  "logoutconfirmation": "Er du sikker på du vil logge ud?",
+  "landingPageTitle": "Find a tutor",
+  "landingPageIntro": "Er du klar til at finde en tutor til din nye passion? Vi skaber forbindelsen imellem tutoren og eleven!",
+  "landingPageSearchTitle": "Find dit næste kursus!",
+  "landingPageTopRated": "Højest bedømte kurser",
+  "landingPageRecommended": "Dine rekommenderede kurser",
+  "landingPageTutors": "Vores fantastiske tutorer!",
+  "LandingPageServiceFail": "Kunne ikke hente services",
+  "landingPageTutorsFail": "Kunne ikke hente tutorer"
 }

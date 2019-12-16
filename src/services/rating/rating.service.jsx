@@ -4,6 +4,7 @@ export const ratingService = {
 	getAll,
 	create,
 	getAverageRating,
+	GetTopAverageServices,
 	getByUserIdServiceId,
 };
 
@@ -31,6 +32,12 @@ function getAverageRating(serviceId) {
 		.then(handleResponse).then(rating => {
 			return JSON.parse(rating);
 		});
+}
+
+function GetTopAverageServices(amount){
+	const requestOptions = { method: 'GET', headers: authHeader() };
+	return fetch(`http://${process.env.REACT_APP_API_URI}:${process.env.REACT_APP_API_PORT}/api/ratings/top/${amount}`, requestOptions)
+		.then(handleResponse).then(services => JSON.parse(services));
 }
 
 function getByUserIdServiceId(userId,serviceId) {

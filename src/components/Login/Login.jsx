@@ -80,7 +80,7 @@ class Login extends Component {
 		};
 
 		if(this.state.redirect){
-			return <Redirect to={'/service/'}/>;
+			return <Redirect to={'/'}/>;
 		}
 
 		return (
