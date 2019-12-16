@@ -6,9 +6,10 @@ import { ratingService } from '../../services/rating/rating.service';
 import { serviceService } from '../../services/service/service.service';
 import { userService } from '../../services/user/user.service';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton, Grid } from '@material-ui/core';
+import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton, Grid, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
 	introductionContainer: {
@@ -47,7 +48,17 @@ const styles = theme => ({
 	media: {
 		height: '70%',
 		objectFit: 'fill'
+	},
+	buttonContainer: {
+		display: 'flex',
+		width: '100%',
+		justifyContent: 'center',
+		marginTop: '1em'
+	},
+	divider: {
+		margin: '0em 2em'
 	}
+
 });
 
 class LandingPage extends Component {
@@ -293,7 +304,36 @@ class LandingPage extends Component {
 					>
 						{t('landingPageIntro')}
 					</Typography>
+					{
+						this.props.loggedIn ?
+							<div className={classes.buttonContainer}>
+								<Button 
+									onClick = {() => {this.handleOnClick('/service');}}
+									color="default"
+									variant="contained"
+								>
+									{t('services')}
+								</Button>
+							</div>:
+							<div className={classes.buttonContainer}>
+								<Button 
+									onClick={() => {this.handleOnClick('/register');}}
+									color="default"
+									variant="contained"
+								>
+									{t('register')}
+								</Button>
+								<div className={classes.divider} />
+								<Button 
+									onClick = {() => {this.handleOnClick('/service');}}
+									color="default"
+									variant="contained"
+								>
+									{t('services')}
+								</Button>
+							</div>
 
+					}
 				</CardContent>
 			</Card>
 			<Typography
