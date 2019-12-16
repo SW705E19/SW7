@@ -242,7 +242,7 @@ class LandingPage extends Component {
 			<Grid container spacing={3}>
 				{
 					this.state.tutors.map((tutor, i) => {
-						return <Grid item xs={3} key={i}>
+						return <Grid item sm={3} xs={6}  key={i}>
 							<Card
 								className={classes.card}
 								onClick={() => { this.handleOnClick(`/user/${tutor.user.id}`); }}

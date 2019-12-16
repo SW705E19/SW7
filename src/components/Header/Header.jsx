@@ -43,13 +43,12 @@ function Header(props) {
 	const { t } = useTranslation();
 
 	const logout = () => {
-		authenticationService.logout().then(() => {
-			props.changeLoggedInState();
-			toast.success(t('logoutsuccess'), {
-				position: toast.POSITION.BOTTOM_RIGHT
-			});
-			setState({openAlert: false});
+		authenticationService.logout();
+		toast.success(t('logoutsuccess'), {
+			position: toast.POSITION.BOTTOM_RIGHT
 		});
+		props.changeLoggedInState();
+		setState({openAlert: false});
 	};
 
 	const [state, setState] = React.useState({
