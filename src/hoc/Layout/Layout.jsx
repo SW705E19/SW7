@@ -49,7 +49,9 @@ function Layout() {
 			<Container component="main" maxWidth="md">
 				<Switch>
 					<Route path="/admin" component={AdminDashboard} />
-					<Route path="/user/edit/:id" component={EditUser} />
+					<Route path="/user/edit/:id" component={EditUser}>
+						<EditUser changeLoggedInState={changeLoggedInState} />
+					</Route>
 					<Route path="/user/:id" component={ShowUser} />
 					<Route path="/service/create" component={CreateService} />
 					<Route path="/service/edit/:id" component={EditService} />

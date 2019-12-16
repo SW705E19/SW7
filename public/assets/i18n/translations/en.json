@@ -98,5 +98,7 @@
   "landingPageServiceFail": "Failed to get services",
   "landingPageTutorsFail": "Failed to get tutors",
   "createUserFail": "User could not be created",
-  "createUserSuccess": "User created"
+  "createUserSuccess": "User created",
+  "deleteUserFail": "User could not be deleted",
+  "deleteUserSuccess": "User deleted"
 }
