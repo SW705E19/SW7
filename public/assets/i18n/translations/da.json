@@ -96,5 +96,7 @@
   "landingPageRecommended": "Dine rekommenderede kurser",
   "landingPageTutors": "Vores fantastiske tutorer!",
   "LandingPageServiceFail": "Kunne ikke hente services",
-  "landingPageTutorsFail": "Kunne ikke hente tutorer"
+  "landingPageTutorsFail": "Kunne ikke hente tutorer",
+  "createUserFail": "Kunne ikke oprette bruger",
+  "createUserSuccess": "Bruger oprettet"
 }
