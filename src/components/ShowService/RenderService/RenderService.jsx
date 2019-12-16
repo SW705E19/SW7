@@ -173,7 +173,7 @@ function RenderService(props) {
 				<Card className={classes.card}>
 					<CardContent>
 						<Typography color="textPrimary" style={{ fontSize: 12 }}>
-							{t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+							{t('averagerating')}: {props.avgRating.avg}
 						</Typography>
 						<Typography component="h2" variant="h5">
 							{props.service.name}
