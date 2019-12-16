@@ -55,18 +55,18 @@ class ShowAllServices extends Component {
 		this.setState({ filter: filter} ,() => {
 			const lowercasedFilter = this.state.filter.toLowerCase();
 			const filteredServices = this.state.services.filter(service => {
-				if(service.name.includes(lowercasedFilter)) {
+				if(service.name.toLowerCase().includes(lowercasedFilter)) {
 					return true;
 				} 
-				if (service.description.includes(lowercasedFilter)){
+				if (service.description.toLowerCase().includes(lowercasedFilter)){
 					return true;
 				} 
 				if(service.categories) {
 					if(service.categories.some(category => {
-						if(category.name.includes(lowercasedFilter)) {
+						if(category.name.toLowerCase().includes(lowercasedFilter)) {
 							return true;
 						} 
-						if(category.description.includes(lowercasedFilter)){
+						if(category.description.toLowerCase().includes(lowercasedFilter)){
 							return true;
 						}
 						return false;
@@ -76,10 +76,10 @@ class ShowAllServices extends Component {
 				} 
 				if(service.tutorInfo) {
 					if(service.tutorInfo.user) {
-						if(service.tutorInfo.user.firstName.includes(lowercasedFilter)) {
+						if(service.tutorInfo.user.firstName.toLowerCase().includes(lowercasedFilter)) {
 							return true;
 						}
-						if (service.tutorInfo.user.lastName.includes(lowercasedFilter)){
+						if (service.tutorInfo.user.lastName.toLowerCase().includes(lowercasedFilter)){
 							return true;
 						}
 					}
