@@ -42,9 +42,6 @@ function RenderService(props) {
 
 	const randomUrl = `https://picsum.photos/seed/${props.service.id}/1300/700`;
 
-	// Bruges til rating stjernerne. ratingValue is currentValue, setRating updates.
-	const [ratingValue, setRatingValue] = React.useState(0);
-
 	if(props.service.tutorInfo.userId !== authenticationService.getCurrentUserId()) {
 		return (
 			<Grid container className={classes.root} spacing={2}>
@@ -66,13 +63,13 @@ function RenderService(props) {
 				<Grid className={classes.item} item md={12}>
 					<Card justify="center">
 						<Typography color="textPrimary" style={{ fontSize: 12 }}>
-							{t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+							{t('averagerating')}: {props.avgRating.avg}
 						</Typography>
 						<Rating
 							name="rating-value"
-							value={ratingValue}
+							value={props.ratingValue}
 							onChange={(event, newValue) => {
-								setRatingValue(newValue);
+								props.setRatingValue(newValue);
 							}}
 						/>
 	
@@ -82,7 +79,7 @@ function RenderService(props) {
 								variant="contained"
 								color="primary"
 								size="small"
-								onClick={() => props.submitRating(ratingValue)}
+								onClick={() => props.submitRating(props.ratingValue)}
 							>
 								{t('submitrating')}
 							</Button>
@@ -173,7 +170,7 @@ function RenderService(props) {
 				<Card className={classes.card}>
 					<CardContent>
 						<Typography color="textPrimary" style={{ fontSize: 12 }}>
-							{t('averagerating')}: {props.avgRating.avg.substring(0, 4)}
+							{t('averagerating')}: {props.avgRating.avg}
 						</Typography>
 						<Typography component="h2" variant="h5">
 							{props.service.name}

@@ -80,6 +80,8 @@
   "addremoverole": "Tutor?",
   "searchservices": "Search for services",
   "logoutsuccess": "Logged out successfully",
+  "norating": "No average rating",
+  "failgettingyourrating": "Kunne ikke hente din rating",
   "createtutorinfo": "Create tutor information",
   "unavailable": "Unavailable",
   "logout": "Logout",
