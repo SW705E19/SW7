@@ -159,8 +159,8 @@ export class CreateUser extends Component {
       this.state.phoneNumber.phoneNumberValid &&
       this.state.email.emailValid &&
       this.state.address.addressValid &&
-	  this.state.dateOfBirth.dateOfBirthValid &&
-	  this.state.password.passwordValid
+      this.state.dateOfBirth.dateOfBirthValid &&
+      this.state.password.passwordValid
 		) {
 			let user = {firstName : this.state.firstName.firstName,
 				lastName : this.state.lastName.lastName,
