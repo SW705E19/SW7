@@ -66,24 +66,25 @@ function RenderService(props) {
 							{t('averagerating')}: {props.avgRating.avg}
 						</Typography>
 						<Rating
-							name="rating-value"
-							value={props.ratingValue}
-							onChange={(event, newValue) => {
-								props.setRatingValue(newValue);
-							}}
+						name="rating-value"
+						value={props.ratingValue}
+						onChange={(event, newValue) => {
+							props.setRatingValue(newValue);
+						}}
 						/>
-	
+
 						<CardActions style={{ justifyContent: 'center' }}>
-							<Button
-								type="button"
-								variant="contained"
-								color="primary"
-								size="small"
-								onClick={() => props.submitRating(props.ratingValue)}
-							>
-								{t('submitrating')}
-							</Button>
+						<Button
+							type="button"
+							variant="contained"
+							color="primary"
+							size="small"
+							onClick={() => props.submitRating(props.ratingValue)}
+						>
+							{t('submitrating')}
+						</Button>
 						</CardActions>
+
 					</Card>
 				</Grid>
 	

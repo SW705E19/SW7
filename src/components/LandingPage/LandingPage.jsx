@@ -9,6 +9,7 @@ import Carousel from 'react-material-ui-carousel';
 import { Paper, Card, CardMedia, CardContent, Typography, InputBase, IconButton, Grid, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { Redirect } from 'react-router';
+import { authenticationService } from '../../services/authentication/authentication.service';
 
 const styles = theme => ({
 	introductionContainer: {
@@ -75,7 +76,7 @@ class LandingPage extends Component {
 	}
 
 	componentDidMount(){
-		if(!this.props.loggedIn){
+		if(!authenticationService.loggedIn()){
 			ratingService.GetTopAverageServices(5)
 				.then( async (servicesRes) => {
 					this.setState({
@@ -304,7 +305,7 @@ class LandingPage extends Component {
 						{t('landingPageIntro')}
 					</Typography>
 					{
-						this.props.loggedIn ?
+						authenticationService.loggedIn() ?
 							<div className={classes.buttonContainer}>
 								<Button 
 									onClick = {() => {this.handleOnClick('/service');}}
@@ -360,7 +361,7 @@ class LandingPage extends Component {
 				</IconButton>
 			</Paper>
 			{
-				this.props.loggedIn?
+				authenticationService.loggedIn() ?
 					this.getRecomendedComponent(classes, t):
 					this.getRatingComponent(classes, t)
 			}
